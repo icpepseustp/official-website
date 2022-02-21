@@ -15,6 +15,15 @@ module.exports = {
         raleway: ["Raleway", "sans-serif"],
         libre: ["'Libre Baskerville'", "serif"],
       },
+      animation: {
+        marquee: "move-to-left 32s linear infinite",
+      },
+      keyframes: {
+        "move-to-left": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+      },
     },
   },
   plugins: [],
