@@ -19,6 +19,39 @@ Anything else that doesn't fit the above must use appropriate, descriptive names
 
 You may omit the issue number if there aren't any issue posted regarding the fix, but it is _highly recommended_ you post it yourself so that a discussion with the team members are started first before any changes are applied, especially if you don't know if your fix will conflict with other pieces of code written by other members.
 
+## Commit Messages
+
+The first line of all commit messages must be prepended with a specific tag. A `tag` can be one of the following:
+
+- `fix` - For a bug fix. Append a `!` for a backwards-incompatible fix.
+- `hotfix` - For a critical fix that needs utmost priority (e.g. bugs/typos in the production branch).
+- `patch` - For small, minor changes that isn't necessarily a "bug" fix.
+- `feat` - For either an enhancement or a new feature. Append a `!` for a backwards-incompatible enhancement or feature.
+- `docs` - Changes to documentation only.
+- `build` - Changes to build process only.
+- `refactor` - A change that doesn't affect APIs or user experience.
+- `ci` - Changes to CI configuration files and scripts.
+- `perf` - A code change that improves performance.
+- `chore` - For any other changes that aren't user-facing.
+
+The commit message should be structured as follows:
+
+```text
+<tag>([optional scope]): <summary>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+If you have multiple commits, please squash any closely-related commits into single (main) commit and include all the squashed commit's summaries in the body of the main commit. If you believe an incorrect tag was used or an erratum was made, stage the correct changes (if applicable) and amend using the following command:
+
+```bash
+$ git commit --amend
+```
+
+For more information, head over to [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
+
 ## Pull Requests and General Development Flow
 
 When the changes are ready to be submitted, create a pull request to branch `qa`. Any PRs to the `main` and `staging` branches will be auto-rejected. This ensures any subsequent bugs (or sudden changes) are caught, fixed, and rebased (where appropriate), before any merge happens and the code goes live. The development flow is basically:
@@ -31,7 +64,7 @@ Each and every PR will go through a rigorous process of reviews and approvals by
 
 If the PR becomes stale (e.g. when new merges happen), rebase the code with the latest changes and force-push. Before submitting a pull request, ensure that there is no code style issues by running `yarn stylecheck`. If there are issues found, run `yarn stylefix`.
 
-**NOTE**: This repo adheres to [Semantic Versioning (SemVer)](https://semver.org/) and [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
+**NOTE**: This repo adheres to [Semantic Versioning (SemVer)](https://semver.org/).
 
 ---
 
