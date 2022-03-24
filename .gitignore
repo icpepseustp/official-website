@@ -20,3 +20,6 @@ yarn-*.log
 
 # Gatsby Production Build Dir
 public/
+
+# Local Netlify folder
+.netlify
