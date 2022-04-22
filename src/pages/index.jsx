@@ -1,5 +1,4 @@
 import { StaticImage } from "gatsby-plugin-image"
-import PageContainer from "../components/PageContainer"
 import { FaFacebookF, FaDiscord, FaTwitter } from "react-icons/fa"
 
 const platforms = [
@@ -22,7 +21,7 @@ const platforms = [
 
 function IndexPage() {
   return (
-    <PageContainer as="main">
+    <main className="container max-w-6xl">
       <section className="relative">
         <StaticImage
           src="../images/home/code.jpg"
@@ -58,7 +57,7 @@ function IndexPage() {
           ))}
         </div>
       </section>
-    </PageContainer>
+    </main>
   )
 }
 

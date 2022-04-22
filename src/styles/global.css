@@ -7,3 +7,17 @@
     @apply bg-[#efe9e1];
   }
 }
+
+@layer components {
+  .upcoming-events-first {
+    @apply -ml-12 mr-10 -mt-6 mb-1;
+  }
+
+  .upcoming-events-first::after {
+    @apply absolute left-1 top-1 -z-10 h-[104%] w-[104%] border-2 border-black bg-secondary content-[''];
+  }
+
+  .upcoming-events-rest {
+    @apply -ml-[2.625rem] mr-8 -mt-[1.125rem];
+  }
+}

@@ -1,16 +1,15 @@
 import { Link } from "gatsby"
-import PageContainer from "./PageContainer"
 
 const routes = [
   { text: "Home", path: "/" },
-  { text: "Blog", path: "/#blog" },
+  { text: "Blog", path: "/blog" },
   { text: "About Us", path: "/#about" },
   { text: "Contact", path: "/#contact" },
 ]
 
 function Navbar() {
   return (
-    <PageContainer as="header">
+    <main className="container max-w-6xl">
       <nav className="border-2 border-black">
         <ul className="flex divide-x-2 divide-black">
           {routes.map(({ text, path }) => (
@@ -35,7 +34,7 @@ function Navbar() {
             ))}
         </h5>
       </div>
-    </PageContainer>
+    </main>
   )
 }
 
