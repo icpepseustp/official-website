@@ -27,6 +27,7 @@ function IndexPage() {
         <StaticImage
           src="../images/home/code.jpg"
           className="h-[60vh] max-h-60 w-full md:max-h-80 xl:max-h-[25rem]"
+          alt="Desktop source code background"
         />
 
         <div className="absolute right-4 -bottom-12 flex h-16 w-16 items-center justify-center rounded-full bg-secondary p-12 xl:right-8 xl:-bottom-24 xl:h-44 xl:w-44">
@@ -50,7 +51,7 @@ function IndexPage() {
 
         <div className="flex gap-x-6 xl:gap-x-12">
           {platforms.map(({ icon: PlatformIcon, text }) => (
-            <div className="flex items-center gap-x-1.5 xl:gap-x-4">
+            <div key={text} className="flex items-center gap-x-1.5 xl:gap-x-4">
               <PlatformIcon />
 
               <small className="font-bold">{text}</small>

@@ -26,12 +26,14 @@ function Navbar() {
         </ul>
       </nav>
 
-      <div className="overflow-hidden border-2 border-black py-2">
+      <div className="overflow-hidden border-2 border-t-0 border-black py-2">
         <h5 className="animate-marquee space-x-4 whitespace-nowrap font-PS2P text-sm lg:text-xl">
           {Array(25)
             .fill("ICpEP.SE")
-            .map((str) => (
-              <span className="after:content-['*/']">{str} </span>
+            .map((str, index) => (
+              <span key={`marquee-${index}`} className="after:content-['*/']">
+                {str}{" "}
+              </span>
             ))}
         </h5>
       </div>
