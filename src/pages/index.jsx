@@ -1,6 +1,8 @@
 import { StaticImage } from "gatsby-plugin-image"
 import PageContainer from "../components/PageContainer"
-import { FaFacebookF, FaDiscord, FaTwitter } from "react-icons/fa"
+import { FaFacebookF, FaDiscord, FaTwitter, FaRegStar } from "react-icons/fa"
+import { BsArrowRight } from "react-icons/bs"
+import { Link } from "gatsby"
 
 const platforms = [
   {
@@ -37,8 +39,37 @@ function IndexPage() {
         </div>
       </section>
 
+      {/* WHO WE ARE */}
       <section className="mt-3 border-t-2 border-black xl:mt-4">
-        WHO WE ARE
+        <div className="flex flex-col md:flex-row-reverse md:justify-center">
+          <div className="flex place-items-center bg-primary px-16 py-12 md:w-1/2">
+            <div className="flex flex-col">
+              <span className="flex items-center gap-x-3">
+                <FaRegStar className="md:h-6 md:w-6" />
+                <h2 className="text-lg font-light lg:text-2xl">Who We Are</h2>
+              </span>
+              <p className="mt-8 mb-10 font-libre text-base font-bold leading-tight lg:text-2xl">
+                The Institute of Computer Engineers of the Philippines Student
+                Edition (ICpEP.SE) is the official student body of the
+                Department of Computer Engineering in USTP-CDO.
+              </p>
+              <Link
+                to="#"
+                className="flex items-center gap-x-3 self-end font-montserrat font-semibold lg:text-lg"
+              >
+                <small>Read More</small>
+                <BsArrowRight />
+              </Link>
+            </div>
+          </div>
+          <div className="p-4 md:w-1/2">
+            <StaticImage
+              src="../images/home/placeholder-image.png"
+              // className="md:w-1/2"
+              alt="Group photo of ICpEP.SE officers"
+            />
+          </div>
+        </div>
       </section>
 
       <section className="border-t-2 border-black">FEATURED</section>
