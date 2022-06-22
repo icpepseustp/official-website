@@ -85,10 +85,9 @@ function IndexPage() {
               </Link>
             </div>
           </div>
-          <div className="p-4 md:w-1/2">
+          <div className="flex p-4 md:w-1/2">
             <StaticImage
-              src="../images/home/placeholder-image.png"
-              // className="md:w-1/2"
+              src="../images/home/cpe-exec-officers-2019.jpg"
               alt="Group photo of ICpEP.SE officers"
             />
           </div>
