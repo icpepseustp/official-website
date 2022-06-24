@@ -145,7 +145,7 @@ function IndexPage() {
         </div>
       </section>
 
-      <section className="border-t-2 border-black px-4 py-10 font-montserrat text-sm md:px-8 md:text-base xl:px-12 xl:py-20 xl:text-2xl">
+      <section className="border-t-2 border-black px-4 py-10 font-montserrat text-sm md:py-16 md:px-8 md:text-base lg:text-lg xl:px-12 xl:py-24 xl:text-2xl">
         <header className="mb-4 xl:mb-8">
           <h3>Get Connected!</h3>
           <h4>Follow us on our social media platforms.</h4>
