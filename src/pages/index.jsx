@@ -15,17 +15,17 @@ const platforms = [
   {
     icon: FaFacebookF,
     text: "Facebook",
-    url: "",
+    url: "#",
   },
   {
     icon: FaDiscord,
     text: "Discord",
-    url: "",
+    url: "#",
   },
   {
     icon: FaTwitter,
     text: "Twitter",
-    url: "",
+    url: "#",
   },
 ]
 
@@ -33,13 +33,13 @@ const posts = [
   {
     title: "Good news! CpE certification finally underway for new grads",
     lead: "Computer Engineering professionals and graduates alike can now apply for certification.",
-    link: "#",
+    url: "#",
     thumbnail: false,
   },
   {
     title: "Lore unfolds: CpE Days '22 finally underway",
     lead: "After an overwhelming academic year, we deserve some unwinding. It is our time to gather as a pact and venture the night of Silverwood.",
-    link: "#",
+    url: "#",
     // todo: thumbnail is not boolean
     thumbnail: true,
   },
@@ -49,7 +49,7 @@ function IndexPage() {
   return (
     <PageContainer as="main">
       <section className="relative">
-        <video className="w-full" autoPlay muted loop>
+        <video className="w-full" title="ICpEP.SE Intro" autoPlay muted loop>
           <source src={IcpepAvp} type="video/mp4" />
           <track kind="captions" />
         </video>
@@ -63,34 +63,38 @@ function IndexPage() {
 
       {/* WHO WE ARE */}
       <section className="mt-3 border-t-2 border-black xl:mt-4">
-        <div className="flex flex-col md:flex-row-reverse md:justify-center">
-          <div className="flex place-items-center bg-primary px-16 py-12 md:w-1/2">
-            <div className="flex flex-col">
+        <article className="flex flex-col md:flex-row-reverse md:justify-center">
+          <div className="flex place-items-center bg-primary px-16 py-12 md:basis-1/2">
+            <div>
               <span className="flex items-center gap-x-3">
                 <FaRegStar className="md:h-6 md:w-6" />
                 <h2 className="text-lg font-light lg:text-2xl">Who We Are</h2>
               </span>
+
               <p className="mt-8 mb-10 font-libre text-base font-bold leading-tight lg:text-2xl">
                 The Institute of Computer Engineers of the Philippines Student
                 Edition (ICpEP.SE) is the official student body of the
                 Department of Computer Engineering in USTP-CDO.
               </p>
-              <Link
+
+              <div
                 to="#"
-                className="flex items-center gap-x-3 self-end font-montserrat font-semibold lg:text-lg"
+                title="Coming Soon!"
+                className="float-right flex cursor-pointer items-center gap-x-3 font-montserrat font-semibold lg:text-lg xl:text-xl"
               >
                 <small>Read More</small>
                 <BsArrowRight />
-              </Link>
+              </div>
             </div>
           </div>
-          <div className="flex p-4 md:w-1/2">
+
+          <div className="flex flex-1 p-4">
             <StaticImage
               src="../images/home/cpe-exec-officers-2019.jpg"
               alt="Group photo of ICpEP.SE officers"
             />
           </div>
-        </div>
+        </article>
       </section>
 
       {/* FEATURED */}
@@ -100,31 +104,32 @@ function IndexPage() {
             <FaRegNewspaper className="md:h-6 md:w-6" />
             <h2 className="text-lg font-light lg:text-2xl">Featured</h2>
           </span>
-          <div className="my-8 grid grid-cols-1 place-items-center gap-y-12 md:my-0 md:grid-cols-2">
-            {posts.map(({ title, lead, link, thumbnail }) => {
-              return (
-                <article key={title} className="feature-article">
-                  {thumbnail && (
-                    <StaticImage
-                      src="../images/home/cpe-days-2022.jpg"
-                      className="md:h-36 lg:h-52"
-                      alt={title}
-                    />
-                  )}
-                  <h4 className="my-4 font-libre text-base font-bold leading-tight">
-                    <Link to={link}>{title}</Link>
-                  </h4>
-                  <p className="font-montserrat leading-tight">{lead}</p>
-                  <Link
-                    to={link}
-                    className="mt-6 flex items-center gap-x-3 self-end font-montserrat font-semibold"
-                  >
-                    <small>Read More</small>
-                    <BsArrowRight />
-                  </Link>
-                </article>
-              )
-            })}
+
+          <div className="my-8 grid grid-cols-1 place-items-center gap-y-12 md:my-4 md:grid-cols-2">
+            {posts.map(({ title, lead, thumbnail }) => (
+              <article key={title} className="feature-article">
+                {thumbnail && (
+                  <StaticImage
+                    src="../images/home/cpe-days-2022.jpg"
+                    className="md:h-36 lg:h-52"
+                    alt={title}
+                  />
+                )}
+
+                <h4 className="my-4 font-libre text-base font-bold leading-tight">
+                  {title}
+                </h4>
+                <p className="font-montserrat leading-tight">{lead}</p>
+
+                <div
+                  title="Coming Soon!"
+                  className="float-right mt-6 flex cursor-pointer items-center gap-x-3 font-montserrat font-semibold lg:text-lg xl:text-xl"
+                >
+                  <small>Read More</small>
+                  <BsArrowRight />
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -136,12 +141,16 @@ function IndexPage() {
         </header>
 
         <div className="flex gap-x-6 xl:gap-x-12">
-          {platforms.map(({ icon: PlatformIcon, text }) => (
-            <div key={text} className="flex items-center gap-x-1.5 xl:gap-x-4">
+          {platforms.map(({ icon: PlatformIcon, url, text }) => (
+            <Link
+              key={text}
+              to={url}
+              className="flex items-center gap-x-1.5 xl:gap-x-4"
+            >
               <PlatformIcon />
 
               <small className="font-bold">{text}</small>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
