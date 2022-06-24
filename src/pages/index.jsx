@@ -9,7 +9,6 @@ import {
 } from "react-icons/fa"
 import { BsArrowRight } from "react-icons/bs"
 import { Link } from "gatsby"
-import { Fragment } from "react"
 import IcpepAvp from "../images/home/icpep-avp.mp4"
 
 const platforms = [
@@ -101,34 +100,29 @@ function IndexPage() {
             <FaRegNewspaper className="md:h-6 md:w-6" />
             <h2 className="text-lg font-light lg:text-2xl">Featured</h2>
           </span>
-          <div className="my-8 grid grid-cols-1 place-items-center gap-y-12 gap-x-0 px-6 md:my-0 md:grid-cols-[1fr_6rem_1fr]">
-            {posts.map(({ title, lead, link, thumbnail }, index) => {
+          <div className="my-8 grid grid-cols-1 place-items-center gap-y-12 md:my-0 md:grid-cols-2">
+            {posts.map(({ title, lead, link, thumbnail }) => {
               return (
-                <Fragment key={title}>
-                  {index % 2 !== 0 && (
-                    <hr className="border-px w-4/6 border-black md:w-[200%] md:rotate-90" />
+                <article key={title} className="feature-article">
+                  {thumbnail && (
+                    <StaticImage
+                      src="../images/home/cpe-days-2022.jpg"
+                      className="md:h-36 lg:h-52"
+                      alt={title}
+                    />
                   )}
-                  <div className="relative flex h-fit flex-col">
-                    {thumbnail && (
-                      <StaticImage
-                        src="../images/home/cpe-days-2022.jpg"
-                        className="md:h-36 lg:h-52"
-                        alt={title}
-                      />
-                    )}
-                    <h4 className="my-4 font-libre text-base font-bold leading-tight">
-                      <Link to={link}>{title}</Link>
-                    </h4>
-                    <p className="font-montserrat leading-tight">{lead}</p>
-                    <Link
-                      to={link}
-                      className="mt-6 flex items-center gap-x-3 self-end font-montserrat font-semibold"
-                    >
-                      <small>Read More</small>
-                      <BsArrowRight />
-                    </Link>
-                  </div>
-                </Fragment>
+                  <h4 className="my-4 font-libre text-base font-bold leading-tight">
+                    <Link to={link}>{title}</Link>
+                  </h4>
+                  <p className="font-montserrat leading-tight">{lead}</p>
+                  <Link
+                    to={link}
+                    className="mt-6 flex items-center gap-x-3 self-end font-montserrat font-semibold"
+                  >
+                    <small>Read More</small>
+                    <BsArrowRight />
+                  </Link>
+                </article>
               )
             })}
           </div>
