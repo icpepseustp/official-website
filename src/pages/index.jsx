@@ -1,16 +1,17 @@
-import { StaticImage } from "gatsby-plugin-image"
-import {
-  FaFacebookF,
-  FaDiscord,
-  FaTwitter,
-  FaRegStar,
-  FaRegNewspaper,
-} from "react-icons/fa"
-import { BsArrowRight } from "react-icons/bs"
-import { Link } from "gatsby"
-import { useState } from "react"
 import classNames from "classnames"
+import { Link } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
+import { useState } from "react"
+import { BsArrowRight } from "react-icons/bs"
+import {
+  FaDiscord,
+  FaFacebookF,
+  FaRegNewspaper,
+  FaRegStar,
+  FaTwitter,
+} from "react-icons/fa"
 import Spinner from "../components/Spinner"
+import hero from "../images/home/bg.gif"
 
 const platforms = [
   {
@@ -46,33 +47,25 @@ const posts = [
   },
 ]
 
-const HERO_VID_URL =
-  "https://drive.google.com/uc?export=download&id=1NSvzo-2a5sdXpW2WazAkIc7gwfThhhSt"
-
 function IndexPage() {
-  const [videoLoaded, setVideoLoaded] = useState(false)
+  const [heroLoaded, setHeroLoaded] = useState(false)
 
   return (
     <main className="container max-w-6xl">
+      {!heroLoaded && (
+        <div className="p-16 text-center md:p-32 lg:p-40 xl:p-64">
+          <Spinner />
+        </div>
+      )}
+
+      <img
+        src={hero}
+        alt="Enchante: The Untold Lore Unfolds"
+        className={classNames("w-full", { hidden: !heroLoaded })}
+        onLoad={() => setHeroLoaded(true)}
+      />
+
       <section className="relative">
-        {!videoLoaded && (
-          <div className="p-16 text-center md:p-32 lg:p-40 xl:p-64">
-            <Spinner />
-          </div>
-        )}
-
-        <video
-          onLoadedData={() => setVideoLoaded(true)}
-          className={classNames("w-full", { hidden: !videoLoaded })}
-          autoPlay
-          muted
-          loop
-        >
-          <source src={HERO_VID_URL} title="ICpEP.SE Intro" type="video/mp4" />
-          <source src={HERO_VID_URL} title="ICpEP.SE Intro" type="video/webm" />
-          <track kind="captions" />
-        </video>
-
         <div className="absolute right-4 -bottom-12 flex h-16 w-16 items-center justify-center rounded-full bg-secondary p-12 xl:right-8 xl:-bottom-24 xl:h-44 xl:w-44">
           <p className="rotate-[20deg] text-center font-montserrat text-xs font-bold text-white xl:text-2xl">
             Welcome, <br /> ka-CpE!
