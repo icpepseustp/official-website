@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 const routes = [
   { text: "Home", path: "/" },
   { text: "Blog", path: "/#blog" },
-  { text: "About Us", path: "/#about" },
+  { text: "About", path: "/#about" },
   { text: "Contact", path: "/#contact" },
 ]
 
@@ -13,7 +13,7 @@ function Navbar() {
       <nav className="border-2 border-black">
         <ul className="flex divide-x-2 divide-black">
           {routes.map(({ text, path }) => (
-            <li key={text} className="grow text-center">
+            <li key={text} className="flex-1 text-center">
               <Link
                 to={path}
                 className="block w-full py-2 font-raleway text-sm font-bold uppercase lg:text-lg"
