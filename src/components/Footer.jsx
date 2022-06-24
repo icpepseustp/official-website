@@ -1,5 +1,4 @@
 import { StaticImage } from "gatsby-plugin-image"
-import PageContainer from "./PageContainer"
 
 function Footer() {
   return (
@@ -8,7 +7,7 @@ function Footer() {
         <StaticImage src="../images/icon.png" alt="JoeBot" />
       </div>
 
-      <PageContainer className="gap-4 px-4 md:flex md:px-8 xl:gap-6 xl:px-0">
+      <main className="container max-w-6xl gap-4 px-4 md:flex md:px-8 xl:gap-6 xl:px-0">
         <div className="mb-4 max-w-[6rem] md:mb-0 xl:max-w-[8rem]">
           <StaticImage
             src="../images/icpepse-logo.png"
@@ -25,7 +24,7 @@ function Footer() {
             <small>&copy; Cagayan de Oro 2022</small>
           </div>
         </div>
-      </PageContainer>
+      </main>
     </footer>
   )
 }

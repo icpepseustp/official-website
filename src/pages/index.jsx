@@ -1,5 +1,4 @@
 import { StaticImage } from "gatsby-plugin-image"
-import PageContainer from "../components/PageContainer"
 import {
   FaFacebookF,
   FaDiscord,
@@ -54,7 +53,7 @@ function IndexPage() {
   const [videoLoaded, setVideoLoaded] = useState(false)
 
   return (
-    <PageContainer as="main">
+    <main className="container max-w-6xl">
       <section className="relative">
         {!videoLoaded && (
           <div className="p-16 text-center md:p-32 lg:p-40 xl:p-64">
@@ -174,7 +173,7 @@ function IndexPage() {
           ))}
         </div>
       </section>
-    </PageContainer>
+    </main>
   )
 }
 
