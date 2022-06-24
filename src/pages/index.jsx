@@ -9,7 +9,9 @@ import {
 } from "react-icons/fa"
 import { BsArrowRight } from "react-icons/bs"
 import { Link } from "gatsby"
-import IcpepAvp from "../images/home/icpep-avp.mp4"
+import { useState } from "react"
+import classNames from "classnames"
+import Spinner from "../components/Spinner"
 
 const platforms = [
   {
@@ -45,12 +47,30 @@ const posts = [
   },
 ]
 
+const HERO_VID_URL =
+  "https://drive.google.com/uc?export=download&id=1NSvzo-2a5sdXpW2WazAkIc7gwfThhhSt"
+
 function IndexPage() {
+  const [videoLoaded, setVideoLoaded] = useState(false)
+
   return (
     <PageContainer as="main">
       <section className="relative">
-        <video className="w-full" title="ICpEP.SE Intro" autoPlay muted loop>
-          <source src={IcpepAvp} type="video/mp4" />
+        {!videoLoaded && (
+          <div className="p-16 text-center md:p-32 lg:p-40 xl:p-64">
+            <Spinner />
+          </div>
+        )}
+
+        <video
+          onLoadedData={() => setVideoLoaded(true)}
+          className={classNames("w-full", { hidden: !videoLoaded })}
+          autoPlay
+          muted
+          loop
+        >
+          <source src={HERO_VID_URL} title="ICpEP.SE Intro" type="video/mp4" />
+          <source src={HERO_VID_URL} title="ICpEP.SE Intro" type="video/webm" />
           <track kind="captions" />
         </video>
 
