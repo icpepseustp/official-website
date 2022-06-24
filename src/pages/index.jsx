@@ -10,6 +10,7 @@ import {
 import { BsArrowRight } from "react-icons/bs"
 import { Link } from "gatsby"
 import { Fragment } from "react"
+import IcpepAvp from "../images/home/icpep-avp.mp4"
 
 const platforms = [
   {
@@ -49,11 +50,10 @@ function IndexPage() {
   return (
     <PageContainer as="main">
       <section className="relative">
-        <StaticImage
-          src="../images/home/code.jpg"
-          className="h-[60vh] max-h-60 w-full md:max-h-80 xl:max-h-[25rem]"
-          alt="Desktop source code background"
-        />
+        <video className="w-full" autoPlay muted loop>
+          <source src={IcpepAvp} type="video/mp4" />
+          <track kind="captions" />
+        </video>
 
         <div className="absolute right-4 -bottom-12 flex h-16 w-16 items-center justify-center rounded-full bg-secondary p-12 xl:right-8 xl:-bottom-24 xl:h-44 xl:w-44">
           <p className="rotate-[20deg] text-center font-montserrat text-xs font-bold text-white xl:text-2xl">
