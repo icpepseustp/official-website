@@ -1,29 +1,43 @@
 import { Link } from "gatsby"
+import PageContainer from "./PageContainer"
 
 const routes = [
   { text: "Home", path: "/" },
   { text: "Blog", path: "/#blog" },
   { text: "About Us", path: "/#about" },
+  { text: "Contact", path: "/#contact" },
 ]
 
 function Navbar() {
   return (
-    <header>
-      <div className="mx-auto flex max-w-6xl py-4">
-        <div className="grow">
-          <Link to="/">LOGO_HERE</Link>
-        </div>
-        <nav>
-          <ul className="flex gap-x-4">
-            {routes.map(({ text, path }) => (
-              <li key={text}>
-                <Link to={path}>{text}</Link>
-              </li>
+    <PageContainer as="header">
+      <nav className="border-2 border-black">
+        <ul className="flex divide-x-2 divide-black">
+          {routes.map(({ text, path }) => (
+            <li key={text} className="grow text-center">
+              <Link
+                to={path}
+                className="block w-full py-2 font-raleway text-sm font-bold uppercase lg:text-lg"
+              >
+                {text}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div className="overflow-hidden border-2 border-t-0 border-black py-2">
+        <h5 className="animate-marquee space-x-4 whitespace-nowrap font-PS2P text-sm lg:text-xl">
+          {Array(25)
+            .fill("ICpEP.SE")
+            .map((str, index) => (
+              <span key={`marquee-${index}`} className="after:content-['*/']">
+                {str}{" "}
+              </span>
             ))}
-          </ul>
-        </nav>
+        </h5>
       </div>
-    </header>
+    </PageContainer>
   )
 }
 
