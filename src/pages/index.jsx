@@ -1,5 +1,4 @@
 import classNames from "classnames"
-import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import { useState } from "react"
 import { BsArrowRight } from "react-icons/bs"
@@ -17,17 +16,17 @@ const platforms = [
   {
     icon: FaFacebookF,
     text: "Facebook",
-    url: "#",
+    url: "https://www.facebook.com/icpep.se.ustp/",
   },
   {
     icon: FaDiscord,
     text: "Discord",
-    url: "#",
+    url: "https://discord.gg/Dc9dJ7hfDD",
   },
   {
     icon: FaTwitter,
     text: "Twitter",
-    url: "#",
+    url: "https://twitter.com/ustp_icpepse",
   },
 ]
 
@@ -154,15 +153,15 @@ function IndexPage() {
 
         <div className="flex gap-x-6 xl:gap-x-12">
           {platforms.map(({ icon: PlatformIcon, url, text }) => (
-            <Link
+            <a
               key={text}
-              to={url}
+              href={url}
               className="flex items-center gap-x-1.5 xl:gap-x-4"
             >
               <PlatformIcon />
 
               <small className="font-bold">{text}</small>
-            </Link>
+            </a>
           ))}
         </div>
       </section>
