@@ -1,9 +1,12 @@
 import { graphql } from "gatsby"
 import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image"
+import Seo from "../components/Seo"
 
 function AboutPage({ data }) {
   return (
     <main className="container flex max-w-6xl justify-center">
+      <Seo title="About Us" />
+
       <section className="flex flex-col justify-center">
         <div className="mt-4 flex shrink flex-col items-center justify-center ">
           <StaticImage
