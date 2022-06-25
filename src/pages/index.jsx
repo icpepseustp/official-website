@@ -9,6 +9,7 @@ import {
   FaRegStar,
   FaTwitter,
 } from "react-icons/fa"
+import Seo from "../components/Seo"
 import Spinner from "../components/Spinner"
 import hero from "../images/home/bg.gif"
 
@@ -51,6 +52,8 @@ function IndexPage() {
 
   return (
     <main className="container max-w-6xl">
+      <Seo title="Home" />
+
       {!heroLoaded && (
         <div className="p-16 text-center md:p-32 lg:p-40 xl:p-64">
           <Spinner />
