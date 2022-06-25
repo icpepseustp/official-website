@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 const routes = [
   { text: "Home", path: "/" },
   { text: "Blog", path: "/#blog" },
-  { text: "About", path: "/#about" },
+  { text: "About", path: "/about" },
   { text: "Contact", path: "/#contact" },
 ]
 
