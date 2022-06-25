@@ -1,72 +1,72 @@
 [
-    {   
-        "order": 0,
-        "lastname": "Pangca",
-        "firstname": "Glycelle June",
-        "image": "./images/pangca.png",
-        "pos": "President"
-    },
-    {   
-        "order": 1,
-        "lastname": "Alviola",
-        "firstname": "Charlemagne",
-        "image": "./images/alviola.jpg",
-        "pos": "VP Internal"
-    },
-    {   
-        "order": 2,
-        "lastname": "Barranco",
-        "firstname": "Trisha Jane",
-        "image": "./images/barranco.jpg",
-        "pos": "VP External"
-    },
-    {   
-        "order": 3,
-        "lastname": "Macarayo",
-        "firstname": "Dave Zachary",
-        "image": "./images/macarayo.jpg",
-        "pos": "General Secretary"
-    },
-    {   
-        "order": 4,
-        "lastname": "Gulle",
-        "firstname": "Anferny Glenn",
-        "image": "./images/gulle.png",
-        "pos": "Associate Secretary"
-    },
-    {   
-        "order": 5,
-        "lastname": "Adis",
-        "firstname": "Charisse Mae",
-        "image": "./images/adis.png",
-        "pos": "Treasurer"
-    },
-    {   
-        "order": 6,
-        "lastname": "Reamico",
-        "firstname": "Gyzelle",
-        "image": "./images/reamico.jpg",
-        "pos": "Associate Treasurer"
-    },
-    {   
-        "order": 7,
-        "lastname": "Quidet",
-        "firstname": "Deserie Imy",
-        "image": "./images/quidet.jpg",
-        "pos": "Auditor"
-    },
-    {   
-        "order": 8,
-        "lastname": "Sacote",
-        "firstname": "Robby William",
-        "image": "./images/sacote.jpg",
-        "pos": "PIO"
-    },
-    {   
-        "order": 9,
-        "lastname": "Cabahug",
-        "firstname": "Jhon Lloyd",
-        "image": "./images/cabahug.jpg",
-        "pos": "PIO External"
-    }
+  {
+    "order": 0,
+    "lastname": "Pangca",
+    "firstname": "Glycelle June",
+    "image": "./images/pangca.png",
+    "pos": "President"
+  },
+  {
+    "order": 1,
+    "lastname": "Alviola",
+    "firstname": "Charlemagne",
+    "image": "./images/alviola.jpg",
+    "pos": "VP Internal"
+  },
+  {
+    "order": 2,
+    "lastname": "Barranco",
+    "firstname": "Trisha Jane",
+    "image": "./images/barranco.jpg",
+    "pos": "VP External"
+  },
+  {
+    "order": 3,
+    "lastname": "Macarayo",
+    "firstname": "Dave Zachary",
+    "image": "./images/macarayo.jpg",
+    "pos": "General Secretary"
+  },
+  {
+    "order": 4,
+    "lastname": "Gulle",
+    "firstname": "Anferny Glenn",
+    "image": "./images/gulle.png",
+    "pos": "Associate Secretary"
+  },
+  {
+    "order": 5,
+    "lastname": "Adis",
+    "firstname": "Charisse Mae",
+    "image": "./images/adis.png",
+    "pos": "Treasurer"
+  },
+  {
+    "order": 6,
+    "lastname": "Reamico",
+    "firstname": "Gyzelle",
+    "image": "./images/reamico.jpg",
+    "pos": "Associate Treasurer"
+  },
+  {
+    "order": 7,
+    "lastname": "Quidet",
+    "firstname": "Deserie Imy",
+    "image": "./images/quidet.jpg",
+    "pos": "Auditor"
+  },
+  {
+    "order": 8,
+    "lastname": "Sacote",
+    "firstname": "Robby William",
+    "image": "./images/sacote.jpg",
+    "pos": "PIO"
+  },
+  {
+    "order": 9,
+    "lastname": "Cabahug",
+    "firstname": "Jhon Lloyd",
+    "image": "./images/cabahug.jpg",
+    "pos": "PIO External"
+  }
 ]

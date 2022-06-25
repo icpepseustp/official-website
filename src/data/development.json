@@ -1,82 +1,77 @@
 [
-  
-    {
-        "pos": "Project Manager",
-        "members":
-            [
-                {
-                    "lastname":"Balindres",
-                    "firstname":"Eric Jeffrey II",
-                    "image": "./images/balindres.jpg"
-                }
-            ]
-    },
-    {
-        "pos": "The Developers",
-        "members":
-            [
-                {
-                    "lastname":"Maglinao",
-                    "firstname":"Kent Bryan",
-                    "image": "./images/maglinao.png"
-                },
-                {
-                    "lastname":"Ague",
-                    "firstname":"Danry",
-                    "image": "./images/ague.jpg"
-                },
-                {
-                    "lastname":"Tagolimot",
-                    "firstname":"Marvin Jr.",
-                    "image": "./images/tagolimot.png"
-                },
-                {
-                    "lastname":"Alga",
-                    "firstname":"Josiah Zenas",
-                    "image": "./images/alga.jpg"
-                }
-            ]
-    },
-    {
-        "pos": "The Content Managers",
-        "members":
-            [   
-                {
-                    "lastname":"Pangca",
-                    "firstname":"Glycelle June",
-                    "image": "./images/pangca.png"
-                },
-                {
-                    "lastname":"Barranco",
-                    "firstname":"Trisha Jane",
-                    "image": "./images/barranco.jpg"
-                },
-                {
-                    "lastname":"Quidet",
-                    "firstname":"Deserie Imy",
-                    "image": "./images/quidet.jpg"
-                }
-            ]
-    },
-    {
-        "pos": "The Designers",
-        "members":
-            [   
-                {
-                    "lastname":"Cabahug",
-                    "firstname":"Jhon Lloyd",
-                    "image": "./images/cabahug.jpg"
-                },
-                {
-                    "lastname":"Estañero",
-                    "firstname":"Cesar",
-                    "image": "./images/estañero.jpeg"
-                },
-                {
-                    "lastname":"Maglupay",
-                    "firstname":"Jemuel",
-                    "image": "./images/maglupay.png"
-                }
-            ]
-    }
+  {
+    "pos": "Project Manager",
+    "members": [
+      {
+        "lastname": "Balindres",
+        "firstname": "Eric Jeffrey II",
+        "image": "./images/balindres.jpg"
+      }
+    ]
+  },
+  {
+    "pos": "The Developers",
+    "members": [
+      {
+        "lastname": "Maglinao",
+        "firstname": "Kent Bryan",
+        "image": "./images/maglinao.png"
+      },
+      {
+        "lastname": "Ague",
+        "firstname": "Danry",
+        "image": "./images/ague.jpg"
+      },
+      {
+        "lastname": "Tagolimot",
+        "firstname": "Marvin Jr.",
+        "image": "./images/tagolimot.png"
+      },
+      {
+        "lastname": "Alga",
+        "firstname": "Josiah Zenas",
+        "image": "./images/alga.jpg"
+      }
+    ]
+  },
+  {
+    "pos": "The Content Managers",
+    "members": [
+      {
+        "lastname": "Pangca",
+        "firstname": "Glycelle June",
+        "image": "./images/pangca.png"
+      },
+      {
+        "lastname": "Barranco",
+        "firstname": "Trisha Jane",
+        "image": "./images/barranco.jpg"
+      },
+      {
+        "lastname": "Quidet",
+        "firstname": "Deserie Imy",
+        "image": "./images/quidet.jpg"
+      }
+    ]
+  },
+  {
+    "pos": "The Designers",
+    "members": [
+      {
+        "lastname": "Cabahug",
+        "firstname": "Jhon Lloyd",
+        "image": "./images/cabahug.jpg"
+      },
+      {
+        "lastname": "Estañero",
+        "firstname": "Cesar",
+        "image": "./images/estañero.jpeg"
+      },
+      {
+        "lastname": "Maglupay",
+        "firstname": "Jemuel",
+        "image": "./images/maglupay.png"
+      }
+    ]
+  }
 ]

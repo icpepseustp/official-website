@@ -1,114 +1,107 @@
 [
-  
-    {
-        "pos": "Committees on Design",
-        "members":
-            [
-                {
-                    "lastname":"Olmo",
-                    "firstname":"Jasson Roy",
-                    "image": "./images/olmo.jpg"
-                },
-                {
-                    "lastname":"Vallejos",
-                    "firstname":"Alyssa",
-                    "image": "./images/vallejos.jpg"
-                },
-                {
-                    "lastname":"Oblig",
-                    "firstname":"Jomarie",
-                    "image": "./images/oblig.png"
-                }
-            ]
-    },
-    {
-        "pos": "Committees on Academic Affairs",
-        "members":
-            [
-                {
-                    "lastname":"Jupiter",
-                    "firstname":"Darwin Jone",
-                    "image": "./images/jupiter.png"
-                },
-                {
-                    "lastname":"Aspe",
-                    "firstname":"Christine",
-                    "image": "./images/aspe.jpg"
-                },
-                {
-                    "lastname":"Maglinao",
-                    "firstname":"Kent Bryan",
-                    "image": "./images/maglinao.png"
-                }
-            ]
-    },
-    {
-        "pos": "Committees on Extracurricular Activities",
-        "members":
-            [
-                {
-                    "lastname":"Maglupay",
-                    "firstname":"Jemuel",
-                    "image": "./images/maglupay.png"
-                },
-                {
-                    "lastname":"Torres",
-                    "firstname":"Khiana",
-                    "image": "./images/torres.jpg"
-                },
-                {
-                    "lastname":"Agnes",
-                    "firstname":"Ryand Ysteen",
-                    "image": "./images/agnes.jpg"
-                }
-            ]
-    },
-    {
-        "pos": "Committees on Sports",
-        "members":
-            [
-                {
-                    "lastname":"Tidor",
-                    "firstname":"Don Pochulo",
-                    "image": "./images/tidor.jpg"
-                },
-                {
-                    "lastname":"Cagas",
-                    "firstname":"Jane Dhell",
-                    "image": "./images/cagas.jpg"
-                },
-                {
-                    "lastname":"Ranario",
-                    "firstname":"Aldin Ronulfo",
-                    "image": "./images/ranario.jpg"
-                }
-            ]
-    },
-    {
-        "pos": "Committees on Documentation",
-        "members":
-            [
-                {
-                    "lastname":"Pabayo",
-                    "firstname":"Jelo Rafael",
-                    "image": "./images/pabayo.jpg"
-                },
-                {
-                    "lastname":"Alga",
-                    "firstname":"Josiah Zenas",
-                    "image": "./images/alga.jpg"
-                }
-            ]
-    },
-    {
-        "pos": "ICpEERS.VE Lead",
-        "members":
-            [
-                {
-                    "lastname":"Balindres",
-                    "firstname":"Eric Jeffrey II",
-                    "image": "./images/balindres.jpg"
-                }
-            ]
-    }      
+  {
+    "pos": "Committees on Design",
+    "members": [
+      {
+        "lastname": "Olmo",
+        "firstname": "Jasson Roy",
+        "image": "./images/olmo.jpg"
+      },
+      {
+        "lastname": "Vallejos",
+        "firstname": "Alyssa",
+        "image": "./images/vallejos.jpg"
+      },
+      {
+        "lastname": "Oblig",
+        "firstname": "Jomarie",
+        "image": "./images/oblig.png"
+      }
+    ]
+  },
+  {
+    "pos": "Committees on Academic Affairs",
+    "members": [
+      {
+        "lastname": "Jupiter",
+        "firstname": "Darwin Jone",
+        "image": "./images/jupiter.png"
+      },
+      {
+        "lastname": "Aspe",
+        "firstname": "Christine",
+        "image": "./images/aspe.jpg"
+      },
+      {
+        "lastname": "Maglinao",
+        "firstname": "Kent Bryan",
+        "image": "./images/maglinao.png"
+      }
+    ]
+  },
+  {
+    "pos": "Committees on Extracurricular Activities",
+    "members": [
+      {
+        "lastname": "Maglupay",
+        "firstname": "Jemuel",
+        "image": "./images/maglupay.png"
+      },
+      {
+        "lastname": "Torres",
+        "firstname": "Khiana",
+        "image": "./images/torres.jpg"
+      },
+      {
+        "lastname": "Agnes",
+        "firstname": "Ryand Ysteen",
+        "image": "./images/agnes.jpg"
+      }
+    ]
+  },
+  {
+    "pos": "Committees on Sports",
+    "members": [
+      {
+        "lastname": "Tidor",
+        "firstname": "Don Pochulo",
+        "image": "./images/tidor.jpg"
+      },
+      {
+        "lastname": "Cagas",
+        "firstname": "Jane Dhell",
+        "image": "./images/cagas.jpg"
+      },
+      {
+        "lastname": "Ranario",
+        "firstname": "Aldin Ronulfo",
+        "image": "./images/ranario.jpg"
+      }
+    ]
+  },
+  {
+    "pos": "Committees on Documentation",
+    "members": [
+      {
+        "lastname": "Pabayo",
+        "firstname": "Jelo Rafael",
+        "image": "./images/pabayo.jpg"
+      },
+      {
+        "lastname": "Alga",
+        "firstname": "Josiah Zenas",
+        "image": "./images/alga.jpg"
+      }
+    ]
+  },
+  {
+    "pos": "ICpEERS.VE Lead",
+    "members": [
+      {
+        "lastname": "Balindres",
+        "firstname": "Eric Jeffrey II",
+        "image": "./images/balindres.jpg"
+      }
+    ]
+  }
 ]
