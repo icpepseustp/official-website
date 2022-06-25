@@ -11,6 +11,7 @@ function AboutPage({ data }) {
             src="../images/about/joe_bot.png"
             alt="joe-bot"
           />
+
           <div className="flex w-11/12">
             <h3 className="text-center font-montserrat text-sm font-medium md:leading-relaxed lg:text-base lg:leading-loose">
               {" "}
@@ -29,6 +30,7 @@ function AboutPage({ data }) {
             </h3>
           </div>
         </div>
+
         <div className="flex shrink flex-col items-center justify-center">
           <h5 className="mt-8 font-PS2P text-xs md:text-base lg:text-xl">
             THE EXECUTIVES
@@ -37,6 +39,7 @@ function AboutPage({ data }) {
             ICpEP.SE 2021-2022
           </p>
         </div>
+
         <div className="mt-4 grid justify-items-center gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
           {data.exec.edges.map(({ node }) => (
             <div className="flex flex-col items-center justify-center">
@@ -58,6 +61,7 @@ function AboutPage({ data }) {
             </div>
           ))}
         </div>
+
         <div className="flex shrink flex-col items-center justify-center">
           <h5 className="mt-8 mb-5 font-PS2P text-xs md:text-base lg:text-xl">
             THE COMMITTEES
@@ -91,6 +95,7 @@ function AboutPage({ data }) {
                   ))}
                 </div>
               )}
+
               {index === 4 && (
                 <div className="grid grid-cols-2 gap-4 justify-self-center">
                   {node.members.map((members) => (
@@ -113,6 +118,7 @@ function AboutPage({ data }) {
                   ))}
                 </div>
               )}
+
               {index === 5 && (
                 <div className="grid grid-cols-1 gap-4 justify-self-center">
                   {node.members.map((members) => (
@@ -135,12 +141,14 @@ function AboutPage({ data }) {
                   ))}
                 </div>
               )}
+
               <p className="mt-3 mb-4 font-montserrat font-medium italic md:text-xs lg:text-sm">
                 {node.pos}
               </p>
             </div>
           ))}
         </div>
+
         <div className="mt-4 grid grid-cols-1 justify-items-center md:hidden lg:hidden">
           {data.coms.edges.map(({ node }, mindex) => (
             <div
@@ -174,6 +182,7 @@ function AboutPage({ data }) {
                   ))}
                 </div>
               )}
+
               {mindex < 4 && (
                 <div
                   key={node.members[2].image.id}
@@ -192,6 +201,7 @@ function AboutPage({ data }) {
                   </p>
                 </div>
               )}
+
               {mindex === 5 && (
                 <div className="grid grid-cols-1">
                   {node.members.map((members) => (
@@ -218,6 +228,7 @@ function AboutPage({ data }) {
                   ))}
                 </div>
               )}
+
               <p className="mt-3 mb-8 font-montserrat text-xs font-medium italic">
                 {node.pos}
               </p>
@@ -243,29 +254,28 @@ function AboutPage({ data }) {
                     >
                       {node.members.map((members, index) => (
                         <div>
-                          {
-                            <div
-                              key={members.image.id}
-                              className="flex flex-col items-center justify-center"
-                            >
-                              <GatsbyImage
-                                key={index}
-                                className="h-32 w-32 justify-center rounded-full"
-                                image={getImage(members.image.childImageSharp)}
-                                alt={members.image.base}
-                              />
-                              <p className="mt-3 font-montserrat font-bold uppercase md:text-xs lg:text-sm">
-                                {members.lastname}
-                              </p>
-                              <p className="font-montserrat md:text-xs lg:text-sm">
-                                {members.firstname}
-                              </p>
-                            </div>
-                          }
+                          <div
+                            key={members.image.id}
+                            className="flex flex-col items-center justify-center"
+                          >
+                            <GatsbyImage
+                              key={index}
+                              className="h-32 w-32 justify-center rounded-full"
+                              image={getImage(members.image.childImageSharp)}
+                              alt={members.image.base}
+                            />
+                            <p className="mt-3 font-montserrat font-bold uppercase md:text-xs lg:text-sm">
+                              {members.lastname}
+                            </p>
+                            <p className="font-montserrat md:text-xs lg:text-sm">
+                              {members.firstname}
+                            </p>
+                          </div>
                         </div>
                       ))}
                     </div>
                   )}
+
                   {mindex === 1 && (
                     <div
                       key={node.id}
@@ -273,29 +283,28 @@ function AboutPage({ data }) {
                     >
                       {node.members.map((members, index) => (
                         <div>
-                          {
-                            <div
-                              key={members.image.id}
-                              className="flex flex-col items-center justify-center"
-                            >
-                              <GatsbyImage
-                                key={index}
-                                className="h-32 w-32 justify-center rounded-full"
-                                image={getImage(members.image.childImageSharp)}
-                                alt={members.image.base}
-                              />
-                              <p className="mt-3 font-montserrat font-bold uppercase md:text-xs lg:text-sm">
-                                {members.lastname}
-                              </p>
-                              <p className="font-montserrat md:text-xs lg:text-sm">
-                                {members.firstname}
-                              </p>
-                            </div>
-                          }
+                          <div
+                            key={members.image.id}
+                            className="flex flex-col items-center justify-center"
+                          >
+                            <GatsbyImage
+                              key={index}
+                              className="h-32 w-32 justify-center rounded-full"
+                              image={getImage(members.image.childImageSharp)}
+                              alt={members.image.base}
+                            />
+                            <p className="mt-3 font-montserrat font-bold uppercase md:text-xs lg:text-sm">
+                              {members.lastname}
+                            </p>
+                            <p className="font-montserrat md:text-xs lg:text-sm">
+                              {members.firstname}
+                            </p>
+                          </div>
                         </div>
                       ))}
                     </div>
                   )}
+
                   <p className="mt-3 mb-8 font-montserrat font-medium italic md:text-xs lg:text-sm">
                     {node.pos}
                   </p>
@@ -310,38 +319,33 @@ function AboutPage({ data }) {
               <div className="px-4">
                 {mindex >= 2 && (
                   <div className="flex flex-col">
-                    {
-                      <div
-                        key={node.id}
-                        className="mt-4 grid grid-cols-3 justify-items-center gap-10 "
-                      >
-                        {node.members.map((members, index) => (
-                          <div className="px-0">
-                            {
-                              <div
-                                key={members.image.id}
-                                className="flex flex-col items-center justify-center"
-                              >
-                                <GatsbyImage
-                                  key={index}
-                                  className="h-32 w-32 justify-center rounded-full"
-                                  image={getImage(
-                                    members.image.childImageSharp
-                                  )}
-                                  alt={members.image.base}
-                                />
-                                <p className="mt-3 font-montserrat font-bold uppercase md:text-xs lg:text-sm">
-                                  {members.lastname}
-                                </p>
-                                <p className="font-montserrat md:text-xs lg:text-sm">
-                                  {members.firstname}
-                                </p>
-                              </div>
-                            }
+                    <div
+                      key={node.id}
+                      className="mt-4 grid grid-cols-3 justify-items-center gap-10 "
+                    >
+                      {node.members.map((members, index) => (
+                        <div className="px-0">
+                          <div
+                            key={members.image.id}
+                            className="flex flex-col items-center justify-center"
+                          >
+                            <GatsbyImage
+                              key={index}
+                              className="h-32 w-32 justify-center rounded-full"
+                              image={getImage(members.image.childImageSharp)}
+                              alt={members.image.base}
+                            />
+                            <p className="mt-3 font-montserrat font-bold uppercase md:text-xs lg:text-sm">
+                              {members.lastname}
+                            </p>
+                            <p className="font-montserrat md:text-xs lg:text-sm">
+                              {members.firstname}
+                            </p>
                           </div>
-                        ))}
-                      </div>
-                    }
+                        </div>
+                      ))}
+                    </div>
+
                     <p className="mt-3 mb-8 text-center font-montserrat font-medium italic md:text-xs lg:text-sm">
                       {node.pos}
                     </p>
@@ -355,193 +359,178 @@ function AboutPage({ data }) {
         <div className="mt-4 grid grid-cols-1 justify-items-center md:hidden lg:hidden">
           {data.devs.edges.map(({ node }, mindex) => (
             <div>
-              {
-                <div className="flex flex-col items-center justify-center">
-                  {mindex === 0 && (
+              <div className="flex flex-col items-center justify-center">
+                {mindex === 0 && (
+                  <div
+                    key={node.id}
+                    className="mt-4 grid grid-cols-1 justify-items-center"
+                  >
+                    {node.members.map((members, index) => (
+                      <div>
+                        <div
+                          key={members.image.id}
+                          className="flex flex-col items-center justify-center"
+                        >
+                          <GatsbyImage
+                            key={index}
+                            className="h-24 w-24 justify-center rounded-full"
+                            image={getImage(members.image.childImageSharp)}
+                            alt={members.image.base}
+                          />
+                          <p className="mt-3 font-montserrat text-xs font-bold uppercase">
+                            {members.lastname}
+                          </p>
+                          <p className="font-montserrat text-xs">
+                            {members.firstname}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {mindex === 1 && (
+                  <div>
                     <div
                       key={node.id}
                       className="mt-4 grid grid-cols-1 justify-items-center"
                     >
-                      {node.members.map((members, index) => (
+                      <div
+                        key={node.members[0].image.id}
+                        className="flex flex-col items-center justify-center"
+                      >
+                        <GatsbyImage
+                          className="h-24 w-24 justify-center rounded-full"
+                          image={getImage(
+                            node.members[0].image.childImageSharp
+                          )}
+                          alt={node.members[0].image.base}
+                        />
+                        <p className="mt-3 font-montserrat text-xs font-bold uppercase">
+                          {node.members[0].lastname}
+                        </p>
+                        <p className="font-montserrat text-xs">
+                          {node.members[0].firstname}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div
+                      key={node.id}
+                      className="mt-4 grid grid-cols-2 justify-items-center gap-8"
+                    >
+                      {[1, 2].map((index) => (
                         <div>
-                          {
-                            <div
-                              key={members.image.id}
-                              className="flex flex-col items-center justify-center"
-                            >
-                              <GatsbyImage
-                                key={index}
-                                className="h-24 w-24 justify-center rounded-full"
-                                image={getImage(members.image.childImageSharp)}
-                                alt={members.image.base}
-                              />
-                              <p className="mt-3 font-montserrat text-xs font-bold uppercase">
-                                {members.lastname}
-                              </p>
-                              <p className="font-montserrat text-xs">
-                                {members.firstname}
-                              </p>
-                            </div>
-                          }
+                          <div
+                            key={node.members[index].image.id}
+                            className="flex flex-col items-center justify-center"
+                          >
+                            <GatsbyImage
+                              key={index}
+                              className="h-24 w-24 justify-center rounded-full"
+                              image={getImage(
+                                node.members[index].image.childImageSharp
+                              )}
+                              alt={node.members[index].image.base}
+                            />
+                            <p className="mt-3 font-montserrat text-xs font-bold uppercase">
+                              {node.members[index].lastname}
+                            </p>
+                            <p className="font-montserrat text-xs">
+                              {node.members[index].firstname}
+                            </p>
+                          </div>
                         </div>
                       ))}
                     </div>
-                  )}
-                  {mindex === 1 && (
-                    <div>
-                      {
-                        <div
-                          key={node.id}
-                          className="mt-4 grid grid-cols-1 justify-items-center"
-                        >
-                          <div
-                            key={node.members[0].image.id}
-                            className="flex flex-col items-center justify-center"
-                          >
-                            <GatsbyImage
-                              className="h-24 w-24 justify-center rounded-full"
-                              image={getImage(
-                                node.members[0].image.childImageSharp
-                              )}
-                              alt={node.members[0].image.base}
-                            />
-                            <p className="mt-3 font-montserrat text-xs font-bold uppercase">
-                              {node.members[0].lastname}
-                            </p>
-                            <p className="font-montserrat text-xs">
-                              {node.members[0].firstname}
-                            </p>
-                          </div>
-                        </div>
-                      }
 
-                      {
-                        <div
-                          key={node.id}
-                          className="mt-4 grid grid-cols-2 justify-items-center gap-8"
-                        >
-                          {[1, 2].map((index) => (
-                            <div>
-                              {
-                                <div
-                                  key={node.members[index].image.id}
-                                  className="flex flex-col items-center justify-center"
-                                >
-                                  <GatsbyImage
-                                    key={index}
-                                    className="h-24 w-24 justify-center rounded-full"
-                                    image={getImage(
-                                      node.members[index].image.childImageSharp
-                                    )}
-                                    alt={node.members[index].image.base}
-                                  />
-                                  <p className="mt-3 font-montserrat text-xs font-bold uppercase">
-                                    {node.members[index].lastname}
-                                  </p>
-                                  <p className="font-montserrat text-xs">
-                                    {node.members[index].firstname}
-                                  </p>
-                                </div>
-                              }
-                            </div>
-                          ))}
-                        </div>
-                      }
-
-                      {
-                        <div
-                          key={node.id}
-                          className="mt-4 grid grid-cols-1 justify-items-center"
-                        >
-                          <div
-                            key={node.members[3].image.id}
-                            className="flex flex-col items-center justify-center"
-                          >
-                            <GatsbyImage
-                              className="h-24 w-24 justify-center rounded-full"
-                              image={getImage(
-                                node.members[3].image.childImageSharp
-                              )}
-                              alt={node.members[0].image.base}
-                            />
-                            <p className="mt-3 font-montserrat text-xs font-bold uppercase">
-                              {node.members[3].lastname}
-                            </p>
-                            <p className="font-montserrat text-xs">
-                              {node.members[3].firstname}
-                            </p>
-                          </div>
-                        </div>
-                      }
-                    </div>
-                  )}
-                  {mindex >= 2 && (
                     <div
                       key={node.id}
                       className="mt-4 grid grid-cols-1 justify-items-center"
                     >
-                      {
-                        <div
-                          key={node.id}
-                          className="mt-4 grid grid-cols-1 justify-items-center"
-                        >
+                      <div
+                        key={node.members[3].image.id}
+                        className="flex flex-col items-center justify-center"
+                      >
+                        <GatsbyImage
+                          className="h-24 w-24 justify-center rounded-full"
+                          image={getImage(
+                            node.members[3].image.childImageSharp
+                          )}
+                          alt={node.members[0].image.base}
+                        />
+                        <p className="mt-3 font-montserrat text-xs font-bold uppercase">
+                          {node.members[3].lastname}
+                        </p>
+                        <p className="font-montserrat text-xs">
+                          {node.members[3].firstname}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {mindex >= 2 && (
+                  <div
+                    key={node.id}
+                    className="mt-4 grid grid-cols-1 justify-items-center"
+                  >
+                    <div
+                      key={node.id}
+                      className="mt-4 grid grid-cols-1 justify-items-center"
+                    >
+                      <div
+                        key={node.members[0].image.id}
+                        className="flex flex-col items-center justify-center"
+                      >
+                        <GatsbyImage
+                          className="h-24 w-24 justify-center rounded-full"
+                          image={getImage(
+                            node.members[0].image.childImageSharp
+                          )}
+                          alt={node.members[0].image.base}
+                        />
+                        <p className="mt-3 font-montserrat text-xs font-bold uppercase">
+                          {node.members[0].lastname}
+                        </p>
+                        <p className="font-montserrat text-xs">
+                          {node.members[0].firstname}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div
+                      key={node.id}
+                      className="mt-4 grid grid-cols-2 justify-items-center gap-8"
+                    >
+                      {[1, 2].map((index) => (
+                        <div>
                           <div
-                            key={node.members[0].image.id}
+                            key={node.members[index].image.id}
                             className="flex flex-col items-center justify-center"
                           >
                             <GatsbyImage
+                              key={index}
                               className="h-24 w-24 justify-center rounded-full"
                               image={getImage(
-                                node.members[0].image.childImageSharp
+                                node.members[index].image.childImageSharp
                               )}
-                              alt={node.members[0].image.base}
+                              alt={node.members[index].image.base}
                             />
                             <p className="mt-3 font-montserrat text-xs font-bold uppercase">
-                              {node.members[0].lastname}
+                              {node.members[index].lastname}
                             </p>
                             <p className="font-montserrat text-xs">
-                              {node.members[0].firstname}
+                              {node.members[index].firstname}
                             </p>
                           </div>
                         </div>
-                      }
-
-                      {
-                        <div
-                          key={node.id}
-                          className="mt-4 grid grid-cols-2 justify-items-center gap-8"
-                        >
-                          {[1, 2].map((index) => (
-                            <div>
-                              {
-                                <div
-                                  key={node.members[index].image.id}
-                                  className="flex flex-col items-center justify-center"
-                                >
-                                  <GatsbyImage
-                                    key={index}
-                                    className="h-24 w-24 justify-center rounded-full"
-                                    image={getImage(
-                                      node.members[index].image.childImageSharp
-                                    )}
-                                    alt={node.members[index].image.base}
-                                  />
-                                  <p className="mt-3 font-montserrat text-xs font-bold uppercase">
-                                    {node.members[index].lastname}
-                                  </p>
-                                  <p className="font-montserrat text-xs">
-                                    {node.members[index].firstname}
-                                  </p>
-                                </div>
-                              }
-                            </div>
-                          ))}
-                        </div>
-                      }
+                      ))}
                     </div>
-                  )}
-                </div>
-              }
+                  </div>
+                )}
+              </div>
+
               <p className="mt-3 mb-8 text-center font-montserrat text-xs font-medium italic">
                 {node.pos}
               </p>
