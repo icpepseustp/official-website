@@ -7,3 +7,27 @@
     @apply bg-[#efe9e1];
   }
 }
+
+@layer components {
+  .feature-article {
+    @apply relative p-4 md:py-0 md:px-8;
+  }
+  /* .feature-article:nth-child(even) {
+    @apply before:absolute before:border before:border-black before:md:h-4/6 before:md:w-full;
+  } */
+  .feature-article:nth-child(even)::before {
+    @apply absolute -top-6 left-1/4 h-full w-1/2 border-t border-black content-[''] md:top-1/4 md:-left-px md:h-1/2 md:w-full md:border-t-0 md:border-l;
+  }
+
+  .upcoming-events-first {
+    @apply -ml-12 mr-10 -mt-6 mb-1;
+  }
+
+  .upcoming-events-first::after {
+    @apply absolute left-1 top-1 -z-10 h-[104%] w-[104%] border-2 border-black bg-secondary content-[''];
+  }
+
+  .upcoming-events-rest {
+    @apply -ml-[2.625rem] mr-8 -mt-[1.125rem];
+  }
+}
