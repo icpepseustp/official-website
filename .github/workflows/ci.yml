@@ -23,8 +23,5 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Gatsby build
-        run: yarn build
-
       - name: Check code style
         run: yarn stylecheck

@@ -30,6 +30,7 @@ function Navbar() {
           {Array(25)
             .fill("ICpEP.SE")
             .map((str, i) => (
+              // eslint-disable-next-line react/no-array-index-key
               <span key={i} className="after:content-['*/']">
                 {str}{" "}
               </span>
