@@ -48,6 +48,14 @@ module.exports = {
       },
       __key: "data",
     },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "content",
+        path: `${__dirname}/content`,
+      },
+      __key: "content",
+    },
     "gatsby-plugin-postcss",
     "gatsby-plugin-extract-schema",
   ],
