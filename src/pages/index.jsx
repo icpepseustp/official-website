@@ -2,10 +2,7 @@ import classNames from "classnames"
 import { StaticImage } from "gatsby-plugin-image"
 import { useState } from "react"
 import { BsArrowRight } from "react-icons/bs"
-import {
-  FaRegNewspaper,
-  FaRegStar
-} from "react-icons/fa"
+import { FaRegNewspaper, FaRegStar } from "react-icons/fa"
 import Seo from "../components/Seo"
 import Spinner from "../components/Spinner"
 import hero from "../images/home/bg.gif"
@@ -128,8 +125,7 @@ function IndexPage() {
         </div>
       </section>
 
-      <Social /> 
-
+      <Social />
     </main>
   )
 }
