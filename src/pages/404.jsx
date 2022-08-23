@@ -1,6 +1,7 @@
-import { Link } from "gatsby"  
+import { Link } from "gatsby"
 import { Container } from "postcss"
-import {StaticImage} from "gatsby-plugin-image"
+import { StaticImage } from "gatsby-plugin-image"
+import { BsArrowRight } from "react-icons/bs"
 
 const codeStyles = {
   color: "#8A6534",
@@ -14,41 +15,34 @@ function NotFoundPage() {
   return (
     <main className="container flex max-w-5xl">
       <title>Not Found</title>
-      <section className="flex flex-col shrink justify-center">
-        <div className="mt-4 flex shrink flex-col items-right justify-left ">
-        <StaticImage
-          className="absolute mt-16 right-2 bottom-15 full h-140 w-160"
-          src="D:\ICpEP.SE COMWEB\icpepseustp-official-website\src\images\404\joebot_404.png"
-          alt="joe-bot_ErroR"
-        />
-      <div className="relative container flex max-w-2xl justify-center">
-      <h1 className="mt-32 mb-8 drop-shadow-2xl font-PS2P text-xl md:text-6xl lg:text-8xl font-normal cursor-default"> 
-        WHOOPSY!
-      </h1>
-      </div> 
-      <div className="relative container flex max-w-xl justify-left">
-      <p className="mt-10 mb-2 font-monsterrat font-normal w-11/12 cursor-default text-4xl">
-        Joe couldn't find that page.
-      </p>
-      </div>
-      <div className="relative container flex max-w-xl justify-left">
-        <h2 className="mb-20 font-monsterrat font-extrabold cursor-default text-5xl">
-          Page Not Found
-        </h2>
-      </div>
-      <div className="relative container flex max-w-xl justify-left">
-        <p className="mt-15 mb-40 font-monsterrat font-medium cursor-pointer text-3xl hover:text-slate-700">
-        <Link to="/">Go Back to Home</Link>
-       <Link to="/">
-        <StaticImage 
-        className="absolute left-30 bottom full cursor-pointer"
-        src="D:\ICpEP.SE COMWEB\icpepseustp-official-website\src\images\404\Right Arrow.png"
-        alt="right_arrow"
-        />
-        </Link>
-        </p>
-      </div>
-      </div>
+      <section className="flex shrink flex-col justify-center">
+        <div className="items-right justify-left mt-4 flex shrink flex-col ">
+          <StaticImage
+            className="bottom-15 full h-140 w-160 absolute right-2 mt-16"
+            src="../src/images/404/joebot-404.png"
+            alt="joe-bot_ErroR"
+          />
+          <div className="container relative flex max-w-2xl justify-center">
+            <h1 className="mt-32 mb-8 cursor-default font-PS2P text-xl font-normal drop-shadow-2xl md:text-6xl lg:text-8xl">
+              WHOOPSY!
+            </h1>
+          </div>
+          <div className="justify-left container relative flex max-w-xl">
+            <p className="font-monsterrat mt-10 mb-2 w-11/12 cursor-default text-4xl font-normal">
+              Joe couldn't find that page.
+            </p>
+          </div>
+          <div className="justify-left container relative flex max-w-xl">
+            <h2 className="font-monsterrat mb-20 cursor-default text-5xl font-extrabold">
+              Page Not Found
+            </h2>
+          </div>
+          <div className="justify-left container relative flex max-w-xl">
+            <p className="mt-15 font-monsterrat mb-40 cursor-pointer text-3xl font-medium hover:text-slate-700">
+              <Link to="/">Go Back to Home <BsArrowRight/></Link>
+            </p>
+          </div>
+        </div>
       </section>
     </main>
   )
@@ -78,4 +72,4 @@ we couldn’t find what you were looking for.
 <br />
 /////////
 para sa image ni maam
-*/ 
+*/
