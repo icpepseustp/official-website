@@ -39,7 +39,9 @@ function NotFoundPage() {
           </div>
           <div className="justify-left container relative flex max-w-xl">
             <p className="mt-15 font-monsterrat mb-40 cursor-pointer text-3xl font-medium hover:text-slate-700">
-              <Link to="/">Go Back to Home <BsArrowRight/></Link>
+              <Link to="/">
+                Go Back to Home <BsArrowRight />
+              </Link>
             </p>
           </div>
         </div>
