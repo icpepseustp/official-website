@@ -1,10 +1,12 @@
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import { BsArrowLeft } from "react-icons/bs"
+import Seo from "../components/Seo"
 
 function NotFoundPage() {
   return (
     <main className="container flex h-[650px] max-w-6xl flex-col items-center lg:h-[700px]">
+      <Seo title="Page not found" />
       <section className="flex shrink flex-col items-center px-4 py-12 lg:items-start lg:pl-12">
         <h1 className="mt-12  shrink cursor-default font-PS2P text-4xl font-normal drop-shadow-2xl md:text-6xl lg:text-7xl">
           WHOOPSY!
@@ -12,7 +14,7 @@ function NotFoundPage() {
         <div className="-mt-1 flex max-w-full shrink flex-col items-center justify-items-center lg:-mt-20 lg:flex-row">
           <div>
             <div className="flex w-[500px] flex-col items-center px-12 lg:items-start">
-              <p className="font-monsterrat mt-24 mb-2 text-[16px] font-semibold font-semibold md:text-[20px] lg:text-[24px]">
+              <p className="font-monsterrat mt-24 mb-2 text-[16px] font-semibold md:text-[20px] lg:text-[24px]">
                 Joe couldn&apos;t find that page.
               </p>
               <h2 className="font-monsterrat text-2xl font-extrabold md:text-3xl lg:text-5xl">
@@ -20,7 +22,7 @@ function NotFoundPage() {
               </h2>
 
               <Link to="/" className="mt-24 flex flex-row items-center gap-x-2">
-                <BsArrowLeft className="h-6 h-full w-6" />
+                <BsArrowLeft className="h-6 w-6" />
                 <p className="font-monsterrat text-sm font-bold md:text-base lg:text-lg">
                   Go Back to Home{" "}
                 </p>
