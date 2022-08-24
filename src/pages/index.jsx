@@ -1,33 +1,32 @@
+/* eslint-disable react/prop-types */
 import classNames from "classnames"
-import { StaticImage } from "gatsby-plugin-image"
+import { graphql } from "gatsby"
+import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image"
 import { useState } from "react"
 import { BsArrowRight } from "react-icons/bs"
-import {
-  FaRegNewspaper,
-  FaRegStar
-} from "react-icons/fa"
+import { FaRegNewspaper, FaRegStar } from "react-icons/fa"
 import Seo from "../components/Seo"
 import Spinner from "../components/Spinner"
 import hero from "../images/home/bg.gif"
 import Social from "../components/Social"
 
-const posts = [
-  {
-    title: "Good news! CpE certification finally underway for new grads",
-    lead: "Computer Engineering professionals and graduates alike can now apply for certification.",
-    url: "#",
-    thumbnail: false,
-  },
-  {
-    title: "Lore unfolds: CpE Days '22 finally underway",
-    lead: "After an overwhelming academic year, we deserve some unwinding. It is our time to gather as a pact and venture the night of Silverwood.",
-    url: "#",
-    // todo: thumbnail is not boolean
-    thumbnail: true,
-  },
-]
+// const posts = [
+//   {
+//     title: "Good news! CpE certification finally underway for new grads",
+//     lead: "Computer Engineering professionals and graduates alike can now apply for certification.",
+//     url: "#",
+//     thumbnail: false,
+//   },
+//   {
+//     title: "Lore unfolds: CpE Days '22 finally underway",
+//     lead: "After an overwhelming academic year, we deserve some unwinding. It is our time to gather as a pact and venture the night of Silverwood.",
+//     url: "#",
+//     // todo: thumbnail is not boolean
+//     thumbnail: true,
+//   },
+// ]
 
-function IndexPage() {
+function IndexPage({ data }) {
   const [heroLoaded, setHeroLoaded] = useState(false)
 
   return (
@@ -100,20 +99,22 @@ function IndexPage() {
           </span>
 
           <div className="my-8 grid grid-cols-1 place-items-center gap-y-12 md:my-4 md:grid-cols-2">
-            {posts.map(({ title, lead, thumbnail }) => (
-              <article key={title} className="feature-article">
-                {thumbnail && (
-                  <StaticImage
-                    src="../images/home/cpe-days-2022.jpg"
+            {data.featured.nodes.map((post) => (
+              <article key={post.frontmatter.title} className="feature-article">
+                {post.frontmatter.thumbnail && (
+                  <GatsbyImage
+                    key={post.frontmatter.thumbnail}
                     className="md:h-36 lg:h-52"
-                    alt={title}
+                    image={getImage(post.frontmatter.thumbnail.childImageSharp)}
+                    alt={post.frontmatter.alt}
                   />
                 )}
-
                 <h4 className="my-4 font-libre text-base font-bold leading-tight">
-                  {title}
+                  {post.frontmatter.title}
                 </h4>
-                <p className="font-montserrat leading-tight">{lead}</p>
+                <p className="font-montserrat leading-tight">
+                  {post.frontmatter.description}
+                </p>
 
                 <div
                   title="Coming Soon!"
@@ -128,10 +129,39 @@ function IndexPage() {
         </div>
       </section>
 
-      <Social /> 
-
+      <Social />
     </main>
   )
 }
 
 export default IndexPage
+
+export const pageQuery = graphql`
+  query {
+    featured: allMarkdownRemark(
+      filter: {
+        fileAbsolutePath: { regex: "/(featured)/" }
+        frontmatter: { contentpath: { regex: "/featured/" } }
+      }
+      sort: { order: ASC, fields: frontmatter___date }
+      limit: 2
+    ) {
+      nodes {
+        frontmatter {
+          description
+          thumbnail {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+          title
+          alt
+        }
+        fields {
+          slug
+        }
+        html
+      }
+    }
+  }
+`

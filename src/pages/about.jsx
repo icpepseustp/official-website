@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { graphql } from "gatsby"
 import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image"
 import Seo from "../components/Seo"
@@ -168,7 +169,7 @@ function AboutPage({ data }) {
                           className="flex flex-col items-center justify-center"
                         >
                           <GatsbyImage
-                            key={index}
+                            key={members}
                             className="h-24 w-24 justify-center rounded-full"
                             image={getImage(members.image.childImageSharp)}
                             alt={members.image.base}
@@ -209,24 +210,22 @@ function AboutPage({ data }) {
                 <div className="grid grid-cols-1">
                   {node.members.map((members) => (
                     <div>
-                      {
-                        <div
-                          key={members.image.id}
-                          className="flex flex-col items-center justify-center"
-                        >
-                          <GatsbyImage
-                            className="h-24 w-24 justify-center rounded-full"
-                            image={getImage(members.image.childImageSharp)}
-                            alt={members.image.base}
-                          />
-                          <p className="mt-3 font-montserrat text-xs font-bold uppercase">
-                            {members.lastname}
-                          </p>
-                          <p className="font-montserrat text-xs">
-                            {members.firstname}
-                          </p>
-                        </div>
-                      }
+                      <div
+                        key={members}
+                        className="flex flex-col items-center justify-center"
+                      >
+                        <GatsbyImage
+                          className="h-24 w-24 justify-center rounded-full"
+                          image={getImage(members.image.childImageSharp)}
+                          alt={members.image.base}
+                        />
+                        <p className="mt-3 font-montserrat text-xs font-bold uppercase">
+                          {members.lastname}
+                        </p>
+                        <p className="font-montserrat text-xs">
+                          {members.firstname}
+                        </p>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -255,14 +254,14 @@ function AboutPage({ data }) {
                       key={node.id}
                       className="mt-4 grid grid-cols-1 justify-items-center"
                     >
-                      {node.members.map((members, index) => (
+                      {node.members.map((members) => (
                         <div>
                           <div
-                            key={members.image.id}
+                            key={members}
                             className="flex flex-col items-center justify-center"
                           >
                             <GatsbyImage
-                              key={index}
+                              key={members.id}
                               className="h-32 w-32 justify-center rounded-full"
                               image={getImage(members.image.childImageSharp)}
                               alt={members.image.base}
@@ -284,14 +283,14 @@ function AboutPage({ data }) {
                       key={node.id}
                       className="mt-4 grid justify-items-center gap-10 md:grid-cols-2 lg:grid-cols-4"
                     >
-                      {node.members.map((members, index) => (
+                      {node.members.map((members) => (
                         <div>
                           <div
-                            key={members.image.id}
+                            key={members}
                             className="flex flex-col items-center justify-center"
                           >
                             <GatsbyImage
-                              key={index}
+                              key={members.image.id}
                               className="h-32 w-32 justify-center rounded-full"
                               image={getImage(members.image.childImageSharp)}
                               alt={members.image.base}
@@ -326,14 +325,14 @@ function AboutPage({ data }) {
                       key={node.id}
                       className="mt-4 grid grid-cols-3 justify-items-center gap-10 "
                     >
-                      {node.members.map((members, index) => (
+                      {node.members.map((members) => (
                         <div className="px-0">
                           <div
-                            key={members.image.id}
+                            key={members}
                             className="flex flex-col items-center justify-center"
                           >
                             <GatsbyImage
-                              key={index}
+                              key={members.image.id}
                               className="h-32 w-32 justify-center rounded-full"
                               image={getImage(members.image.childImageSharp)}
                               alt={members.image.base}
@@ -368,14 +367,14 @@ function AboutPage({ data }) {
                     key={node.id}
                     className="mt-4 grid grid-cols-1 justify-items-center"
                   >
-                    {node.members.map((members, index) => (
+                    {node.members.map((members) => (
                       <div>
                         <div
-                          key={members.image.id}
+                          key={members}
                           className="flex flex-col items-center justify-center"
                         >
                           <GatsbyImage
-                            key={index}
+                            key={members.image.id}
                             className="h-24 w-24 justify-center rounded-full"
                             image={getImage(members.image.childImageSharp)}
                             alt={members.image.base}
@@ -425,11 +424,11 @@ function AboutPage({ data }) {
                       {[1, 2].map((index) => (
                         <div>
                           <div
-                            key={node.members[index].image.id}
+                            key={node.members[index]}
                             className="flex flex-col items-center justify-center"
                           >
                             <GatsbyImage
-                              key={index}
+                              key={node.members[index].image.id}
                               className="h-24 w-24 justify-center rounded-full"
                               image={getImage(
                                 node.members[index].image.childImageSharp
@@ -509,11 +508,11 @@ function AboutPage({ data }) {
                       {[1, 2].map((index) => (
                         <div>
                           <div
-                            key={node.members[index].image.id}
+                            key={node.members[index]}
                             className="flex flex-col items-center justify-center"
                           >
                             <GatsbyImage
-                              key={index}
+                              key={node.members[index].image.id}
                               className="h-24 w-24 justify-center rounded-full"
                               image={getImage(
                                 node.members[index].image.childImageSharp
