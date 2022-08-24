@@ -14,16 +14,16 @@ function NotFoundPage() {
         <div className="-mt-1 flex max-w-full shrink flex-col items-center justify-items-center lg:-mt-20 lg:flex-row">
           <div>
             <div className="flex w-[500px] flex-col items-center px-12 lg:items-start">
-              <p className="font-monsterrat mt-24 mb-2 text-[16px] font-semibold md:text-[20px] lg:text-[24px]">
+              <p className="font-monsterrat mt-24 mb-2 cursor-default text-[16px] font-semibold md:text-[20px] lg:text-[24px]">
                 Joe couldn&apos;t find that page.
               </p>
-              <h2 className="font-monsterrat text-2xl font-extrabold md:text-3xl lg:text-5xl">
+              <h2 className="font-monsterrat cursor-default text-2xl font-extrabold md:text-3xl lg:text-5xl">
                 Page Not Found
               </h2>
 
               <Link to="/" className="mt-24 flex flex-row items-center gap-x-2">
-                <BsArrowLeft className="h-6 w-6" />
-                <p className="font-monsterrat text-sm font-bold md:text-base lg:text-lg">
+                <BsArrowLeft className="h-6 w-6 cursor-pointer" />
+                <p className="font-monsterrat cursor-pointer text-sm font-bold md:text-base lg:text-lg hover:text-slate-600 hover:underline active:text-slate-400 active:no-underline">
                   Go Back to Home{" "}
                 </p>
               </Link>
