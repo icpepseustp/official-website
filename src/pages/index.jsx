@@ -2,33 +2,11 @@ import classNames from "classnames"
 import { StaticImage } from "gatsby-plugin-image"
 import { useState } from "react"
 import { BsArrowRight } from "react-icons/bs"
-import {
-  FaDiscord,
-  FaFacebookF,
-  FaRegNewspaper,
-  FaRegStar,
-  FaTwitter,
-} from "react-icons/fa"
+import { FaRegNewspaper, FaRegStar } from "react-icons/fa"
+import Seo from "../components/Seo"
 import Spinner from "../components/Spinner"
 import hero from "../images/home/bg.gif"
-
-const platforms = [
-  {
-    icon: FaFacebookF,
-    text: "Facebook",
-    url: "https://www.facebook.com/icpep.se.ustp/",
-  },
-  {
-    icon: FaDiscord,
-    text: "Discord",
-    url: "https://discord.gg/Dc9dJ7hfDD",
-  },
-  {
-    icon: FaTwitter,
-    text: "Twitter",
-    url: "https://twitter.com/ustp_icpepse",
-  },
-]
+import Social from "../components/Social"
 
 const posts = [
   {
@@ -51,6 +29,8 @@ function IndexPage() {
 
   return (
     <main className="container max-w-6xl">
+      <Seo title="Home" />
+
       {!heroLoaded && (
         <div className="p-16 text-center md:p-32 lg:p-40 xl:p-64">
           <Spinner />
@@ -145,26 +125,7 @@ function IndexPage() {
         </div>
       </section>
 
-      <section className="border-t-2 border-black px-4 py-10 font-montserrat text-sm md:py-16 md:px-8 md:text-base lg:text-lg xl:px-12 xl:py-24 xl:text-2xl">
-        <header className="mb-4 xl:mb-8">
-          <h3>Get Connected!</h3>
-          <h4>Follow us on our social media platforms.</h4>
-        </header>
-
-        <div className="flex gap-x-6 xl:gap-x-12">
-          {platforms.map(({ icon: PlatformIcon, url, text }) => (
-            <a
-              key={text}
-              href={url}
-              className="flex items-center gap-x-1.5 xl:gap-x-4"
-            >
-              <PlatformIcon />
-
-              <small className="font-bold">{text}</small>
-            </a>
-          ))}
-        </div>
-      </section>
+      <Social />
     </main>
   )
 }
