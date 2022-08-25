@@ -3,7 +3,6 @@ import { StaticImage } from "gatsby-plugin-image"
 import { BsArrowLeft } from "react-icons/bs"
 import Seo from "../components/Seo"
 
-// dwada
 function NotFoundPage() {
   return (
     <main className="container flex h-[650px] max-w-6xl flex-col items-center lg:h-[700px]">
