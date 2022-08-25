@@ -32,11 +32,13 @@ function NotFoundPage() {
               </Link>
             </div>
           </div>
-          <StaticImage
-            className="absolute z-[-2] -mr-28 h-[300px] w-[350px] opacity-50 md:absolute md:-mr-24 md:h-[320px] md:w-[370px] lg:relative lg:mr-0 lg:h-[400px] lg:w-[450px] lg:opacity-100"
-            src="../images/404/joebot-404.png"
-            alt="joe-bot_ErroR"
-          />
+          <div className="absolute z-[-2] -mr-28 md:absolute md:-mr-24 lg:relative lg:mr-0">
+            <StaticImage
+              className="h-[300px] w-[350px] opacity-50 md:h-[320px] md:w-[370px] lg:h-[400px] lg:w-[450px] lg:opacity-100"
+              src="../images/404/joebot-404.png"
+              alt="joe-bot_ErroR"
+            />
+          </div>
         </div>
       </section>
     </main>
