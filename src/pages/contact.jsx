@@ -7,6 +7,7 @@ import { ImLocation } from "react-icons/im"
 import { AiFillInstagram } from "react-icons/ai"
 import Seo from "../components/Seo"
 
+// dawdad
 function ContactPage({ data }) {
   const contact = data.contacts.nodes
   return (
