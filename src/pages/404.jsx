@@ -24,7 +24,7 @@ function NotFoundPage() {
               <Link to="/" className="mt-24 flex flex-row items-center gap-x-2">
                 <BsArrowLeft className="h-6 w-6 cursor-pointer" />
                 <p className="font-monsterrat cursor-pointer text-sm font-bold hover:text-slate-600 hover:underline active:text-slate-400 active:no-underline md:text-base lg:text-lg">
-                  Go Back to Home{" "}
+                  Go Back to Home
                 </p>
               </Link>
             </div>
