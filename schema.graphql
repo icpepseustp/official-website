@@ -182,6 +182,12 @@ type File implements Node {
   # Returns the first child node of type DevelopmentJson or null if there are no children of given type on this node
   childDevelopmentJson: DevelopmentJson
 
+  # Returns all children nodes filtered by type ContactJson
+  childrenContactJson: [ContactJson]
+
+  # Returns the first child node of type ContactJson or null if there are no children of given type on this node
+  childContactJson: ContactJson
+
   # Returns all children nodes filtered by type CommitteesJson
   childrenCommitteesJson: [CommitteesJson]
 
@@ -758,6 +764,17 @@ type DevelopmentJsonMembers {
   image: File
 }
 
+type ContactJson implements Node {
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+  type: String
+  platform: String
+  name: String
+  link_address: String
+}
+
 type CommitteesJson implements Node {
   id: ID!
   parent: Node
@@ -774,7 +791,7 @@ type CommitteesJsonMembers {
 }
 
 type Query {
-  file(sourceInstanceName: StringQueryOperatorInput, absolutePath: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, extension: StringQueryOperatorInput, size: IntQueryOperatorInput, prettySize: StringQueryOperatorInput, modifiedTime: DateQueryOperatorInput, accessTime: DateQueryOperatorInput, changeTime: DateQueryOperatorInput, birthTime: DateQueryOperatorInput, root: StringQueryOperatorInput, dir: StringQueryOperatorInput, base: StringQueryOperatorInput, ext: StringQueryOperatorInput, name: StringQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, dev: IntQueryOperatorInput, mode: IntQueryOperatorInput, nlink: IntQueryOperatorInput, uid: IntQueryOperatorInput, gid: IntQueryOperatorInput, rdev: IntQueryOperatorInput, ino: FloatQueryOperatorInput, atimeMs: FloatQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, atime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, ctime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, publicURL: StringQueryOperatorInput, childrenImageSharp: ImageSharpFilterListInput, childImageSharp: ImageSharpFilterInput, childrenPlatformsJson: PlatformsJsonFilterListInput, childPlatformsJson: PlatformsJsonFilterInput, childrenExecutivesJson: ExecutivesJsonFilterListInput, childExecutivesJson: ExecutivesJsonFilterInput, childrenDevelopmentJson: DevelopmentJsonFilterListInput, childDevelopmentJson: DevelopmentJsonFilterInput, childrenCommitteesJson: CommitteesJsonFilterListInput, childCommitteesJson: CommitteesJsonFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): File
+  file(sourceInstanceName: StringQueryOperatorInput, absolutePath: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, extension: StringQueryOperatorInput, size: IntQueryOperatorInput, prettySize: StringQueryOperatorInput, modifiedTime: DateQueryOperatorInput, accessTime: DateQueryOperatorInput, changeTime: DateQueryOperatorInput, birthTime: DateQueryOperatorInput, root: StringQueryOperatorInput, dir: StringQueryOperatorInput, base: StringQueryOperatorInput, ext: StringQueryOperatorInput, name: StringQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, dev: IntQueryOperatorInput, mode: IntQueryOperatorInput, nlink: IntQueryOperatorInput, uid: IntQueryOperatorInput, gid: IntQueryOperatorInput, rdev: IntQueryOperatorInput, ino: FloatQueryOperatorInput, atimeMs: FloatQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, atime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, ctime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, publicURL: StringQueryOperatorInput, childrenImageSharp: ImageSharpFilterListInput, childImageSharp: ImageSharpFilterInput, childrenPlatformsJson: PlatformsJsonFilterListInput, childPlatformsJson: PlatformsJsonFilterInput, childrenExecutivesJson: ExecutivesJsonFilterListInput, childExecutivesJson: ExecutivesJsonFilterInput, childrenDevelopmentJson: DevelopmentJsonFilterListInput, childDevelopmentJson: DevelopmentJsonFilterInput, childrenContactJson: ContactJsonFilterListInput, childContactJson: ContactJsonFilterInput, childrenCommitteesJson: CommitteesJsonFilterListInput, childCommitteesJson: CommitteesJsonFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): File
   allFile(filter: FileFilterInput, sort: FileSortInput, skip: Int, limit: Int): FileConnection!
   directory(sourceInstanceName: StringQueryOperatorInput, absolutePath: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, extension: StringQueryOperatorInput, size: IntQueryOperatorInput, prettySize: StringQueryOperatorInput, modifiedTime: DateQueryOperatorInput, accessTime: DateQueryOperatorInput, changeTime: DateQueryOperatorInput, birthTime: DateQueryOperatorInput, root: StringQueryOperatorInput, dir: StringQueryOperatorInput, base: StringQueryOperatorInput, ext: StringQueryOperatorInput, name: StringQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, dev: IntQueryOperatorInput, mode: IntQueryOperatorInput, nlink: IntQueryOperatorInput, uid: IntQueryOperatorInput, gid: IntQueryOperatorInput, rdev: IntQueryOperatorInput, ino: FloatQueryOperatorInput, atimeMs: FloatQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, atime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, ctime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Directory
   allDirectory(filter: DirectoryFilterInput, sort: DirectorySortInput, skip: Int, limit: Int): DirectoryConnection!
@@ -796,6 +813,8 @@ type Query {
   allExecutivesJson(filter: ExecutivesJsonFilterInput, sort: ExecutivesJsonSortInput, skip: Int, limit: Int): ExecutivesJsonConnection!
   developmentJson(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, pos: StringQueryOperatorInput, members: DevelopmentJsonMembersFilterListInput): DevelopmentJson
   allDevelopmentJson(filter: DevelopmentJsonFilterInput, sort: DevelopmentJsonSortInput, skip: Int, limit: Int): DevelopmentJsonConnection!
+  contactJson(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, type: StringQueryOperatorInput, platform: StringQueryOperatorInput, name: StringQueryOperatorInput, link_address: StringQueryOperatorInput): ContactJson
+  allContactJson(filter: ContactJsonFilterInput, sort: ContactJsonSortInput, skip: Int, limit: Int): ContactJsonConnection!
   committeesJson(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, pos: StringQueryOperatorInput, members: CommitteesJsonMembersFilterListInput): CommitteesJson
   allCommitteesJson(filter: CommitteesJsonFilterInput, sort: CommitteesJsonSortInput, skip: Int, limit: Int): CommitteesJsonConnection!
 }
@@ -1011,6 +1030,8 @@ input FileFilterInput {
   childExecutivesJson: ExecutivesJsonFilterInput
   childrenDevelopmentJson: DevelopmentJsonFilterListInput
   childDevelopmentJson: DevelopmentJsonFilterInput
+  childrenContactJson: ContactJsonFilterListInput
+  childContactJson: ContactJsonFilterInput
   childrenCommitteesJson: CommitteesJsonFilterListInput
   childCommitteesJson: CommitteesJsonFilterInput
   id: StringQueryOperatorInput
@@ -1040,6 +1061,21 @@ input DevelopmentJsonMembersFilterInput {
   lastname: StringQueryOperatorInput
   firstname: StringQueryOperatorInput
   image: FileFilterInput
+}
+
+input ContactJsonFilterListInput {
+  elemMatch: ContactJsonFilterInput
+}
+
+input ContactJsonFilterInput {
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+  type: StringQueryOperatorInput
+  platform: StringQueryOperatorInput
+  name: StringQueryOperatorInput
+  link_address: StringQueryOperatorInput
 }
 
 input CommitteesJsonFilterListInput {
@@ -1464,6 +1500,19 @@ enum FileFieldsEnum {
   childrenExecutivesJson___image___childDevelopmentJson___children
   childrenExecutivesJson___image___childDevelopmentJson___pos
   childrenExecutivesJson___image___childDevelopmentJson___members
+  childrenExecutivesJson___image___childrenContactJson
+  childrenExecutivesJson___image___childrenContactJson___id
+  childrenExecutivesJson___image___childrenContactJson___children
+  childrenExecutivesJson___image___childrenContactJson___type
+  childrenExecutivesJson___image___childrenContactJson___platform
+  childrenExecutivesJson___image___childrenContactJson___name
+  childrenExecutivesJson___image___childrenContactJson___link_address
+  childrenExecutivesJson___image___childContactJson___id
+  childrenExecutivesJson___image___childContactJson___children
+  childrenExecutivesJson___image___childContactJson___type
+  childrenExecutivesJson___image___childContactJson___platform
+  childrenExecutivesJson___image___childContactJson___name
+  childrenExecutivesJson___image___childContactJson___link_address
   childrenExecutivesJson___image___childrenCommitteesJson
   childrenExecutivesJson___image___childrenCommitteesJson___id
   childrenExecutivesJson___image___childrenCommitteesJson___children
@@ -1601,6 +1650,19 @@ enum FileFieldsEnum {
   childExecutivesJson___image___childDevelopmentJson___children
   childExecutivesJson___image___childDevelopmentJson___pos
   childExecutivesJson___image___childDevelopmentJson___members
+  childExecutivesJson___image___childrenContactJson
+  childExecutivesJson___image___childrenContactJson___id
+  childExecutivesJson___image___childrenContactJson___children
+  childExecutivesJson___image___childrenContactJson___type
+  childExecutivesJson___image___childrenContactJson___platform
+  childExecutivesJson___image___childrenContactJson___name
+  childExecutivesJson___image___childrenContactJson___link_address
+  childExecutivesJson___image___childContactJson___id
+  childExecutivesJson___image___childContactJson___children
+  childExecutivesJson___image___childContactJson___type
+  childExecutivesJson___image___childContactJson___platform
+  childExecutivesJson___image___childContactJson___name
+  childExecutivesJson___image___childContactJson___link_address
   childExecutivesJson___image___childrenCommitteesJson
   childExecutivesJson___image___childrenCommitteesJson___id
   childExecutivesJson___image___childrenCommitteesJson___children
@@ -1706,6 +1768,7 @@ enum FileFieldsEnum {
   childrenDevelopmentJson___members___image___childrenPlatformsJson
   childrenDevelopmentJson___members___image___childrenExecutivesJson
   childrenDevelopmentJson___members___image___childrenDevelopmentJson
+  childrenDevelopmentJson___members___image___childrenContactJson
   childrenDevelopmentJson___members___image___childrenCommitteesJson
   childrenDevelopmentJson___members___image___id
   childrenDevelopmentJson___members___image___children
@@ -1789,9 +1852,95 @@ enum FileFieldsEnum {
   childDevelopmentJson___members___image___childrenPlatformsJson
   childDevelopmentJson___members___image___childrenExecutivesJson
   childDevelopmentJson___members___image___childrenDevelopmentJson
+  childDevelopmentJson___members___image___childrenContactJson
   childDevelopmentJson___members___image___childrenCommitteesJson
   childDevelopmentJson___members___image___id
   childDevelopmentJson___members___image___children
+  childrenContactJson
+  childrenContactJson___id
+  childrenContactJson___parent___id
+  childrenContactJson___parent___parent___id
+  childrenContactJson___parent___parent___children
+  childrenContactJson___parent___children
+  childrenContactJson___parent___children___id
+  childrenContactJson___parent___children___children
+  childrenContactJson___parent___internal___content
+  childrenContactJson___parent___internal___contentDigest
+  childrenContactJson___parent___internal___description
+  childrenContactJson___parent___internal___fieldOwners
+  childrenContactJson___parent___internal___ignoreType
+  childrenContactJson___parent___internal___mediaType
+  childrenContactJson___parent___internal___owner
+  childrenContactJson___parent___internal___type
+  childrenContactJson___children
+  childrenContactJson___children___id
+  childrenContactJson___children___parent___id
+  childrenContactJson___children___parent___children
+  childrenContactJson___children___children
+  childrenContactJson___children___children___id
+  childrenContactJson___children___children___children
+  childrenContactJson___children___internal___content
+  childrenContactJson___children___internal___contentDigest
+  childrenContactJson___children___internal___description
+  childrenContactJson___children___internal___fieldOwners
+  childrenContactJson___children___internal___ignoreType
+  childrenContactJson___children___internal___mediaType
+  childrenContactJson___children___internal___owner
+  childrenContactJson___children___internal___type
+  childrenContactJson___internal___content
+  childrenContactJson___internal___contentDigest
+  childrenContactJson___internal___description
+  childrenContactJson___internal___fieldOwners
+  childrenContactJson___internal___ignoreType
+  childrenContactJson___internal___mediaType
+  childrenContactJson___internal___owner
+  childrenContactJson___internal___type
+  childrenContactJson___type
+  childrenContactJson___platform
+  childrenContactJson___name
+  childrenContactJson___link_address
+  childContactJson___id
+  childContactJson___parent___id
+  childContactJson___parent___parent___id
+  childContactJson___parent___parent___children
+  childContactJson___parent___children
+  childContactJson___parent___children___id
+  childContactJson___parent___children___children
+  childContactJson___parent___internal___content
+  childContactJson___parent___internal___contentDigest
+  childContactJson___parent___internal___description
+  childContactJson___parent___internal___fieldOwners
+  childContactJson___parent___internal___ignoreType
+  childContactJson___parent___internal___mediaType
+  childContactJson___parent___internal___owner
+  childContactJson___parent___internal___type
+  childContactJson___children
+  childContactJson___children___id
+  childContactJson___children___parent___id
+  childContactJson___children___parent___children
+  childContactJson___children___children
+  childContactJson___children___children___id
+  childContactJson___children___children___children
+  childContactJson___children___internal___content
+  childContactJson___children___internal___contentDigest
+  childContactJson___children___internal___description
+  childContactJson___children___internal___fieldOwners
+  childContactJson___children___internal___ignoreType
+  childContactJson___children___internal___mediaType
+  childContactJson___children___internal___owner
+  childContactJson___children___internal___type
+  childContactJson___internal___content
+  childContactJson___internal___contentDigest
+  childContactJson___internal___description
+  childContactJson___internal___fieldOwners
+  childContactJson___internal___ignoreType
+  childContactJson___internal___mediaType
+  childContactJson___internal___owner
+  childContactJson___internal___type
+  childContactJson___type
+  childContactJson___platform
+  childContactJson___name
+  childContactJson___link_address
   childrenCommitteesJson
   childrenCommitteesJson___id
   childrenCommitteesJson___parent___id
@@ -1873,6 +2022,7 @@ enum FileFieldsEnum {
   childrenCommitteesJson___members___image___childrenPlatformsJson
   childrenCommitteesJson___members___image___childrenExecutivesJson
   childrenCommitteesJson___members___image___childrenDevelopmentJson
+  childrenCommitteesJson___members___image___childrenContactJson
   childrenCommitteesJson___members___image___childrenCommitteesJson
   childrenCommitteesJson___members___image___id
   childrenCommitteesJson___members___image___children
@@ -1956,6 +2106,7 @@ enum FileFieldsEnum {
   childCommitteesJson___members___image___childrenPlatformsJson
   childCommitteesJson___members___image___childrenExecutivesJson
   childCommitteesJson___members___image___childrenDevelopmentJson
+  childCommitteesJson___members___image___childrenContactJson
   childCommitteesJson___members___image___childrenCommitteesJson
   childCommitteesJson___members___image___id
   childCommitteesJson___members___image___children
@@ -3661,6 +3812,7 @@ enum ExecutivesJsonFieldsEnum {
   image___childrenExecutivesJson___image___childrenPlatformsJson
   image___childrenExecutivesJson___image___childrenExecutivesJson
   image___childrenExecutivesJson___image___childrenDevelopmentJson
+  image___childrenExecutivesJson___image___childrenContactJson
   image___childrenExecutivesJson___image___childrenCommitteesJson
   image___childrenExecutivesJson___image___id
   image___childrenExecutivesJson___image___children
@@ -3720,6 +3872,7 @@ enum ExecutivesJsonFieldsEnum {
   image___childExecutivesJson___image___childrenPlatformsJson
   image___childExecutivesJson___image___childrenExecutivesJson
   image___childExecutivesJson___image___childrenDevelopmentJson
+  image___childExecutivesJson___image___childrenContactJson
   image___childExecutivesJson___image___childrenCommitteesJson
   image___childExecutivesJson___image___id
   image___childExecutivesJson___image___children
@@ -3761,6 +3914,43 @@ enum ExecutivesJsonFieldsEnum {
   image___childDevelopmentJson___members
   image___childDevelopmentJson___members___lastname
   image___childDevelopmentJson___members___firstname
+  image___childrenContactJson
+  image___childrenContactJson___id
+  image___childrenContactJson___parent___id
+  image___childrenContactJson___parent___children
+  image___childrenContactJson___children
+  image___childrenContactJson___children___id
+  image___childrenContactJson___children___children
+  image___childrenContactJson___internal___content
+  image___childrenContactJson___internal___contentDigest
+  image___childrenContactJson___internal___description
+  image___childrenContactJson___internal___fieldOwners
+  image___childrenContactJson___internal___ignoreType
+  image___childrenContactJson___internal___mediaType
+  image___childrenContactJson___internal___owner
+  image___childrenContactJson___internal___type
+  image___childrenContactJson___type
+  image___childrenContactJson___platform
+  image___childrenContactJson___name
+  image___childrenContactJson___link_address
+  image___childContactJson___id
+  image___childContactJson___parent___id
+  image___childContactJson___parent___children
+  image___childContactJson___children
+  image___childContactJson___children___id
+  image___childContactJson___children___children
+  image___childContactJson___internal___content
+  image___childContactJson___internal___contentDigest
+  image___childContactJson___internal___description
+  image___childContactJson___internal___fieldOwners
+  image___childContactJson___internal___ignoreType
+  image___childContactJson___internal___mediaType
+  image___childContactJson___internal___owner
+  image___childContactJson___internal___type
+  image___childContactJson___type
+  image___childContactJson___platform
+  image___childContactJson___name
+  image___childContactJson___link_address
   image___childrenCommitteesJson
   image___childrenCommitteesJson___id
   image___childrenCommitteesJson___parent___id
@@ -4039,6 +4229,19 @@ enum DevelopmentJsonFieldsEnum {
   members___image___childDevelopmentJson___children
   members___image___childDevelopmentJson___pos
   members___image___childDevelopmentJson___members
+  members___image___childrenContactJson
+  members___image___childrenContactJson___id
+  members___image___childrenContactJson___children
+  members___image___childrenContactJson___type
+  members___image___childrenContactJson___platform
+  members___image___childrenContactJson___name
+  members___image___childrenContactJson___link_address
+  members___image___childContactJson___id
+  members___image___childContactJson___children
+  members___image___childContactJson___type
+  members___image___childContactJson___platform
+  members___image___childContactJson___name
+  members___image___childContactJson___link_address
   members___image___childrenCommitteesJson
   members___image___childrenCommitteesJson___id
   members___image___childrenCommitteesJson___children
@@ -4080,6 +4283,136 @@ type DevelopmentJsonGroupConnection {
 
 input DevelopmentJsonSortInput {
   fields: [DevelopmentJsonFieldsEnum]
+  order: [SortOrderEnum] = [ASC]
+}
+
+type ContactJsonConnection {
+  totalCount: Int!
+  edges: [ContactJsonEdge!]!
+  nodes: [ContactJson!]!
+  pageInfo: PageInfo!
+  distinct(field: ContactJsonFieldsEnum!): [String!]!
+  max(field: ContactJsonFieldsEnum!): Float
+  min(field: ContactJsonFieldsEnum!): Float
+  sum(field: ContactJsonFieldsEnum!): Float
+  group(skip: Int, limit: Int, field: ContactJsonFieldsEnum!): [ContactJsonGroupConnection!]!
+}
+
+type ContactJsonEdge {
+  next: ContactJson
+  node: ContactJson!
+  previous: ContactJson
+}
+
+enum ContactJsonFieldsEnum {
+  id
+  parent___id
+  parent___parent___id
+  parent___parent___parent___id
+  parent___parent___parent___children
+  parent___parent___children
+  parent___parent___children___id
+  parent___parent___children___children
+  parent___parent___internal___content
+  parent___parent___internal___contentDigest
+  parent___parent___internal___description
+  parent___parent___internal___fieldOwners
+  parent___parent___internal___ignoreType
+  parent___parent___internal___mediaType
+  parent___parent___internal___owner
+  parent___parent___internal___type
+  parent___children
+  parent___children___id
+  parent___children___parent___id
+  parent___children___parent___children
+  parent___children___children
+  parent___children___children___id
+  parent___children___children___children
+  parent___children___internal___content
+  parent___children___internal___contentDigest
+  parent___children___internal___description
+  parent___children___internal___fieldOwners
+  parent___children___internal___ignoreType
+  parent___children___internal___mediaType
+  parent___children___internal___owner
+  parent___children___internal___type
+  parent___internal___content
+  parent___internal___contentDigest
+  parent___internal___description
+  parent___internal___fieldOwners
+  parent___internal___ignoreType
+  parent___internal___mediaType
+  parent___internal___owner
+  parent___internal___type
+  children
+  children___id
+  children___parent___id
+  children___parent___parent___id
+  children___parent___parent___children
+  children___parent___children
+  children___parent___children___id
+  children___parent___children___children
+  children___parent___internal___content
+  children___parent___internal___contentDigest
+  children___parent___internal___description
+  children___parent___internal___fieldOwners
+  children___parent___internal___ignoreType
+  children___parent___internal___mediaType
+  children___parent___internal___owner
+  children___parent___internal___type
+  children___children
+  children___children___id
+  children___children___parent___id
+  children___children___parent___children
+  children___children___children
+  children___children___children___id
+  children___children___children___children
+  children___children___internal___content
+  children___children___internal___contentDigest
+  children___children___internal___description
+  children___children___internal___fieldOwners
+  children___children___internal___ignoreType
+  children___children___internal___mediaType
+  children___children___internal___owner
+  children___children___internal___type
+  children___internal___content
+  children___internal___contentDigest
+  children___internal___description
+  children___internal___fieldOwners
+  children___internal___ignoreType
+  children___internal___mediaType
+  children___internal___owner
+  children___internal___type
+  internal___content
+  internal___contentDigest
+  internal___description
+  internal___fieldOwners
+  internal___ignoreType
+  internal___mediaType
+  internal___owner
+  internal___type
+  type
+  platform
+  name
+  link_address
+}
+
+type ContactJsonGroupConnection {
+  totalCount: Int!
+  edges: [ContactJsonEdge!]!
+  nodes: [ContactJson!]!
+  pageInfo: PageInfo!
+  distinct(field: ContactJsonFieldsEnum!): [String!]!
+  max(field: ContactJsonFieldsEnum!): Float
+  min(field: ContactJsonFieldsEnum!): Float
+  sum(field: ContactJsonFieldsEnum!): Float
+  group(skip: Int, limit: Int, field: ContactJsonFieldsEnum!): [ContactJsonGroupConnection!]!
+  field: String!
+  fieldValue: String
+}
+
+input ContactJsonSortInput {
+  fields: [ContactJsonFieldsEnum]
   order: [SortOrderEnum] = [ASC]
 }
 
@@ -4264,6 +4597,19 @@ enum CommitteesJsonFieldsEnum {
   members___image___childDevelopmentJson___children
   members___image___childDevelopmentJson___pos
   members___image___childDevelopmentJson___members
+  members___image___childrenContactJson
+  members___image___childrenContactJson___id
+  members___image___childrenContactJson___children
+  members___image___childrenContactJson___type
+  members___image___childrenContactJson___platform
+  members___image___childrenContactJson___name
+  members___image___childrenContactJson___link_address
+  members___image___childContactJson___id
+  members___image___childContactJson___children
+  members___image___childContactJson___type
+  members___image___childContactJson___platform
+  members___image___childContactJson___name
+  members___image___childContactJson___link_address
   members___image___childrenCommitteesJson
   members___image___childrenCommitteesJson___id
   members___image___childrenCommitteesJson___children
