@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import classNames from "classnames"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image"
 import { useState } from "react"
 import { BsArrowRight } from "react-icons/bs"
@@ -9,22 +9,6 @@ import Seo from "../components/Seo"
 import Spinner from "../components/Spinner"
 import hero from "../images/home/bg.gif"
 import Social from "../components/Social"
-
-// const posts = [
-//   {
-//     title: "Good news! CpE certification finally underway for new grads",
-//     lead: "Computer Engineering professionals and graduates alike can now apply for certification.",
-//     url: "#",
-//     thumbnail: false,
-//   },
-//   {
-//     title: "Lore unfolds: CpE Days '22 finally underway",
-//     lead: "After an overwhelming academic year, we deserve some unwinding. It is our time to gather as a pact and venture the night of Silverwood.",
-//     url: "#",
-//     // todo: thumbnail is not boolean
-//     thumbnail: true,
-//   },
-// ]
 
 function IndexPage({ data }) {
   const [heroLoaded, setHeroLoaded] = useState(false)
@@ -57,7 +41,7 @@ function IndexPage({ data }) {
       {/* WHO WE ARE */}
       <section className="mt-3 border-t-2 border-black xl:mt-4">
         <article className="flex flex-col md:flex-row-reverse md:justify-center">
-          <div className="flex place-items-center bg-primary px-16 py-12 md:basis-1/2">
+          <div className="flex place-items-center bg-primary px-8 py-12 md:basis-1/2 lg:px-16">
             <div>
               <span className="flex items-center gap-x-3">
                 <FaRegStar className="md:h-6 md:w-6" />
@@ -92,7 +76,7 @@ function IndexPage({ data }) {
 
       {/* FEATURED */}
       <section className="border-t-2 border-black">
-        <div className="flex flex-col bg-white px-10 py-8">
+        <div className="flex flex-col bg-white px-6 py-8 lg:px-10">
           <span className="flex items-center gap-x-3">
             <FaRegNewspaper className="md:h-6 md:w-6" />
             <h2 className="text-lg font-light lg:text-2xl">Featured</h2>
@@ -116,13 +100,14 @@ function IndexPage({ data }) {
                   {post.frontmatter.description}
                 </p>
 
-                <div
-                  title="Coming Soon!"
+                <Link
+                  title="Read more"
                   className="float-right mt-6 flex cursor-pointer items-center gap-x-3 font-montserrat font-semibold lg:text-lg xl:text-xl"
+                  to={post.field.slug}
                 >
                   <small>Read More</small>
                   <BsArrowRight />
-                </div>
+                </Link>
               </article>
             ))}
           </div>
@@ -141,7 +126,7 @@ export const pageQuery = graphql`
     featured: allMarkdownRemark(
       filter: {
         fileAbsolutePath: { regex: "/(featured)/" }
-        frontmatter: { contentpath: { regex: "/featured/" } }
+        frontmatter: { contentpath: { eq: "featured" } }
       }
       sort: { order: ASC, fields: frontmatter___date }
       limit: 2
