@@ -1,10 +1,10 @@
 backend:
   name: git-gateway
-  branch: main
+  branch: stage
   commit_messages:
-    create: "content: added new {{collection}}"
-    update: "content: update {{collection}}"
-    delete: "content: remove {{collection}}"
+    create: "content: added new {{collection}} - {{slug}}"
+    update: "content: update {{collection}} - {{slug}}"
+    delete: "content: remove {{collection}} - {{slug}}"
 
 media_folder: "static/img"
 public_folder: "/uploads"
@@ -17,7 +17,7 @@ slug:
 collections:
   - name: "blog"
     label: "Blog"
-    folder: "content/blog-page/blogs"
+    folder: "content/blogs"
     create: true
     slug: "{{slug}}"
     media_folder: ""
@@ -54,46 +54,48 @@ collections:
         }
       - { label: "Body", name: "body", widget: "markdown" }
 
-  - name: "upcoming events"
-    label: "Upcoming Events"
-    folder: "content/blog-page/upcoming"
+  - name: "events"
+    label: "Events"
+    folder: "content/events"
     create: true
     slug: "{{slug}}"
     media_folder: ""
     public_folder: ""
-    path: "{{event-name.fields}}"
+    path: "{{slug}}"
     fields:
       - {
           label: "ContentPath",
           name: "contentpath",
           widget: "hidden",
-          default: "events",
+          default: "event",
         }
-      - { label: "Event Name", name: "event-name", widget: "string" }
+      - { label: "Event Name", name: "title", widget: "string" }
       - { label: "Description", name: "description", widget: "string" }
       - { label: "Created Date", name: "date", widget: "datetime" }
+      - { label: "Event Start Date", name: "date-s", widget: "date", date_format: "MMM-DD-YYYY" }
       - {
-          label: "Scheduled Date(s)",
-          name: "date-d",
-          widget: "string",
-          hint: "Example: '01-05'(Multi-day event) or '01' (Single-day event).",
+          label: "Multi-day Event",
+          name: "date-m",
+          widget: "boolean",
+          default: false,
         }
       - {
-          label: "Scheduled Month",
-          name: "date-m",
-          widget: "string",
-          hint: "Example: 'JAN-FEB'(Overlapped month) or 'JAN'.",
+          label: "Event End Date",
+          name: "date-e",
+          widget: "date",
+          date_format: "MMM-DD-YYYY",
+          required: false,          
         }
       - {
           label: "Starting Time & End Time",
           name: "time",
           widget: "string",
-          hint: "Example: 8:00am - 12:00pm",
+          hint: "Example: 8:00-AM-12:00-PM",
         }
 
   - name: "featured blog"
     label: "Featured Blog"
-    folder: "content/blog-page/featured"
+    folder: "content/featured"
     create: true
     slug: "{{slug}}"
     media_folder: ""
@@ -104,7 +106,7 @@ collections:
           label: "ContentPath",
           name: "contentpath",
           widget: "hidden",
-          default: "featured",
+          default: "blog",
         }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Description", name: "description", widget: "string" }
@@ -122,7 +124,7 @@ collections:
 
   - name: "homepage featured"
     label: "Homepage Featured"
-    folder: "content/index-page/featured"
+    folder: "content/featured"
     create: true
     slug: "{{slug}}"
     media_folder: ""

@@ -6,12 +6,6 @@ import Seo from "../components/Seo"
 import BlogItems from "../components/BlogItems"
 
 function BlogPage({ data: { markdownRemark: post, blog: _blog } }) {
-  
-  
-    const handleClick = () => {
-      window.scrollTo({ top: document.body.scrollHeight, behavior: `smooth` })
-    }
-
   return (
     <main className="container max-w-6xl divide-y-2 divide-black">
       <Seo title={post.frontmatter.title} />
@@ -22,23 +16,21 @@ function BlogPage({ data: { markdownRemark: post, blog: _blog } }) {
           More Posts
         </h2>
         {_blog.nodes.length > 0 ? (
-        <div className="mb-8 p-2 pb-4">
-          <section className="grid shrink items-center gap-y-2 px-4 md:grid-cols-3 md:gap-x-3 lg:my-4 lg:grid-cols-4 lg:gap-x-4 lg:px-6">
-            {_blog.nodes.slice(0, 4).map((blog) => (
-              <BlogItems type="more" data={blog} />
-            ))}
-          </section>
-         
-        </div>
-      ): (<div className="mb-8 flex h-[100px] flex-col p-6 lg:items-center lg:justify-center">
-      <div className="items-center">
-        <p>No posts</p>
-      </div>
-      </div>)}
+          <div className="mb-8 p-2 pb-4">
+            <section className="grid shrink items-center gap-y-2 px-4 md:grid-cols-3 md:gap-x-3 lg:my-4 lg:grid-cols-4 lg:gap-x-4 lg:px-6">
+              {_blog.nodes.slice(0, 4).map((blog) => (
+                <BlogItems type="more" data={blog} />
+              ))}
+            </section>
+          </div>
+        ) : (
+          <div className="mb-8 flex h-[100px] flex-col p-6 lg:items-center lg:justify-center">
+            <div className="items-center">
+              <p>No posts</p>
+            </div>
+          </div>
+        )}
       </section>
-
-
-      <button type="button" id="scroll-btn" className="sidebar-btns" title="Scroll to top" onClick={handleClick()}>Up Button</button>          
     </main>
   )
 }
@@ -67,7 +59,7 @@ export const pageQuery = graphql`
       filter: {
         fileAbsolutePath: { regex: "/(blogs)/" }
         frontmatter: { contentpath: { regex: "/blog/" } }
-        id: {ne: $id}
+        id: { ne: $id }
       }
       sort: { order: DESC, fields: frontmatter___date }
       limit: 6

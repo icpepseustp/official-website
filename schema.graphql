@@ -804,8 +804,33 @@ type MarkdownRemarkFrontmatter {
   type: String
   contentpath: String
   event_name: String
-  date_d: String
-  date_m: String
+  date_s(
+    # Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
+    formatString: String
+
+    # Returns a string generated with Moment.js' `fromNow` function
+    fromNow: Boolean
+
+    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    difference: String
+
+    # Configures the locale Moment.js will use to format the date.
+    locale: String
+  ): Date
+  date_e(
+    # Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
+    formatString: String
+
+    # Returns a string generated with Moment.js' `fromNow` function
+    fromNow: Boolean
+
+    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    difference: String
+
+    # Configures the locale Moment.js will use to format the date.
+    locale: String
+  ): Date
+  date_m: Boolean
   time: String
   slug: String
 }
@@ -1080,8 +1105,9 @@ input MarkdownRemarkFrontmatterFilterInput {
   type: StringQueryOperatorInput
   contentpath: StringQueryOperatorInput
   event_name: StringQueryOperatorInput
-  date_d: StringQueryOperatorInput
-  date_m: StringQueryOperatorInput
+  date_s: DateQueryOperatorInput
+  date_e: DateQueryOperatorInput
+  date_m: BooleanQueryOperatorInput
   time: StringQueryOperatorInput
   slug: StringQueryOperatorInput
 }
@@ -1514,7 +1540,8 @@ enum FileFieldsEnum {
   childrenMarkdownRemark___frontmatter___type
   childrenMarkdownRemark___frontmatter___contentpath
   childrenMarkdownRemark___frontmatter___event_name
-  childrenMarkdownRemark___frontmatter___date_d
+  childrenMarkdownRemark___frontmatter___date_s
+  childrenMarkdownRemark___frontmatter___date_e
   childrenMarkdownRemark___frontmatter___date_m
   childrenMarkdownRemark___frontmatter___time
   childrenMarkdownRemark___frontmatter___slug
@@ -1626,7 +1653,8 @@ enum FileFieldsEnum {
   childMarkdownRemark___frontmatter___type
   childMarkdownRemark___frontmatter___contentpath
   childMarkdownRemark___frontmatter___event_name
-  childMarkdownRemark___frontmatter___date_d
+  childMarkdownRemark___frontmatter___date_s
+  childMarkdownRemark___frontmatter___date_e
   childMarkdownRemark___frontmatter___date_m
   childMarkdownRemark___frontmatter___time
   childMarkdownRemark___frontmatter___slug
@@ -4044,7 +4072,8 @@ enum MarkdownRemarkFieldsEnum {
   frontmatter___type
   frontmatter___contentpath
   frontmatter___event_name
-  frontmatter___date_d
+  frontmatter___date_s
+  frontmatter___date_e
   frontmatter___date_m
   frontmatter___time
   frontmatter___slug
@@ -4566,7 +4595,8 @@ enum ExecutivesJsonFieldsEnum {
   image___childrenMarkdownRemark___frontmatter___type
   image___childrenMarkdownRemark___frontmatter___contentpath
   image___childrenMarkdownRemark___frontmatter___event_name
-  image___childrenMarkdownRemark___frontmatter___date_d
+  image___childrenMarkdownRemark___frontmatter___date_s
+  image___childrenMarkdownRemark___frontmatter___date_e
   image___childrenMarkdownRemark___frontmatter___date_m
   image___childrenMarkdownRemark___frontmatter___time
   image___childrenMarkdownRemark___frontmatter___slug
@@ -4609,7 +4639,8 @@ enum ExecutivesJsonFieldsEnum {
   image___childMarkdownRemark___frontmatter___type
   image___childMarkdownRemark___frontmatter___contentpath
   image___childMarkdownRemark___frontmatter___event_name
-  image___childMarkdownRemark___frontmatter___date_d
+  image___childMarkdownRemark___frontmatter___date_s
+  image___childMarkdownRemark___frontmatter___date_e
   image___childMarkdownRemark___frontmatter___date_m
   image___childMarkdownRemark___frontmatter___time
   image___childMarkdownRemark___frontmatter___slug

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import "normalize.css"
 import "../styles/blog-style.css"
+import ScrollToTop from "./ScrollTop"
 
 function HtmlContent({ post }) {
   return (
@@ -15,12 +16,11 @@ function HtmlContent({ post }) {
             <h1 itemProp="headline">{post.frontmatter.title}</h1>
             <p className="date-header">{post.frontmatter.date}</p>
           </div>
-
+          <ScrollToTop showBelow={250} />
           <section
             dangerouslySetInnerHTML={{ __html: post.html }}
             itemProp="articleBody"
           />
-
           <div>
             <p>
               Author:{" "}

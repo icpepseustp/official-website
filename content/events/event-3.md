@@ -1,9 +1,10 @@
 ---
-event-name: Event Sample 2
+title: Event Sample 2
 description: No description for now.
 date: 2022-08-19T09:50:00.305Z
-date-d: 16-20
-date-m: DEC
+date-s: AUG-28-2022
+date-e: SEP-01-2022
+date-m: true
 time: 10:00am - 3:00pm
 contentpath: event
 ---
