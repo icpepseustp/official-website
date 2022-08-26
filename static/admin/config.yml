@@ -72,7 +72,12 @@ collections:
       - { label: "Event Name", name: "title", widget: "string" }
       - { label: "Description", name: "description", widget: "string" }
       - { label: "Created Date", name: "date", widget: "datetime" }
-      - { label: "Event Start Date", name: "date-s", widget: "date", date_format: "MMM-DD-YYYY" }
+      - {
+          label: "Event Start Date",
+          name: "date-s",
+          widget: "date",
+          date_format: "MMM-DD-YYYY",
+        }
       - {
           label: "Multi-day Event",
           name: "date-m",
@@ -84,7 +89,7 @@ collections:
           name: "date-e",
           widget: "date",
           date_format: "MMM-DD-YYYY",
-          required: false,          
+          required: false,
         }
       - {
           label: "Starting Time & End Time",

@@ -35,27 +35,27 @@ function BlogPage({ data }) {
             <div className="flex text-right">
               <Link
                 to={data.featured.nodes[0].fields.slug}
-                className="ml-auto flex items-center gap-x-2 font-montserrat text-xs md:text-sm font-medium lg:text-base"
+                className="ml-auto flex items-center gap-x-2 font-montserrat text-xs font-medium md:text-sm lg:text-base"
               >
                 Read More
                 <span>
-                  <HiOutlineArrowNarrowRight className="h-full w-4 md:w-5 lg:w-6 text-zinc-700" />
+                  <HiOutlineArrowNarrowRight className="h-full w-4 text-zinc-700 md:w-5 lg:w-6" />
                 </span>
               </Link>
             </div>
           </div>
         </div>
         <article className="grow p-4 font-montserrat lg:pr-0 lg:pt-3 lg:pl-8">
-          <div className="flex flex-row gap-4 mb-3 lg:mb-5  ">
-          <h2 className="text-base font-black lg:text-2xl">
-            ICpEP.SE Events
-          </h2>
-          <div className="shrink flex flex-row gap-x-1 items-center self-center">
-          <div className="h-4 w-4 bg-secondary" />
-          <p className="font-semibold text-sm">Active</p>
-          <div className="ml-2 h-4 w-4 bg-primary" />
-          <p className="font-semibold text-sm">Upcoming</p>
-          </div>
+          <div className="mb-3 flex flex-row gap-4 lg:mb-5  ">
+            <h2 className="text-base font-black lg:text-2xl">
+              ICpEP.SE Events
+            </h2>
+            <div className="flex shrink flex-row items-center gap-x-1 self-center">
+              <div className="h-4 w-4 bg-secondary" />
+              <p className="text-sm font-semibold">Active</p>
+              <div className="ml-2 h-4 w-4 bg-primary" />
+              <p className="text-sm font-semibold">Upcoming</p>
+            </div>
           </div>
           <UpcomingEvent />
         </article>
