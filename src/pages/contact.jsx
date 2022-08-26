@@ -8,16 +8,18 @@ import { AiFillInstagram } from "react-icons/ai"
 import { MdMessage } from "react-icons/md"
 import Seo from "../components/Seo"
 import { StaticImage } from "gatsby-plugin-image"
+import { useState } from "react"
 
 // dawdad
 function ContactPage({ data }) {
   const contact = data.contacts.nodes
+
   return (
     <main className="container my-8 max-w-4xl">
       <Seo title="Contact" />
 
       <div className="px-2 py-6 lg:px-12">
-        <div className="text-center font-PS2P">
+        <div className="z-40 text-center font-PS2P">
           <h1 className="shrink text-base font-medium md:text-xl  lg:text-4xl">
             GET IN TOUCH WITH US!
           </h1>
@@ -27,10 +29,10 @@ function ContactPage({ data }) {
         </div>
         <div className="flex flex-col items-center justify-center">
           <div className="z-40 flex min-w-max flex-col py-8 ">
-            <h3 className="bg-gray-900 text-center font-montserrat text-base font-bold text-amber-50 md:text-lg lg:text-xl">
+            <h3 className=" bg-gray-900 text-center font-montserrat text-base font-bold text-amber-50 md:text-lg lg:text-xl ">
               Send us a message
             </h3>
-            <div className="grid shrink grid-cols-1 gap-x-60 gap-y-8 px-8 py-6 lg:grid-cols-2">
+            <div className="grid shrink grid-cols-1 gap-x-60 gap-y-8 px-12 py-6 lg:grid-cols-2 lg:px-12">
               <a
                 href={`mailto:${contact[0].link_address}`}
                 className="flex items-center gap-x-1.5 xl:gap-x-4"
@@ -48,7 +50,7 @@ function ContactPage({ data }) {
                 </small>
               </a>
             </div>
-            <h3 className="mt-6 bg-gray-900 text-center font-montserrat text-base font-bold text-amber-50 md:text-lg lg:bg-inherit  lg:text-xl lg:text-gray-900">
+            <h3 className="lg:px-auto mt-6 bg-gray-900 text-center font-montserrat text-base font-bold text-amber-50 md:text-lg lg:bg-inherit  lg:text-xl lg:text-gray-900">
               Share your thoughts with us
             </h3>
             <div className="grid shrink grid-cols-1 gap-x-60 gap-y-10 px-12 py-6 lg:grid-cols-2">
@@ -83,12 +85,13 @@ function ContactPage({ data }) {
               </a>
             </div>
           </div>
-          <div className="s absolute z-30 -mt-24 opacity-25 lg:-mt-40">
+          <div className="s absolute z-20 -mt-24 opacity-25 lg:-mt-40">
             <StaticImage
               width={500}
               height={500}
               alt="icpep-no-name"
               src="../images/icpep-logo-noname.png"
+              placeholder="tracedSVG"
             />
           </div>
         </div>
