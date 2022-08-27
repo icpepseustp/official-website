@@ -9,6 +9,9 @@ backend:
 media_folder: "static/img"
 public_folder: "/uploads"
 
+site_url: https://www.icpepse-ustp.org/
+publish_mode: editorial_workflow
+
 slug:
   encoding: "ascii"
   clean_accents: true
