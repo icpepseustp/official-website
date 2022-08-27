@@ -382,6 +382,7 @@ type SiteSiteMetadata {
   title: String
   description: String
   siteUrl: String
+  image: String
   keywords: [String]
 }
 
@@ -784,8 +785,8 @@ type MarkdownRemark implements Node {
 
 type MarkdownRemarkFrontmatter {
   title: String
-  contentpath: String
   description: String
+  contentpath: String
   date(
     # Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
     formatString: String
@@ -800,15 +801,14 @@ type MarkdownRemarkFrontmatter {
     locale: String
   ): Date
   date_s: String
-  date_m: Boolean
   date_e: String
+  date_m: Boolean
   time_s: String
   time_e: String
+  type: String
+  author: String
   thumbnail: File
   alt: String
-  author: String
-  type: String
-  slug: String
 }
 
 type MarkdownRemarkFields {
@@ -1073,19 +1073,18 @@ input MarkdownRemarkFilterInput {
 
 input MarkdownRemarkFrontmatterFilterInput {
   title: StringQueryOperatorInput
-  contentpath: StringQueryOperatorInput
   description: StringQueryOperatorInput
+  contentpath: StringQueryOperatorInput
   date: DateQueryOperatorInput
   date_s: StringQueryOperatorInput
-  date_m: BooleanQueryOperatorInput
   date_e: StringQueryOperatorInput
+  date_m: BooleanQueryOperatorInput
   time_s: StringQueryOperatorInput
   time_e: StringQueryOperatorInput
+  type: StringQueryOperatorInput
+  author: StringQueryOperatorInput
   thumbnail: FileFilterInput
   alt: StringQueryOperatorInput
-  author: StringQueryOperatorInput
-  type: StringQueryOperatorInput
-  slug: StringQueryOperatorInput
 }
 
 input FileFilterInput {
@@ -1466,14 +1465,16 @@ enum FileFieldsEnum {
   childrenMarkdownRemark
   childrenMarkdownRemark___id
   childrenMarkdownRemark___frontmatter___title
-  childrenMarkdownRemark___frontmatter___contentpath
   childrenMarkdownRemark___frontmatter___description
+  childrenMarkdownRemark___frontmatter___contentpath
   childrenMarkdownRemark___frontmatter___date
   childrenMarkdownRemark___frontmatter___date_s
-  childrenMarkdownRemark___frontmatter___date_m
   childrenMarkdownRemark___frontmatter___date_e
+  childrenMarkdownRemark___frontmatter___date_m
   childrenMarkdownRemark___frontmatter___time_s
   childrenMarkdownRemark___frontmatter___time_e
+  childrenMarkdownRemark___frontmatter___type
+  childrenMarkdownRemark___frontmatter___author
   childrenMarkdownRemark___frontmatter___thumbnail___sourceInstanceName
   childrenMarkdownRemark___frontmatter___thumbnail___absolutePath
   childrenMarkdownRemark___frontmatter___thumbnail___relativePath
@@ -1518,9 +1519,6 @@ enum FileFieldsEnum {
   childrenMarkdownRemark___frontmatter___thumbnail___id
   childrenMarkdownRemark___frontmatter___thumbnail___children
   childrenMarkdownRemark___frontmatter___alt
-  childrenMarkdownRemark___frontmatter___author
-  childrenMarkdownRemark___frontmatter___type
-  childrenMarkdownRemark___frontmatter___slug
   childrenMarkdownRemark___excerpt @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   childrenMarkdownRemark___rawMarkdownBody
   childrenMarkdownRemark___fileAbsolutePath
@@ -1579,14 +1577,16 @@ enum FileFieldsEnum {
   childrenMarkdownRemark___internal___contentFilePath
   childMarkdownRemark___id
   childMarkdownRemark___frontmatter___title
-  childMarkdownRemark___frontmatter___contentpath
   childMarkdownRemark___frontmatter___description
+  childMarkdownRemark___frontmatter___contentpath
   childMarkdownRemark___frontmatter___date
   childMarkdownRemark___frontmatter___date_s
-  childMarkdownRemark___frontmatter___date_m
   childMarkdownRemark___frontmatter___date_e
+  childMarkdownRemark___frontmatter___date_m
   childMarkdownRemark___frontmatter___time_s
   childMarkdownRemark___frontmatter___time_e
+  childMarkdownRemark___frontmatter___type
+  childMarkdownRemark___frontmatter___author
   childMarkdownRemark___frontmatter___thumbnail___sourceInstanceName
   childMarkdownRemark___frontmatter___thumbnail___absolutePath
   childMarkdownRemark___frontmatter___thumbnail___relativePath
@@ -1631,9 +1631,6 @@ enum FileFieldsEnum {
   childMarkdownRemark___frontmatter___thumbnail___id
   childMarkdownRemark___frontmatter___thumbnail___children
   childMarkdownRemark___frontmatter___alt
-  childMarkdownRemark___frontmatter___author
-  childMarkdownRemark___frontmatter___type
-  childMarkdownRemark___frontmatter___slug
   childMarkdownRemark___excerpt @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   childMarkdownRemark___rawMarkdownBody
   childMarkdownRemark___fileAbsolutePath
@@ -2902,6 +2899,7 @@ input SiteSiteMetadataFilterInput {
   title: StringQueryOperatorInput
   description: StringQueryOperatorInput
   siteUrl: StringQueryOperatorInput
+  image: StringQueryOperatorInput
   keywords: StringQueryOperatorInput
 }
 
@@ -2928,6 +2926,7 @@ enum SiteFieldsEnum {
   siteMetadata___title
   siteMetadata___description
   siteMetadata___siteUrl
+  siteMetadata___image
   siteMetadata___keywords
   port
   host
@@ -3909,14 +3908,16 @@ type MarkdownRemarkEdge {
 enum MarkdownRemarkFieldsEnum {
   id
   frontmatter___title
-  frontmatter___contentpath
   frontmatter___description
+  frontmatter___contentpath
   frontmatter___date
   frontmatter___date_s
-  frontmatter___date_m
   frontmatter___date_e
+  frontmatter___date_m
   frontmatter___time_s
   frontmatter___time_e
+  frontmatter___type
+  frontmatter___author
   frontmatter___thumbnail___sourceInstanceName
   frontmatter___thumbnail___absolutePath
   frontmatter___thumbnail___relativePath
@@ -4050,9 +4051,6 @@ enum MarkdownRemarkFieldsEnum {
   frontmatter___thumbnail___internal___type
   frontmatter___thumbnail___internal___contentFilePath
   frontmatter___alt
-  frontmatter___author
-  frontmatter___type
-  frontmatter___slug
   excerpt @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   rawMarkdownBody
   fileAbsolutePath
@@ -4564,18 +4562,17 @@ enum ExecutivesJsonFieldsEnum {
   image___childrenMarkdownRemark
   image___childrenMarkdownRemark___id
   image___childrenMarkdownRemark___frontmatter___title
-  image___childrenMarkdownRemark___frontmatter___contentpath
   image___childrenMarkdownRemark___frontmatter___description
+  image___childrenMarkdownRemark___frontmatter___contentpath
   image___childrenMarkdownRemark___frontmatter___date
   image___childrenMarkdownRemark___frontmatter___date_s
-  image___childrenMarkdownRemark___frontmatter___date_m
   image___childrenMarkdownRemark___frontmatter___date_e
+  image___childrenMarkdownRemark___frontmatter___date_m
   image___childrenMarkdownRemark___frontmatter___time_s
   image___childrenMarkdownRemark___frontmatter___time_e
-  image___childrenMarkdownRemark___frontmatter___alt
-  image___childrenMarkdownRemark___frontmatter___author
   image___childrenMarkdownRemark___frontmatter___type
-  image___childrenMarkdownRemark___frontmatter___slug
+  image___childrenMarkdownRemark___frontmatter___author
+  image___childrenMarkdownRemark___frontmatter___alt
   image___childrenMarkdownRemark___excerpt @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   image___childrenMarkdownRemark___rawMarkdownBody
   image___childrenMarkdownRemark___fileAbsolutePath
@@ -4608,18 +4605,17 @@ enum ExecutivesJsonFieldsEnum {
   image___childrenMarkdownRemark___internal___contentFilePath
   image___childMarkdownRemark___id
   image___childMarkdownRemark___frontmatter___title
-  image___childMarkdownRemark___frontmatter___contentpath
   image___childMarkdownRemark___frontmatter___description
+  image___childMarkdownRemark___frontmatter___contentpath
   image___childMarkdownRemark___frontmatter___date
   image___childMarkdownRemark___frontmatter___date_s
-  image___childMarkdownRemark___frontmatter___date_m
   image___childMarkdownRemark___frontmatter___date_e
+  image___childMarkdownRemark___frontmatter___date_m
   image___childMarkdownRemark___frontmatter___time_s
   image___childMarkdownRemark___frontmatter___time_e
-  image___childMarkdownRemark___frontmatter___alt
-  image___childMarkdownRemark___frontmatter___author
   image___childMarkdownRemark___frontmatter___type
-  image___childMarkdownRemark___frontmatter___slug
+  image___childMarkdownRemark___frontmatter___author
+  image___childMarkdownRemark___frontmatter___alt
   image___childMarkdownRemark___excerpt @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   image___childMarkdownRemark___rawMarkdownBody
   image___childMarkdownRemark___fileAbsolutePath
