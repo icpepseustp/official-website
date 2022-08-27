@@ -11,6 +11,7 @@ function NotFoundPage() {
         <h1 className="mt-12  shrink cursor-default font-PS2P text-4xl font-normal drop-shadow-2xl md:text-6xl lg:text-7xl">
           WHOOPSY!
         </h1>
+
         <div className="relative -mt-1 flex max-w-full shrink flex-col items-center justify-items-center lg:-mt-20 lg:flex-row">
           <div>
             <div className="flex w-[500px] flex-col items-center px-12 lg:items-start">
