@@ -263,6 +263,14 @@ function AboutPage({ data }) {
                           >
                             <GatsbyImage
                               key={members.id}
+                      {node.members.map((members, index) => (
+                        <div>
+                          <div
+                            key={members.image.id}
+                            className="flex flex-col items-center justify-center"
+                          >
+                            <GatsbyImage
+                              key={index}
                               className="h-32 w-32 justify-center rounded-full"
                               image={getImage(members.image.childImageSharp)}
                               alt={members.image.base}
