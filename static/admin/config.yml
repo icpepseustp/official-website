@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: stage
+  branch: main
   commit_messages:
     create: "content: added new {{collection}} - {{slug}}"
     update: "content: update {{collection}} - {{slug}}"
@@ -23,8 +23,6 @@ collections:
     folder: "content/blogs"
     create: true
     slug: "{{slug}}"
-    media_folder: ""
-    public_folder: ""
     path: "{{slug}}/index"
     fields:
       - {
@@ -62,8 +60,6 @@ collections:
     folder: "content/events"
     create: true
     slug: "{{slug}}"
-    media_folder: ""
-    public_folder: ""
     path: "{{slug}}"
     fields:
       - {
@@ -114,8 +110,6 @@ collections:
     folder: "content/featured"
     create: true
     slug: "{{slug}}"
-    media_folder: ""
-    public_folder: ""
     path: "{{slug}}/index"
     fields:
       - {
@@ -143,8 +137,6 @@ collections:
     folder: "content/featured"
     create: true
     slug: "{{slug}}"
-    media_folder: ""
-    public_folder: ""
     path: "{{slug}}/index"
     fields:
       - {
