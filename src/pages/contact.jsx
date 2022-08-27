@@ -6,11 +6,10 @@ import { SiGmail } from "react-icons/si"
 import { ImLocation } from "react-icons/im"
 import { AiFillInstagram } from "react-icons/ai"
 import { MdMessage } from "react-icons/md"
-import Seo from "../components/Seo"
 import { StaticImage } from "gatsby-plugin-image"
-import { useState } from "react"
 
-// dawdad
+import Seo from "../components/Seo"
+
 function ContactPage({ data }) {
   const contact = data.contacts.nodes
 
@@ -85,7 +84,7 @@ function ContactPage({ data }) {
               </a>
             </div>
           </div>
-          <div className="s absolute z-20 -mt-24 opacity-25 lg:-mt-40">
+          <div className="absolute -z-10 -mt-24 opacity-25 lg:-mt-40">
             <StaticImage
               width={500}
               height={500}
