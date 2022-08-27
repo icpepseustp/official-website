@@ -8,7 +8,7 @@ function BlogItems({ data, type }) {
     return (
       <div className="flex max-w-full p-6 lg:w-1/2">
         {data.frontmatter.thumbnail ? (
-          <div className="">
+          <div className="" to={data.fields.slug}>
             <GatsbyImage
               key={data.frontmatter.thumbnail}
               className="h-48 max-h-full lg:h-60"
@@ -75,7 +75,10 @@ function BlogItems({ data, type }) {
     )
   }
   return (
-    <div className="relative flex h-64 max-h-full flex-col bg-white p-4 lg:h-72">
+    <a
+      href={data.fields.slug}
+      className="relative flex h-64 max-h-full cursor-pointer flex-col bg-white p-4 lg:h-72"
+    >
       {data.frontmatter.thumbnail ? (
         <GatsbyImage
           key={data.frontmatter.thumbnail}
@@ -114,7 +117,7 @@ function BlogItems({ data, type }) {
           </span>
         </Link>
       </div>
-    </div>
+    </a>
   )
 }
 

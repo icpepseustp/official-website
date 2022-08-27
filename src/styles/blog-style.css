@@ -1,4 +1,5 @@
 /* CSS Custom Properties Definitions */
+/* Source: Gatsby Starter Blog */
 
 :root {
   --maxWidth-none: "none";
@@ -42,7 +43,6 @@
   --lineHeight-tight: 1.1;
   --lineHeight-normal: 1.5;
   --lineHeight-relaxed: 1.625;
-  /* 1.200 Minor Third Type Scale */
   --fontSize-0: 0.833rem;
   --fontSize-1: 1rem;
   --fontSize-2: 1.2rem;
@@ -96,7 +96,7 @@
 .blog-post h5,
 .blog-post h6 {
   font-family: var(--font-heading);
-  margin-top: var(--spacing-12);
+  margin-top: var(--spacing-2);
   margin-bottom: var(--spacing-6);
   line-height: var(--lineHeight-tight);
   letter-spacing: -0.025em;

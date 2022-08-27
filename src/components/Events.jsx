@@ -30,7 +30,7 @@ function UpcommingEvents() {
 
       return fdate
     } catch {
-      return ["00-00", "JAN"]
+      return ["01-01", "JAN"]
     }
   }
 
@@ -90,7 +90,7 @@ function UpcommingEvents() {
         query {
           upcoming: allMarkdownRemark(
             filter: { frontmatter: { contentpath: { eq: "event" } } }
-            sort: { order: ASC, fields: frontmatter___date_s }
+            sort: { order: ASC, fields: frontmatter___date }
           ) {
             nodes {
               frontmatter {
@@ -99,7 +99,8 @@ function UpcommingEvents() {
                 date_m
                 title
                 description
-                time
+                time_s
+                time_e
               }
             }
           }
@@ -108,9 +109,9 @@ function UpcommingEvents() {
       render={(data) => (
         <div>
           {data.upcoming.nodes.length > 0 && validEvent(data) ? (
-            <div className="flex h-[250px] max-w-full flex-col gap-y-7 overflow-y-auto p-2 lg:h-[380px] lg:w-[410px] lg:gap-y-8">
+            <div className="flex h-[250px] max-w-full flex-col gap-y-4 overflow-y-auto p-2 lg:h-[380px] lg:w-[410px] lg:gap-y-6">
               {data.upcoming.nodes.map(({ frontmatter: event }) => (
-                <div>
+                <div className="mt-2">
                   {checkDate(event.date_m, event.date_s, event.date_e) > 0 && (
                     <div
                       key={event}
@@ -167,7 +168,7 @@ function UpcommingEvents() {
                           {event.title}
                         </h3>
                         <p className="leading-5">{event.description}</p>
-                        <time dateTime="PT5H">{event.time}</time>
+                        <time dateTime="PT5H">{`${event.time_s} - ${event.time_e}`}</time>
                       </article>
                       {checkDate(event.date_m, event.date_s, event.date_e) ===
                       1 ? (

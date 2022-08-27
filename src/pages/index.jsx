@@ -54,14 +54,14 @@ function IndexPage({ data }) {
                 Department of Computer Engineering in USTP-CDO.
               </p>
 
-              <div
-                to="#"
+              <Link
+                to="about"
                 title="Coming Soon!"
                 className="float-right flex cursor-pointer items-center gap-x-3 font-montserrat font-semibold lg:text-lg xl:text-xl"
               >
                 <small>Read More</small>
                 <BsArrowRight />
-              </div>
+              </Link>
             </div>
           </div>
 
@@ -82,35 +82,46 @@ function IndexPage({ data }) {
             <h2 className="text-lg font-light lg:text-2xl">Featured</h2>
           </span>
 
-          <div className="my-8 grid grid-cols-1 place-items-center gap-y-12 md:my-4 md:grid-cols-2">
-            {data.featured.nodes.map((post) => (
-              <article key={post.frontmatter.title} className="feature-article">
-                {post.frontmatter.thumbnail && (
-                  <GatsbyImage
-                    key={post.frontmatter.thumbnail}
-                    className="md:h-36 lg:h-52"
-                    image={getImage(post.frontmatter.thumbnail.childImageSharp)}
-                    alt={post.frontmatter.alt}
-                  />
-                )}
-                <h4 className="my-4 font-libre text-base font-bold leading-tight">
-                  {post.frontmatter.title}
-                </h4>
-                <p className="font-montserrat leading-tight">
-                  {post.frontmatter.description}
-                </p>
-
-                <Link
-                  title="Read more"
-                  className="float-right mt-6 flex cursor-pointer items-center gap-x-3 font-montserrat font-semibold lg:text-lg xl:text-xl"
-                  to={post.field.slug}
+          {data.featured.nodes.length > 0 ? (
+            <div className="my-8 grid grid-cols-1 place-items-center gap-y-12 md:my-4 md:grid-cols-2">
+              {data.featured.nodes.map((post) => (
+                <article
+                  key={post.frontmatter.title}
+                  className="feature-article"
                 >
-                  <small>Read More</small>
-                  <BsArrowRight />
-                </Link>
-              </article>
-            ))}
-          </div>
+                  {post.frontmatter.thumbnail && (
+                    <GatsbyImage
+                      key={post.frontmatter.thumbnail}
+                      className="md:h-36 lg:h-52"
+                      image={getImage(
+                        post.frontmatter.thumbnail.childImageSharp
+                      )}
+                      alt={post.frontmatter.alt}
+                    />
+                  )}
+                  <h4 className="my-4 font-libre text-base font-bold leading-tight">
+                    {post.frontmatter.title}
+                  </h4>
+                  <p className="font-montserrat leading-tight">
+                    {post.frontmatter.description}
+                  </p>
+
+                  <Link
+                    title="Read more"
+                    className="float-right mt-6 flex cursor-pointer items-center gap-x-3 font-montserrat font-semibold lg:text-lg xl:text-xl"
+                    to={post.fields.slug}
+                  >
+                    <small>Read More</small>
+                    <BsArrowRight />
+                  </Link>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div className="flex h-[250px] w-full items-center">
+              <p className="w-full text-center">No featured posts.</p>
+            </div>
+          )}
         </div>
       </section>
 
@@ -128,7 +139,7 @@ export const pageQuery = graphql`
         fileAbsolutePath: { regex: "/(featured)/" }
         frontmatter: { contentpath: { eq: "featured" } }
       }
-      sort: { order: ASC, fields: frontmatter___date }
+      sort: { order: DESC, fields: frontmatter___date }
       limit: 2
     ) {
       nodes {
@@ -136,7 +147,7 @@ export const pageQuery = graphql`
           description
           thumbnail {
             childImageSharp {
-              gatsbyImageData
+              gatsbyImageData(placeholder: BLURRED, height: 520, width: 820)
             }
           }
           title

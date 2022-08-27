@@ -92,10 +92,18 @@ collections:
           required: false,
         }
       - {
-          label: "Starting Time & End Time",
-          name: "time",
-          widget: "string",
-          hint: "Example: 8:00-AM-12:00-PM",
+          label: "Start time",
+          name: "time-s",
+          widget: "datetime",
+          format: "hh:mma",
+          picker_utc: false,
+        }
+      - {
+          label: "End time",
+          name: "time-e",
+          widget: "datetime",
+          format: "hh:mma",
+          picker_utc: false,
         }
 
   - name: "featured blog"

@@ -4,4 +4,5 @@ description: "After an overwhelming academic year, we deserve some unwinding. It
 thumbnail: cpe-days-2022.jpg
 alt: no-alt
 contentpath: featured
+date: "2022-08-12T22:12:03.284Z"
 ---
