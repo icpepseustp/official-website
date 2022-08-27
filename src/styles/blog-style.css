@@ -224,7 +224,8 @@
 .blog-post textarea {
   overflow: auto;
 }
-/* Link */
+
+/* Links */
 
 .blog-post a {
   color: var(--color-secondary);
@@ -279,6 +280,7 @@
     padding: var(--spacing-0) var(--spacing-0) var(--spacing-0) var(--spacing-4);
     margin-left: var(--spacing-0);
   }
+
   .blog-post ul,
   .blog-post ol {
     list-style-position: inside;

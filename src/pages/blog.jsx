@@ -2,11 +2,11 @@
 import { Link, graphql } from "gatsby"
 import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image"
 import { HiOutlineArrowNarrowRight } from "react-icons/hi"
+
 import Seo from "../components/Seo"
 import Social from "../components/Social"
-
 import BlogItems from "../components/BlogItems"
-import UpcomingEvent from "../components/Events"
+import UpcomingEvents from "../components/Events"
 
 function BlogPage({ data }) {
   return (
@@ -73,9 +73,11 @@ function BlogPage({ data }) {
               <p className="text-sm font-semibold">Upcoming</p>
             </div>
           </div>
-          <UpcomingEvent />
+
+          <UpcomingEvents />
         </article>
       </section>
+
       <div className="mb-8 px-6 py-8">
         <h2 className="mb-3 text-lg font-bold lg:mb-5 lg:text-2xl">
           Latest Posts
@@ -105,12 +107,11 @@ function BlogPage({ data }) {
           </section>
         </div>
       )}
+
       <Social />
     </main>
   )
 }
-
-export default BlogPage
 
 export const pageQuery = graphql`
   query {
@@ -169,3 +170,5 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export default BlogPage

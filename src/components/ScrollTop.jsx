@@ -27,42 +27,36 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function ScrollToTop({ showBelow }) {
-  const [show, setShow] = useState(!showBelow)
-
   const classes = useStyles()
 
-  const handleScroll = () => {
-    if (window.pageYOffset > showBelow) {
-      if (!show) setShow(true)
-    } else if (show) setShow(false)
-  }
+  const [show, setShow] = useState(!showBelow)
 
-  const handleClick = () => {
-    window.scrollTo({ top: 0, behavior: `smooth` })
-  }
-
-  // eslint-disable-next-line consistent-return
   useEffect(() => {
-    if (showBelow) {
-      window.addEventListener(`scroll`, handleScroll)
-      return () => window.removeEventListener(`scroll`, handleScroll)
+    if (!showBelow) return undefined
+
+    const handleScroll = () => {
+      if (window.pageYOffset > showBelow) {
+        if (!show) setShow(true)
+      } else if (show) setShow(false)
     }
+
+    window.addEventListener(`scroll`, handleScroll)
+    return () => window.removeEventListener(`scroll`, handleScroll)
   })
 
+  const handleClick = () => window.scrollTo({ top: 0, behavior: `smooth` })
+
+  if (!show) return null
+
   return (
-    <div>
-      {show && (
-        <IconButton
-          onClick={handleClick}
-          className={classes.toTop}
-          aria-label="to top"
-          title="Back to top"
-          component="span"
-        >
-          <ExpandLessIcon />
-        </IconButton>
-      )}
-    </div>
+    <IconButton
+      onClick={handleClick}
+      className={classes.toTop}
+      aria-label="to top"
+      title="Back to top"
+    >
+      <ExpandLessIcon />
+    </IconButton>
   )
 }
 

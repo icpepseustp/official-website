@@ -3,9 +3,9 @@ import { graphql, StaticQuery } from "gatsby"
 import { FaDiscord, FaFacebookF, FaTwitter } from "react-icons/fa"
 
 const icons = {
-  Facebook: FaFacebookF,
-  Discord: FaDiscord,
-  Twitter: FaTwitter,
+  Facebook: <FaFacebookF />,
+  Discord: <FaDiscord />,
+  Twitter: <FaTwitter />,
 }
 
 function Social() {
@@ -35,7 +35,7 @@ function Social() {
                 href={url}
                 className="flex items-center gap-x-1.5 xl:gap-x-4"
               >
-                {icons[text]()}
+                {icons[text]}
 
                 <small className="font-bold">{text}</small>
               </a>

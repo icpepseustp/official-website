@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import "normalize.css"
 import "../styles/blog-style.css"
 import ScrollToTop from "./ScrollTop"
 
@@ -18,6 +17,7 @@ function HtmlContent({ post }) {
           </div>
           <ScrollToTop showBelow={250} />
           <section
+            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: post.html }}
             itemProp="articleBody"
           />

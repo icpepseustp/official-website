@@ -3,7 +3,7 @@ module.exports = {
   jsxRuntime: "automatic",
   trailingSlash: "never",
   siteMetadata: {
-    siteUrl: "https://www.icpepse-ustp.org/",
+    siteUrl: "https://www.icpepse-ustp.org",
     title: "ICpEP.SE USTP Official Website",
     description:
       "The Institute of Computer Engineers of the Philippines Student Edition (ICpEP.SE) is the official student body of the Department of Computer Engineering in USTP-CDO.",
@@ -65,7 +65,7 @@ module.exports = {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "content",
-        path: `${__dirname}/content`,
+        path: "./content",
       },
       __key: "content",
     },

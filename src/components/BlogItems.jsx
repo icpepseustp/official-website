@@ -8,9 +8,8 @@ function BlogItems({ data, type }) {
     return (
       <div className="flex max-w-full p-6 lg:w-1/2">
         {data.frontmatter.thumbnail ? (
-          <div className="" to={data.fields.slug}>
+          <>
             <GatsbyImage
-              key={data.frontmatter.thumbnail}
               className="h-48 max-h-full lg:h-60"
               image={getImage(data.frontmatter.thumbnail.childImageSharp)}
               alt={data.frontmatter.thumbnail.base}
@@ -41,7 +40,7 @@ function BlogItems({ data, type }) {
                 </span>
               </Link>
             </div>
-          </div>
+          </>
         ) : (
           <div className="max-w-full basis-full bg-white p-4 lg:grow">
             <p className="mb-0.5 mt-2.5 text-xs uppercase text-gray-700 lg:mb-0 lg:text-base">
@@ -74,6 +73,7 @@ function BlogItems({ data, type }) {
       </div>
     )
   }
+
   return (
     <a
       href={data.fields.slug}
@@ -81,7 +81,6 @@ function BlogItems({ data, type }) {
     >
       {data.frontmatter.thumbnail ? (
         <GatsbyImage
-          key={data.frontmatter.thumbnail}
           className="h-32 max-h-full shrink lg:h-40"
           image={getImage(data.frontmatter.thumbnail.childImageSharp)}
           alt={data.frontmatter.thumbnail.base}
@@ -95,6 +94,7 @@ function BlogItems({ data, type }) {
           objectFit="contain"
         />
       )}
+
       <p className="mb-0.5 mt-2.5 text-xs uppercase text-gray-700 lg:mb-0 lg:text-sm">
         {data.frontmatter.type}
       </p>

@@ -115,8 +115,6 @@ function ContactPage({ data }) {
   )
 }
 
-export default ContactPage
-
 export const query = graphql`
   query contactQuery {
     contacts: allContactJson {
@@ -128,3 +126,5 @@ export const query = graphql`
     }
   }
 `
+
+export default ContactPage

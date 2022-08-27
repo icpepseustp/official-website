@@ -130,8 +130,6 @@ function IndexPage({ data }) {
   )
 }
 
-export default IndexPage
-
 export const pageQuery = graphql`
   query {
     featured: allMarkdownRemark(
@@ -161,3 +159,5 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export default IndexPage
