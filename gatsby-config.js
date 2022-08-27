@@ -29,6 +29,21 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          {
+            resolve: "gatsby-remark-embed-video-ext",
+            options: {
+              related: false,
+              noIframeBorder: true,
+              loadingStrategy: "lazy",
+              urlOverrides: [
+                {
+                  id: "youtube",
+                  embedURL: (videoId) =>
+                    `https://www.youtube-nocookie.com/embed/${videoId}`,
+                },
+              ],
+            },
+          },
           "gatsby-remark-relative-images",
           {
             resolve: `gatsby-remark-images`,
@@ -74,7 +89,7 @@ module.exports = {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "uploads",
-        path: "./static/img/",
+        path: "./static/",
       },
       __key: "uploads",
     },
