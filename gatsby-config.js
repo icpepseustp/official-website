@@ -105,5 +105,6 @@ module.exports = {
     "gatsby-plugin-postcss",
     "gatsby-plugin-extract-schema",
     "gatsby-plugin-slug",
+    "gatsby-plugin-netlify",
   ],
 }
