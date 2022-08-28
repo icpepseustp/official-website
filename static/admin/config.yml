@@ -2,9 +2,9 @@ backend:
   name: git-gateway
   branch: main
   commit_messages:
-    create: "content: added new {{collection}} - {{slug}}"
-    update: "content: update {{collection}} - {{slug}}"
-    delete: "content: remove {{collection}} - {{slug}}"
+    create: "content: added new {{collection}}"
+    update: "content: update {{collection}}"
+    delete: "content: remove {{collection}}"
 
 media_folder: "static/img"
 public_folder: "/uploads"

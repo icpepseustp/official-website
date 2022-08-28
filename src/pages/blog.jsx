@@ -64,7 +64,7 @@ function BlogPage({ data }) {
         <article className="grow p-4 font-montserrat lg:pr-0 lg:pt-3 lg:pl-8">
           <div className="mb-3 flex flex-row gap-4 lg:mb-5  ">
             <h2 className="text-base font-black lg:text-2xl">
-              ICpEP.SE Events
+              ICpEP.SE USTP Events
             </h2>
             <div className="flex shrink flex-row items-center gap-x-1 self-center">
               <div className="h-4 w-4 bg-secondary" />
