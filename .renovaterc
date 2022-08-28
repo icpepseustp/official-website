@@ -34,9 +34,10 @@
       "stabilityDays": 7
     },
     {
-      "groupName": "prettier",
+      "groupName": "codestyle",
       "matchPackagePatterns": [
-        "prettier"
+        "prettier",
+        "eslint"
       ],
       "commitMessageSuffix": "[skip ci]"
     },
