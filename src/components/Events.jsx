@@ -103,11 +103,11 @@ function UpcomingEvents() {
       render={(data) => (
         <div>
           {data.upcoming.nodes.length > 0 && validEvent(data) ? (
-            <div className="flex h-[250px] max-w-full flex-col gap-y-4 overflow-y-auto p-2 lg:h-[380px] lg:w-[410px] lg:gap-y-6">
+            <div className="flex h-[250px] max-w-full flex-col gap-y-3 overflow-y-auto lg:h-[380px] lg:w-[410px] lg:gap-y-6 lg:p-2">
               {data.upcoming.nodes.map(({ frontmatter: event }) => (
                 <div key={event.title} className="mt-2">
                   {checkDate(event.date_m, event.date_s, event.date_e) > 0 && (
-                    <div className="relative -z-20 ml-6 flex max-w-full shrink border-2 border-black bg-[#efe9e1] py-2 pl-8 pr-2 font-normal">
+                    <div className="relative -z-20 ml-3 flex max-w-full shrink border-2 border-black bg-[#efe9e1] py-2 pl-8 pr-2 font-normal lg:ml-6">
                       <div className="absolute -left-3 -top-2 flex h-[90px] w-[95px] items-center justify-center border-2 border-black bg-primary">
                         {formatDate(event.date_m, event.date_s, event.date_e)[1]
                           .length > 3 ? (
@@ -155,8 +155,8 @@ function UpcomingEvents() {
                         )}
                       </div>
 
-                      <article className="ml-20 text-xs lg:text-base">
-                        <h3 className="overflow-hidden text-ellipsis font-libre text-base font-bold lg:mb-1.5 lg:text-lg">
+                      <article className="ml-[65px] text-xs md:ml-[70px] lg:ml-[75px] lg:text-base">
+                        <h3 className="overflow-hidden text-ellipsis font-libre text-sm font-bold md:text-base lg:mb-1.5 lg:text-lg">
                           {event.title}
                         </h3>
 
