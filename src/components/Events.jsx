@@ -93,6 +93,7 @@ function UpcomingEvents() {
                 date_m
                 title
                 description
+                time_n
                 time_s
                 time_e
               }
@@ -155,13 +156,17 @@ function UpcomingEvents() {
                         )}
                       </div>
 
-                      <article className="ml-[65px] text-xs md:ml-[70px] lg:ml-[75px] lg:text-base">
+                      <article className="ml-[65px] items-center text-xs md:ml-[70px] lg:ml-[75px] lg:text-base">
                         <h3 className="overflow-hidden text-ellipsis font-libre text-sm font-bold md:text-base lg:mb-1.5 lg:text-lg">
                           {event.title}
                         </h3>
 
-                        <p className="leading-5">{event.description}</p>
-                        <time dateTime="PT5H">{`${event.time_s} - ${event.time_e}`}</time>
+                        <p className="text-sm leading-5">{event.description}</p>
+                        {!event.time_n ? (
+                          <time dateTime="PT5H">{`${event.time_s} - ${event.time_e}`}</time>
+                        ) : (
+                          <div className="h-[6px]">&nbsp;</div>
+                        )}
                       </article>
 
                       {checkDate(event.date_m, event.date_s, event.date_e) ===

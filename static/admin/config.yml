@@ -91,6 +91,12 @@ collections:
           required: false,
         }
       - {
+          label: "No Specified Time",
+          name: "time-n",
+          widget: "boolean",
+          default: false,
+        }
+      - {
           label: "Start time",
           name: "time-s",
           widget: "datetime",
