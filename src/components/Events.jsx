@@ -104,7 +104,7 @@ function UpcomingEvents() {
       render={(data) => (
         <div>
           {data.upcoming.nodes.length > 0 && validEvent(data) ? (
-            <div className="flex h-[250px] max-w-full flex-col gap-y-3 overflow-y-auto lg:h-[380px] lg:w-[410px] lg:gap-y-6 lg:p-2">
+            <div className="flex h-[280px] max-w-full flex-col gap-y-3 overflow-y-auto lg:h-[380px] lg:w-[410px] lg:gap-y-6">
               {data.upcoming.nodes.map(({ frontmatter: event }) => (
                 <div key={event.title} className="mt-2">
                   {checkDate(event.date_m, event.date_s, event.date_e) > 0 && (
@@ -163,7 +163,10 @@ function UpcomingEvents() {
 
                         <p className="text-sm leading-5">{event.description}</p>
                         {!event.time_n ? (
-                          <time dateTime="PT5H">{`${event.time_s} - ${event.time_e}`}</time>
+                          <time
+                            dateTime="PT5H"
+                            className="text-sm font-semibold"
+                          >{`${event.time_s} - ${event.time_e}`}</time>
                         ) : (
                           <div className="h-[6px]">&nbsp;</div>
                         )}

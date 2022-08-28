@@ -803,9 +803,9 @@ type MarkdownRemarkFrontmatter {
   date_s: String
   date_m: Boolean
   date_e: String
+  time_n: Boolean
   time_s: String
   time_e: String
-  time_n: Boolean
   type: String
   author: String
   thumbnail: File
@@ -1080,9 +1080,9 @@ input MarkdownRemarkFrontmatterFilterInput {
   date_s: StringQueryOperatorInput
   date_m: BooleanQueryOperatorInput
   date_e: StringQueryOperatorInput
+  time_n: BooleanQueryOperatorInput
   time_s: StringQueryOperatorInput
   time_e: StringQueryOperatorInput
-  time_n: BooleanQueryOperatorInput
   type: StringQueryOperatorInput
   author: StringQueryOperatorInput
   thumbnail: FileFilterInput
@@ -1473,9 +1473,9 @@ enum FileFieldsEnum {
   childrenMarkdownRemark___frontmatter___date_s
   childrenMarkdownRemark___frontmatter___date_m
   childrenMarkdownRemark___frontmatter___date_e
+  childrenMarkdownRemark___frontmatter___time_n
   childrenMarkdownRemark___frontmatter___time_s
   childrenMarkdownRemark___frontmatter___time_e
-  childrenMarkdownRemark___frontmatter___time_n
   childrenMarkdownRemark___frontmatter___type
   childrenMarkdownRemark___frontmatter___author
   childrenMarkdownRemark___frontmatter___thumbnail___sourceInstanceName
@@ -1586,9 +1586,9 @@ enum FileFieldsEnum {
   childMarkdownRemark___frontmatter___date_s
   childMarkdownRemark___frontmatter___date_m
   childMarkdownRemark___frontmatter___date_e
+  childMarkdownRemark___frontmatter___time_n
   childMarkdownRemark___frontmatter___time_s
   childMarkdownRemark___frontmatter___time_e
-  childMarkdownRemark___frontmatter___time_n
   childMarkdownRemark___frontmatter___type
   childMarkdownRemark___frontmatter___author
   childMarkdownRemark___frontmatter___thumbnail___sourceInstanceName
@@ -3918,9 +3918,9 @@ enum MarkdownRemarkFieldsEnum {
   frontmatter___date_s
   frontmatter___date_m
   frontmatter___date_e
+  frontmatter___time_n
   frontmatter___time_s
   frontmatter___time_e
-  frontmatter___time_n
   frontmatter___type
   frontmatter___author
   frontmatter___thumbnail___sourceInstanceName
@@ -4573,9 +4573,9 @@ enum ExecutivesJsonFieldsEnum {
   image___childrenMarkdownRemark___frontmatter___date_s
   image___childrenMarkdownRemark___frontmatter___date_m
   image___childrenMarkdownRemark___frontmatter___date_e
+  image___childrenMarkdownRemark___frontmatter___time_n
   image___childrenMarkdownRemark___frontmatter___time_s
   image___childrenMarkdownRemark___frontmatter___time_e
-  image___childrenMarkdownRemark___frontmatter___time_n
   image___childrenMarkdownRemark___frontmatter___type
   image___childrenMarkdownRemark___frontmatter___author
   image___childrenMarkdownRemark___frontmatter___alt
@@ -4617,9 +4617,9 @@ enum ExecutivesJsonFieldsEnum {
   image___childMarkdownRemark___frontmatter___date_s
   image___childMarkdownRemark___frontmatter___date_m
   image___childMarkdownRemark___frontmatter___date_e
+  image___childMarkdownRemark___frontmatter___time_n
   image___childMarkdownRemark___frontmatter___time_s
   image___childMarkdownRemark___frontmatter___time_e
-  image___childMarkdownRemark___frontmatter___time_n
   image___childMarkdownRemark___frontmatter___type
   image___childMarkdownRemark___frontmatter___author
   image___childMarkdownRemark___frontmatter___alt

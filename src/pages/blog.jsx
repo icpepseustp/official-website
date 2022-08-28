@@ -34,7 +34,7 @@ function BlogPage({ data }) {
             />
           )}
 
-          <div className="absolute bottom-1.5 right-1.5 shrink rounded-sm bg-white p-1.5 px-3 md:bottom-5 md:right-10 lg:bottom-8 lg:right-12">
+          <div className="absolute bottom-3 right-3 shrink rounded-sm bg-white p-1.5 px-3 md:bottom-5 md:right-10 lg:bottom-8 lg:right-12">
             <p className="mb-0.5 text-xs uppercase text-gray-700 lg:mb-0 lg:text-base">
               {data.featured.nodes.length > 0
                 ? data.featured.nodes[0].frontmatter.type
@@ -61,9 +61,9 @@ function BlogPage({ data }) {
             )}
           </div>
         </div>
-        <article className="grow p-4 font-montserrat lg:pr-0 lg:pt-3 lg:pl-8">
-          <div className="mb-3 flex flex-row gap-4 lg:mb-5  ">
-            <h2 className="text-base font-black lg:text-2xl">
+        <article className="grow p-4 font-montserrat lg:ml-2 lg:pr-0 lg:pt-3">
+          <div className="flex flex-row gap-x-8">
+            <h2 className="text-base font-black lg:text-center lg:text-2xl">
               ICpEP.SE USTP Events
             </h2>
             <div className="flex shrink flex-row items-center gap-x-1 self-center">
