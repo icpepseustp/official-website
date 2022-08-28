@@ -65,6 +65,19 @@
         "after 10am on the first day of the month"
       ],
       "stabilityDays": 7
+    },
+    {
+      "groupName": "types",
+      "matchPackageNames": [
+        "typescript"
+      ],
+      "matchPackagePrefixes": [
+        "@types/"
+      ],
+      "addLabels": [
+        "typescript"
+      ],
+      "commitMessageSuffix": "[skip ci]"
     }
   ]
 }
