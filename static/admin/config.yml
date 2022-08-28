@@ -1,0 +1,153 @@
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    create: "content: added new {{collection}} - {{slug}}"
+    update: "content: update {{collection}} - {{slug}}"
+    delete: "content: remove {{collection}} - {{slug}}"
+
+media_folder: "static/img"
+public_folder: "/uploads"
+
+site_url: https://www.icpepse-ustp.org/
+publish_mode: editorial_workflow
+
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    folder: "content/blogs"
+    create: true
+    slug: "{{slug}}"
+    path: "{{slug}}/index"
+    fields:
+      - {
+          label: "ContentPath",
+          name: "contentpath",
+          widget: "hidden",
+          default: "blog",
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - {
+          label: "Thumbnail Image",
+          name: "thumbnail",
+          widget: "image",
+          required: false,
+        }
+      - {
+          label: "Thumbnail Tag",
+          name: "alt",
+          widget: "string",
+          required: false,
+        }
+      - { label: "Author", name: "author", widget: "string", required: false }
+      - {
+          label: "Blog Type",
+          name: "type",
+          widget: "select",
+          options: ["News", "Event", "Announcement", "Article", "Message"],
+        }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "events"
+    label: "Events"
+    folder: "content/events"
+    create: true
+    slug: "{{slug}}"
+    path: "{{slug}}"
+    fields:
+      - {
+          label: "ContentPath",
+          name: "contentpath",
+          widget: "hidden",
+          default: "event",
+        }
+      - { label: "Event Name", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Created Date", name: "date", widget: "datetime" }
+      - {
+          label: "Event Start Date",
+          name: "date-s",
+          widget: "date",
+          date_format: "MMM-DD-YYYY",
+        }
+      - {
+          label: "Multi-day Event",
+          name: "date-m",
+          widget: "boolean",
+          default: false,
+        }
+      - {
+          label: "Event End Date",
+          name: "date-e",
+          widget: "date",
+          date_format: "MMM-DD-YYYY",
+          required: false,
+        }
+      - {
+          label: "Start time",
+          name: "time-s",
+          widget: "datetime",
+          format: "hh:mma",
+          picker_utc: false,
+        }
+      - {
+          label: "End time",
+          name: "time-e",
+          widget: "datetime",
+          format: "hh:mma",
+          picker_utc: false,
+        }
+
+  - name: "featured blog"
+    label: "Featured Blog"
+    folder: "content/featured"
+    create: true
+    slug: "{{slug}}"
+    path: "{{slug}}/index"
+    fields:
+      - {
+          label: "ContentPath",
+          name: "contentpath",
+          widget: "hidden",
+          default: "blog",
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Thumbnail Image", name: "thumbnail", widget: "image" }
+      - { label: "Thumbnail Tag", name: "alt", widget: "string" }
+      - { label: "Author", name: "author", widget: "string", required: false }
+      - {
+          label: "Blog Type",
+          name: "type",
+          widget: "select",
+          options: ["News", "Event", "Announcement", "Article", "Message"],
+        }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "homepage featured"
+    label: "Homepage Featured"
+    folder: "content/featured"
+    create: true
+    slug: "{{slug}}"
+    path: "{{slug}}/index"
+    fields:
+      - {
+          label: "ContentPath",
+          name: "contentpath",
+          widget: "hidden",
+          default: "featured",
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Thumbnail Image", name: "thumbnail", widget: "image" }
+      - { label: "Thumbnail Tag", name: "alt", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
