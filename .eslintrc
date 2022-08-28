@@ -18,5 +18,14 @@
     "sourceType": "module"
   },
   "plugins": ["react", "react-hooks", "prettier"],
-  "rules": {}
+  "rules": {
+    "react/require-default-props": [
+      2,
+      {
+        "forbidDefaultForRequired": true,
+        "classes": "defaultProps",
+        "functions": "defaultArguments"
+      }
+    ]
+  }
 }

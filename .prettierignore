@@ -1,28 +1,10 @@
-# Package Manager Artifacts
-node_modules/
-yarn-*.log
+# Gatsby Production Build Files
+public/
 
-# Environment Variables
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# Gatsby Cache
+.cache/
 
 # User-Specific IDE Settings
 .vscode/
 
-# OS Auto-Generated Files
-.DS_Store
-
-# Gatsby Build Cache
-.cache/
-
-# Gatsby Production Build Dir
-public/
-
-# Gatsby-Generated Files
 schema.graphql
-
-# Local Netlify folder
-.netlify
