@@ -41,7 +41,7 @@ collections:
           required: false,
         }
       - {
-          label: "Thumbnail Tag",
+          label: "Thumbnail Alt Tag",
           name: "alt",
           widget: "string",
           required: false,
@@ -122,7 +122,7 @@ collections:
       - { label: "Description", name: "description", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Thumbnail Image", name: "thumbnail", widget: "image" }
-      - { label: "Thumbnail Tag", name: "alt", widget: "string" }
+      - { label: "Thumbnail Alt Tag", name: "alt", widget: "string" }
       - { label: "Author", name: "author", widget: "string", required: false }
       - {
           label: "Blog Type",
@@ -149,5 +149,5 @@ collections:
       - { label: "Description", name: "description", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Thumbnail Image", name: "thumbnail", widget: "image" }
-      - { label: "Thumbnail Tag", name: "alt", widget: "string" }
+      - { label: "Thumbnail Alt Tag", name: "alt", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
