@@ -1,10 +1,11 @@
 backend:
   name: git-gateway
   branch: main
+  squash_merges: true
   commit_messages:
-    create: "content: added new {{collection}}"
-    update: "content: update {{collection}}"
-    delete: "content: remove {{collection}}"
+    create: "content: add new `{{collection}}` entry"
+    update: "content: update `{{collection}}` entry"
+    delete: "content: remove `{{collection}}` entry"
 
 media_folder: "static/img"
 public_folder: "/uploads"
