@@ -3,6 +3,7 @@ contentpath: blog
 title: The WOW Factor
 description: A brief overview of what’s to expect in USTP’s upcoming Week of Welcome.
 date: 2022-08-29T10:30:06.466Z
+author: Wilgen Melendez
 type: Article
 ---
 
