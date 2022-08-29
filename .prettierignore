@@ -11,3 +11,8 @@ schema.graphql
 
 # Local Netlify folder
 .netlify
+
+# Auto-generated Contents 
+CHANGELOG.md
+content/**/*.md
+settings/**/*.md
