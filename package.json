@@ -1,6 +1,6 @@
 {
   "name": "ustp-icpepse-website",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "private": true,
   "description": "ICpEP.SE USTP Official Website",
   "author": "",
@@ -20,7 +20,12 @@
     "lint:fix": "eslint . --fix",
     "stylecheck": "yarn format:checkonly && yarn lint",
     "stylefix": "yarn format && yarn lint:fix",
-    "release": "standard-version -s"
+    "release": "standard-version -s --releaseCommitMessageFormat \"chore(release): v{{currentTag}} [skip ci]\""
+  },
+  "standard-version": {
+    "skip": {
+      "tag": true
+    }
   },
   "dependencies": {
     "@fontsource/libre-baskerville": "^4.5.2",
