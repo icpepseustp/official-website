@@ -786,6 +786,9 @@ type MarkdownRemark implements Node {
 type MarkdownRemarkFrontmatter {
   title: String
   description: String
+  thumbnail: File
+  alt: String
+  contentpath: String
   date(
     # Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
     formatString: String
@@ -805,9 +808,6 @@ type MarkdownRemarkFrontmatter {
   time_n: Boolean
   time_s: String
   time_e: String
-  contentpath: String
-  thumbnail: File
-  alt: String
   type: String
   author: String
 }
@@ -1075,6 +1075,9 @@ input MarkdownRemarkFilterInput {
 input MarkdownRemarkFrontmatterFilterInput {
   title: StringQueryOperatorInput
   description: StringQueryOperatorInput
+  thumbnail: FileFilterInput
+  alt: StringQueryOperatorInput
+  contentpath: StringQueryOperatorInput
   date: DateQueryOperatorInput
   date_s: StringQueryOperatorInput
   date_e: StringQueryOperatorInput
@@ -1082,9 +1085,6 @@ input MarkdownRemarkFrontmatterFilterInput {
   time_n: BooleanQueryOperatorInput
   time_s: StringQueryOperatorInput
   time_e: StringQueryOperatorInput
-  contentpath: StringQueryOperatorInput
-  thumbnail: FileFilterInput
-  alt: StringQueryOperatorInput
   type: StringQueryOperatorInput
   author: StringQueryOperatorInput
 }
@@ -1468,14 +1468,6 @@ enum FileFieldsEnum {
   childrenMarkdownRemark___id
   childrenMarkdownRemark___frontmatter___title
   childrenMarkdownRemark___frontmatter___description
-  childrenMarkdownRemark___frontmatter___date
-  childrenMarkdownRemark___frontmatter___date_s
-  childrenMarkdownRemark___frontmatter___date_e
-  childrenMarkdownRemark___frontmatter___date_m
-  childrenMarkdownRemark___frontmatter___time_n
-  childrenMarkdownRemark___frontmatter___time_s
-  childrenMarkdownRemark___frontmatter___time_e
-  childrenMarkdownRemark___frontmatter___contentpath
   childrenMarkdownRemark___frontmatter___thumbnail___sourceInstanceName
   childrenMarkdownRemark___frontmatter___thumbnail___absolutePath
   childrenMarkdownRemark___frontmatter___thumbnail___relativePath
@@ -1520,6 +1512,14 @@ enum FileFieldsEnum {
   childrenMarkdownRemark___frontmatter___thumbnail___id
   childrenMarkdownRemark___frontmatter___thumbnail___children
   childrenMarkdownRemark___frontmatter___alt
+  childrenMarkdownRemark___frontmatter___contentpath
+  childrenMarkdownRemark___frontmatter___date
+  childrenMarkdownRemark___frontmatter___date_s
+  childrenMarkdownRemark___frontmatter___date_e
+  childrenMarkdownRemark___frontmatter___date_m
+  childrenMarkdownRemark___frontmatter___time_n
+  childrenMarkdownRemark___frontmatter___time_s
+  childrenMarkdownRemark___frontmatter___time_e
   childrenMarkdownRemark___frontmatter___type
   childrenMarkdownRemark___frontmatter___author
   childrenMarkdownRemark___excerpt @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
@@ -1581,14 +1581,6 @@ enum FileFieldsEnum {
   childMarkdownRemark___id
   childMarkdownRemark___frontmatter___title
   childMarkdownRemark___frontmatter___description
-  childMarkdownRemark___frontmatter___date
-  childMarkdownRemark___frontmatter___date_s
-  childMarkdownRemark___frontmatter___date_e
-  childMarkdownRemark___frontmatter___date_m
-  childMarkdownRemark___frontmatter___time_n
-  childMarkdownRemark___frontmatter___time_s
-  childMarkdownRemark___frontmatter___time_e
-  childMarkdownRemark___frontmatter___contentpath
   childMarkdownRemark___frontmatter___thumbnail___sourceInstanceName
   childMarkdownRemark___frontmatter___thumbnail___absolutePath
   childMarkdownRemark___frontmatter___thumbnail___relativePath
@@ -1633,6 +1625,14 @@ enum FileFieldsEnum {
   childMarkdownRemark___frontmatter___thumbnail___id
   childMarkdownRemark___frontmatter___thumbnail___children
   childMarkdownRemark___frontmatter___alt
+  childMarkdownRemark___frontmatter___contentpath
+  childMarkdownRemark___frontmatter___date
+  childMarkdownRemark___frontmatter___date_s
+  childMarkdownRemark___frontmatter___date_e
+  childMarkdownRemark___frontmatter___date_m
+  childMarkdownRemark___frontmatter___time_n
+  childMarkdownRemark___frontmatter___time_s
+  childMarkdownRemark___frontmatter___time_e
   childMarkdownRemark___frontmatter___type
   childMarkdownRemark___frontmatter___author
   childMarkdownRemark___excerpt @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
@@ -3913,14 +3913,6 @@ enum MarkdownRemarkFieldsEnum {
   id
   frontmatter___title
   frontmatter___description
-  frontmatter___date
-  frontmatter___date_s
-  frontmatter___date_e
-  frontmatter___date_m
-  frontmatter___time_n
-  frontmatter___time_s
-  frontmatter___time_e
-  frontmatter___contentpath
   frontmatter___thumbnail___sourceInstanceName
   frontmatter___thumbnail___absolutePath
   frontmatter___thumbnail___relativePath
@@ -4054,6 +4046,14 @@ enum MarkdownRemarkFieldsEnum {
   frontmatter___thumbnail___internal___type
   frontmatter___thumbnail___internal___contentFilePath
   frontmatter___alt
+  frontmatter___contentpath
+  frontmatter___date
+  frontmatter___date_s
+  frontmatter___date_e
+  frontmatter___date_m
+  frontmatter___time_n
+  frontmatter___time_s
+  frontmatter___time_e
   frontmatter___type
   frontmatter___author
   excerpt @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
@@ -4568,6 +4568,8 @@ enum ExecutivesJsonFieldsEnum {
   image___childrenMarkdownRemark___id
   image___childrenMarkdownRemark___frontmatter___title
   image___childrenMarkdownRemark___frontmatter___description
+  image___childrenMarkdownRemark___frontmatter___alt
+  image___childrenMarkdownRemark___frontmatter___contentpath
   image___childrenMarkdownRemark___frontmatter___date
   image___childrenMarkdownRemark___frontmatter___date_s
   image___childrenMarkdownRemark___frontmatter___date_e
@@ -4575,8 +4577,6 @@ enum ExecutivesJsonFieldsEnum {
   image___childrenMarkdownRemark___frontmatter___time_n
   image___childrenMarkdownRemark___frontmatter___time_s
   image___childrenMarkdownRemark___frontmatter___time_e
-  image___childrenMarkdownRemark___frontmatter___contentpath
-  image___childrenMarkdownRemark___frontmatter___alt
   image___childrenMarkdownRemark___frontmatter___type
   image___childrenMarkdownRemark___frontmatter___author
   image___childrenMarkdownRemark___excerpt @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
@@ -4612,6 +4612,8 @@ enum ExecutivesJsonFieldsEnum {
   image___childMarkdownRemark___id
   image___childMarkdownRemark___frontmatter___title
   image___childMarkdownRemark___frontmatter___description
+  image___childMarkdownRemark___frontmatter___alt
+  image___childMarkdownRemark___frontmatter___contentpath
   image___childMarkdownRemark___frontmatter___date
   image___childMarkdownRemark___frontmatter___date_s
   image___childMarkdownRemark___frontmatter___date_e
@@ -4619,8 +4621,6 @@ enum ExecutivesJsonFieldsEnum {
   image___childMarkdownRemark___frontmatter___time_n
   image___childMarkdownRemark___frontmatter___time_s
   image___childMarkdownRemark___frontmatter___time_e
-  image___childMarkdownRemark___frontmatter___contentpath
-  image___childMarkdownRemark___frontmatter___alt
   image___childMarkdownRemark___frontmatter___type
   image___childMarkdownRemark___frontmatter___author
   image___childMarkdownRemark___excerpt @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
