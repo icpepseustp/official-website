@@ -1,53 +1,16 @@
+/* eslint-disable react/prop-types */
 import classNames from "classnames"
-import { StaticImage } from "gatsby-plugin-image"
+import { graphql, Link } from "gatsby"
+import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image"
 import { useState } from "react"
 import { BsArrowRight } from "react-icons/bs"
-import {
-  FaDiscord,
-  FaFacebookF,
-  FaRegNewspaper,
-  FaRegStar,
-  FaTwitter,
-} from "react-icons/fa"
+import { FaRegNewspaper, FaRegStar } from "react-icons/fa"
 import Seo from "../components/Seo"
 import Spinner from "../components/Spinner"
 import hero from "../images/home/bg.gif"
+import Social from "../components/Social"
 
-const platforms = [
-  {
-    icon: FaFacebookF,
-    text: "Facebook",
-    url: "https://www.facebook.com/icpep.se.ustp/",
-  },
-  {
-    icon: FaDiscord,
-    text: "Discord",
-    url: "https://discord.gg/Dc9dJ7hfDD",
-  },
-  {
-    icon: FaTwitter,
-    text: "Twitter",
-    url: "https://twitter.com/ustp_icpepse",
-  },
-]
-
-const posts = [
-  {
-    title: "Good news! CpE certification finally underway for new grads",
-    lead: "Computer Engineering professionals and graduates alike can now apply for certification.",
-    url: "#",
-    thumbnail: false,
-  },
-  {
-    title: "Lore unfolds: CpE Days '22 finally underway",
-    lead: "After an overwhelming academic year, we deserve some unwinding. It is our time to gather as a pact and venture the night of Silverwood.",
-    url: "#",
-    // todo: thumbnail is not boolean
-    thumbnail: true,
-  },
-]
-
-function IndexPage() {
+function IndexPage({ data }) {
   const [heroLoaded, setHeroLoaded] = useState(false)
 
   return (
@@ -78,7 +41,7 @@ function IndexPage() {
       {/* WHO WE ARE */}
       <section className="mt-3 border-t-2 border-black xl:mt-4">
         <article className="flex flex-col md:flex-row-reverse md:justify-center">
-          <div className="flex place-items-center bg-primary px-16 py-12 md:basis-1/2">
+          <div className="flex place-items-center bg-primary px-8 py-12 md:basis-1/2 lg:px-16">
             <div>
               <span className="flex items-center gap-x-3">
                 <FaRegStar className="md:h-6 md:w-6" />
@@ -91,14 +54,14 @@ function IndexPage() {
                 Department of Computer Engineering in USTP-CDO.
               </p>
 
-              <div
-                to="#"
+              <Link
+                to="about"
                 title="Coming Soon!"
                 className="float-right flex cursor-pointer items-center gap-x-3 font-montserrat font-semibold lg:text-lg xl:text-xl"
               >
                 <small>Read More</small>
                 <BsArrowRight />
-              </div>
+              </Link>
             </div>
           </div>
 
@@ -113,63 +76,88 @@ function IndexPage() {
 
       {/* FEATURED */}
       <section className="border-t-2 border-black">
-        <div className="flex flex-col bg-white px-10 py-8">
+        <div className="flex flex-col bg-white px-6 py-8 lg:px-10">
           <span className="flex items-center gap-x-3">
             <FaRegNewspaper className="md:h-6 md:w-6" />
             <h2 className="text-lg font-light lg:text-2xl">Featured</h2>
           </span>
 
-          <div className="my-8 grid grid-cols-1 place-items-center gap-y-12 md:my-4 md:grid-cols-2">
-            {posts.map(({ title, lead, thumbnail }) => (
-              <article key={title} className="feature-article">
-                {thumbnail && (
-                  <StaticImage
-                    src="../images/home/cpe-days-2022.jpg"
-                    className="md:h-36 lg:h-52"
-                    alt={title}
-                  />
-                )}
-
-                <h4 className="my-4 font-libre text-base font-bold leading-tight">
-                  {title}
-                </h4>
-                <p className="font-montserrat leading-tight">{lead}</p>
-
-                <div
-                  title="Coming Soon!"
-                  className="float-right mt-6 flex cursor-pointer items-center gap-x-3 font-montserrat font-semibold lg:text-lg xl:text-xl"
+          {data.featured.nodes.length > 0 ? (
+            <div className="my-8 grid grid-cols-1 place-items-center gap-y-12 md:my-4 md:grid-cols-2">
+              {data.featured.nodes.map((post) => (
+                <article
+                  key={post.frontmatter.title}
+                  className="feature-article"
                 >
-                  <small>Read More</small>
-                  <BsArrowRight />
-                </div>
-              </article>
-            ))}
-          </div>
+                  {post.frontmatter.thumbnail && (
+                    <GatsbyImage
+                      key={post.frontmatter.thumbnail}
+                      className="md:h-36 lg:h-52"
+                      image={getImage(
+                        post.frontmatter.thumbnail.childImageSharp
+                      )}
+                      alt={post.frontmatter.alt}
+                    />
+                  )}
+                  <h4 className="my-4 font-libre text-base font-bold leading-tight">
+                    {post.frontmatter.title}
+                  </h4>
+                  <p className="font-montserrat leading-tight">
+                    {post.frontmatter.description}
+                  </p>
+
+                  <Link
+                    title="Read more"
+                    className="float-right mt-6 flex cursor-pointer items-center gap-x-3 font-montserrat font-semibold lg:text-lg xl:text-xl"
+                    to={post.fields.slug}
+                  >
+                    <small>Read More</small>
+                    <BsArrowRight />
+                  </Link>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div className="flex h-[250px] w-full items-center">
+              <p className="w-full text-center">No featured posts.</p>
+            </div>
+          )}
         </div>
       </section>
 
-      <section className="border-t-2 border-black px-4 py-10 font-montserrat text-sm md:py-16 md:px-8 md:text-base lg:text-lg xl:px-12 xl:py-24 xl:text-2xl">
-        <header className="mb-4 xl:mb-8">
-          <h3>Get Connected!</h3>
-          <h4>Follow us on our social media platforms.</h4>
-        </header>
-
-        <div className="flex gap-x-6 xl:gap-x-12">
-          {platforms.map(({ icon: PlatformIcon, url, text }) => (
-            <a
-              key={text}
-              href={url}
-              className="flex items-center gap-x-1.5 xl:gap-x-4"
-            >
-              <PlatformIcon />
-
-              <small className="font-bold">{text}</small>
-            </a>
-          ))}
-        </div>
-      </section>
+      <Social />
     </main>
   )
 }
+
+export const pageQuery = graphql`
+  query {
+    featured: allMarkdownRemark(
+      filter: {
+        fileAbsolutePath: { regex: "/(featured)/" }
+        frontmatter: { contentpath: { eq: "featured" } }
+      }
+      sort: { order: DESC, fields: frontmatter___date }
+      limit: 2
+    ) {
+      nodes {
+        frontmatter {
+          description
+          thumbnail {
+            childImageSharp {
+              gatsbyImageData(placeholder: BLURRED, height: 520, width: 820)
+            }
+          }
+          title
+          alt
+        }
+        fields {
+          slug
+        }
+        html
+      }
+    }
+  }
+`
 
 export default IndexPage

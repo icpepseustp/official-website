@@ -6,3 +6,6 @@ public
 
 # Gatsby APIs
 gatsby-*.js
+
+# Local Netlify folder
+.netlify

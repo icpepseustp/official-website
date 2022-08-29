@@ -2,9 +2,9 @@ import { Link } from "gatsby"
 
 const routes = [
   { text: "Home", path: "/" },
-  // { text: "Blog", path: "/#blog" },
+  { text: "Blog", path: "/blog" },
   { text: "About", path: "/about" },
-  // { text: "Contact", path: "/#contact" },
+  { text: "Contact", path: "/contact" },
 ]
 
 function Navbar() {
@@ -30,7 +30,6 @@ function Navbar() {
           {Array(25)
             .fill("ICpEP.SE")
             .map((str, i) => (
-              // eslint-disable-next-line react/no-array-index-key
               <span key={i} className="after:content-['*/']">
                 {str}{" "}
               </span>
