@@ -3,7 +3,7 @@ contentpath: blog
 title: The WOW Factor
 description: A brief overview of what’s to expect in USTP’s upcoming Week of Welcome.
 date: 2022-08-29T10:30:06.466Z
-author: Wilgen Melendez
+author: ICpEP.SE - USTP | Wilgen Melendez
 type: Article
 ---
 USTP’s Week of Welcome has been an annual 3-day event composed of multiple fun and exciting activities, to warmly welcome and celebrate the coming of new freshmen. Looking back from the past the first ever WOW happened on the 11th, 13th, and 14th of June in the year of 2018. 
