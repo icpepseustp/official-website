@@ -112,7 +112,7 @@ collections:
           picker_utc: false,
         }
 
-  - name: "featured blog"
+  - name: "featured-blog"
     label: "Featured Blog"
     folder: "content/featured"
     create: true
@@ -139,7 +139,7 @@ collections:
         }
       - { label: "Body", name: "body", widget: "markdown" }
 
-  - name: "homepage featured"
+  - name: "homepage-featured"
     label: "Homepage Featured"
     folder: "content/featured"
     create: true
