@@ -5,7 +5,8 @@ description: The ICpEP.SE Bridging Program served as the freshmen's jumpstart
   for their college life.
 date: 2022-08-30T05:18:59.967Z
 thumbnail: bridging-class.png
-alt: bridging-class.png
+alt: bridging-class
+author: N/A
 type: Article
 ---
 ![bridging-class.png](bridging-class.png "Bridging Class")
