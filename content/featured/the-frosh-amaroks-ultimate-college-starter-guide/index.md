@@ -1,6 +1,6 @@
 ---
 contentpath: blog
-title: THE FROSH AMAROKS’ ULTIMATE COLLEGE STARTER GUIDE
+title: The Frosh AMAROKS’ Ultimate College Starter Guide
 description: It’s been almost two and a half years since the pandemic emerged,
   also maybe some of you just started your final years of high school. Since
   then, our learning modalities shifted to a virtual paradigm.
