@@ -50,7 +50,7 @@ Small talk can be hard to make with strangers. All the usual questions are so cl
 
 ***Join clubs or organizations***
 
-This is the easiest way to build or broaden your social circle. The USTP-CDO campus has a lot of organizations in both academic and curricular areas. ICpEP.SE is one of them, so why not volunteer on becoming one of us? Surely, you’ll find friends who will empathize with your academic dilemmas here at the same time, contribute to your department as a volunteer. To register you can follow this link \[ICPEERS Volunteers](https://www.facebook.com/icpep.se.ustp). Of course, your options are not limited to academic organizations. There are other curricular organizations that will surely pique your interest. The list can be found here \[USTP-CDO](https://www.ustp.edu.ph/cdeo/).
+This is the easiest way to build or broaden your social circle. The USTP-CDO campus has a lot of organizations in both academic and curricular areas. ICpEP.SE is one of them, so why not volunteer on becoming one of us? Surely, you’ll find friends who will empathize with your academic dilemmas here at the same time, contribute to your department as a volunteer. To register you can follow this link [ICPEERS Volunteers](https://www.facebook.com/icpep.se.ustp). Of course, your options are not limited to academic organizations. There are other curricular organizations that will surely pique your interest. The list can be found here [USTP-CDO](https://www.ustp.edu.ph/cdeo/).
 
 ***COLLEGE IS NOT A RACE***
 
