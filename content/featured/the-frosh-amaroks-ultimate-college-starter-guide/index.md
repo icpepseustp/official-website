@@ -20,7 +20,7 @@ Welcome to your new home, trailblazers! What is the number one thing you should 
 
 The University of Science and Technology of Southern Philippines (USTP) is a state university established on August 16, 2016 by virtue of Republic Act 10919 through the amalgamation of the Mindanao University of Science and Technology (MUST) in Cagayan de Oro City, Misamis Oriental and the Misamis Oriental State College of Agriculture and Technology (MOSCAT) in Claveria, Misamis Oriental. Both campuses are located in Northern Mindanao, the Gateway to Mindanao, which offers a strategic locational advantage for the institution to train and develop students from all the other regions of Mindanao.
 
-Curious? You can learn more about USTP here [USTP Hompage](https://www.ustp.edu.ph/)
+Curious? You can learn more about USTP here [USTP Homepage](https://www.ustp.edu.ph/)
 
 **2.  YOUR COURSE - COMPUTER ENGINEERING**
 
@@ -50,7 +50,7 @@ Small talk can be hard to make with strangers. All the usual questions are so cl
 
 ***Join clubs or organizations***
 
-This is the easiest way to build or broaden your social circle. The USTP-CDO campus has a lot of organizations in both academic and curricular areas. ICpEP.SE is one of them, so why not volunteer on becoming one of us? Surely, you’ll find friends who will empathize with your academic dilemmas here at the same time, contribute to your department as a volunteer. To register you can follow this link \[ICPEERS Volunteers](https://www.facebook.com/icpep.se.ustp). Of course, your options are not limited to academic organizations. There are other curricular organizations that will surely pique your interest. The list can be found here \[USTP-CDO](https://www.ustp.edu.ph/cdeo/).
+This is the easiest way to build or broaden your social circle. The USTP-CDO campus has a lot of organizations in both academic and curricular areas. ICpEP.SE is one of them, so why not volunteer on becoming one of us? Surely, you’ll find friends who will empathize with your academic dilemmas here at the same time, contribute to your department as a volunteer. To register you can follow this link [ICPEERS Volunteers](https://www.facebook.com/icpep.se.ustp). Of course, your options are not limited to academic organizations. There are other curricular organizations that will surely pique your interest. The list can be found here [USTP-CDO](https://www.ustp.edu.ph/cdeo/).
 
 ***COLLEGE IS NOT A RACE***
 
