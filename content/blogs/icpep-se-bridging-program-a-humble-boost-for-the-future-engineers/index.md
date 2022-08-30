@@ -18,4 +18,6 @@ The 20-day program is held every weekday from July 25 to August 26. It took plac
 
 A little over 45 students attended, and displayed great participation during the program. They asked questions frequently and answered on-the-spot questions from the tutors seamlessly. Each session was not just a formal tutorial but there was also a hint of bonding between the freshmen and their seniors and/or ICpEP.SE USTP co-members. With the efforts of the ICpEP.SE Bridging Program head–Robby William Sacote, facilitators–Ryand Ysteen Agnes, Gio Noval, Racel Antivola; and the tutors, the ICpEP.SE Bridging marked and ended successful on August 26th of 2022.
 
-Although the program has ended, the journey of the future engineers has yet to start. May this program helped the freshmen start up their college journey and may it also helped them warm up to their ICpEP.SE USTP co-members. Just like what John Maxwell coined "Teamwork makes the Dream Work".
+Although the program has ended, the journey of the future engineers has yet to start. May this program helped the freshmen start up their college journey and may it also helped them warm up to their ICpEP.SE USTP co-members. 
+
+> Just like what John Maxwell coined "Teamwork makes the Dream Work".
