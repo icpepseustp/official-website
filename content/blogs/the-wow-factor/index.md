@@ -10,6 +10,10 @@ USTP’s Week of Welcome has been an annual 3-day event composed of multiple fun
 
 ![ustp-wow-2018](ustp-wow-2018.png "USTP WoW 2018")
 
+<a href='https://web.facebook.com/ustp2016/photos/a.426065421195477/426073121194707'>
+<p style="text-align: center; font-style: italic; margin-top: -10px;">Photo by: Renz Osa (USTP System) via USTP FB Page</p>
+</a>
+
 Ever since then, it has been USTP’s tradition to celebrate it yearly, and even a pandemic could not stop us from celebrating it. For the years 2020 and 2021 WOW was celebrated virtually due to covid. However, it did not hinder us from celebrating an amazing event, with loads of fun and activities in store for the students. It is always an event to look out for not just for the freshmen but for everyone in USTP, especially now that we finally have a chance to experience it first-hand and in actual and physical form, of course prompting that we all follow health protocols. How breath-taking would it be now that we are finally free from the chains of lockdowns and the pandemic, after being at home for so long I’m sure all of us will make this a worthwhile moment to enjoy. It will truly start as a huge bang that will end up becoming everything. 
 
 > Wear your space suits and get ready for the orientation that will help you learn the hacks of surviving the universe of college as you venture forward in your journey to the galaxy of USTP.
