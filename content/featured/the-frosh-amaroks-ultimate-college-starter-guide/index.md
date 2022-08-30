@@ -10,6 +10,8 @@ alt: cpe-guide-book
 author: ICpEP.SE - USTP | Precious Hope Jumuad
 type: Article
 ---
+![cpe-guide-book.jpg](cpe-guide-book.jpg "CPE Guide Book")
+
 It’s been almost two and a half years since the pandemic emerged, also maybe some of you just started your final years of high school. Since then, our learning modalities shifted to a virtual paradigm. We, especially students, were all in the same storm but in different boats. Some had a rocky, uncomfortable experiences, some may have an easy ride. Nevertheless, our experiences all had a common denomination and that is, we survived. Yes! We survived! Take it in for a moment, then breathe out to realize that you are a collegian now! You are now adults ready to enter a new milestone in your life. But don’t be afraid for we are here to help you in your transition with the ultimate starter pack!
 
 **1.  THE HOME OF THE TRAILBLAZERS – USTP**
