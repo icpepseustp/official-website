@@ -20,7 +20,7 @@ Welcome to your new home, trailblazers! What is the number one thing you should 
 
 The University of Science and Technology of Southern Philippines (USTP) is a state university established on August 16, 2016 by virtue of Republic Act 10919 through the amalgamation of the Mindanao University of Science and Technology (MUST) in Cagayan de Oro City, Misamis Oriental and the Misamis Oriental State College of Agriculture and Technology (MOSCAT) in Claveria, Misamis Oriental. Both campuses are located in Northern Mindanao, the Gateway to Mindanao, which offers a strategic locational advantage for the institution to train and develop students from all the other regions of Mindanao.
 
-Curious? You can learn more about USTP here [USTP Hompage](https://www.ustp.edu.ph/)
+Curious? You can learn more about USTP here [USTP Homepage](https://www.ustp.edu.ph/)
 
 **2.  YOUR COURSE - COMPUTER ENGINEERING**
 
