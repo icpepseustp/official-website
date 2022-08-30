@@ -8,7 +8,7 @@ function BlogItems({ data, type }) {
     return (
       <div className="flex max-w-full p-6 lg:w-1/2">
         {data.frontmatter.thumbnail ? (
-          <>
+          <div>
             <GatsbyImage
               className="h-48 max-h-full lg:h-60"
               image={getImage(data.frontmatter.thumbnail.childImageSharp)}
@@ -40,7 +40,7 @@ function BlogItems({ data, type }) {
                 </span>
               </Link>
             </div>
-          </>
+          </div>
         ) : (
           <div className="max-w-full basis-full bg-white p-4 lg:grow">
             <p className="mb-0.5 mt-2.5 text-xs uppercase text-gray-700 lg:mb-0 lg:text-base">
