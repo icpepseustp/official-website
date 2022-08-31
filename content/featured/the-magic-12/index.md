@@ -17,3 +17,7 @@ Achieving this degree is the biggest accomplishment for the Computer Engineering
 Congratulations and God bless to these 12 graduates of batch 2022. We wish you the best of luck as you embark and pursue your future careers. We knew that the Computer Engineering program was not an easy path, but these graduates showed that we could make it. Indeed, college life is not gentle  nor magical. We can't just say “OPEN SESAME!" or "ABRACADABRA!” and then expect success to pop up. It takes dedication, discipline, and hard work. These are the keys to unlock the magical doors, so that one day, we'll be able to say, "VIOLA!, I DID IT.".
 
 ![the-awardees.png](the-awardees.png "The Awardees")
+
+
+
+This post was written by: ICpEP.SE - USTP | Veejay D. Dandasan
