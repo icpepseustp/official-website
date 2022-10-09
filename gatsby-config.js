@@ -106,5 +106,16 @@ module.exports = {
     "gatsby-plugin-extract-schema",
     "gatsby-plugin-slug",
     "gatsby-plugin-netlify",
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          "G-7N2FE5ZEH4", // Google Analytics / GA
+        ],
+        pluginConfig: {
+          head: true,
+        },
+      },
+    },
   ],
 }
