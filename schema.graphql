@@ -365,8 +365,6 @@ type Site implements Node {
     locale: String
   ): Date
   siteMetadata: SiteSiteMetadata
-  port: Int
-  host: String
   jsxRuntime: String
   trailingSlash: String
   polyfill: Boolean
@@ -800,10 +798,10 @@ type MarkdownRemarkFrontmatter {
     # Configures the locale Moment.js will use to format the date.
     locale: String
   ): Date
-  thumbnail: File
-  alt: String
   author: String
   type: String
+  thumbnail: File
+  alt: String
   date_s: String
   date_e: String
   date_m: Boolean
@@ -883,7 +881,7 @@ type Query {
   allFile(filter: FileFilterInput, sort: FileSortInput, skip: Int, limit: Int): FileConnection!
   directory(sourceInstanceName: StringQueryOperatorInput, absolutePath: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, extension: StringQueryOperatorInput, size: IntQueryOperatorInput, prettySize: StringQueryOperatorInput, modifiedTime: DateQueryOperatorInput, accessTime: DateQueryOperatorInput, changeTime: DateQueryOperatorInput, birthTime: DateQueryOperatorInput, root: StringQueryOperatorInput, dir: StringQueryOperatorInput, base: StringQueryOperatorInput, ext: StringQueryOperatorInput, name: StringQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, dev: IntQueryOperatorInput, mode: IntQueryOperatorInput, nlink: IntQueryOperatorInput, uid: IntQueryOperatorInput, gid: IntQueryOperatorInput, rdev: IntQueryOperatorInput, ino: FloatQueryOperatorInput, atimeMs: FloatQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, atime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, ctime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Directory
   allDirectory(filter: DirectoryFilterInput, sort: DirectorySortInput, skip: Int, limit: Int): DirectoryConnection!
-  site(buildTime: DateQueryOperatorInput, siteMetadata: SiteSiteMetadataFilterInput, port: IntQueryOperatorInput, host: StringQueryOperatorInput, jsxRuntime: StringQueryOperatorInput, trailingSlash: StringQueryOperatorInput, polyfill: BooleanQueryOperatorInput, pathPrefix: StringQueryOperatorInput, graphqlTypegen: BooleanQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Site
+  site(buildTime: DateQueryOperatorInput, siteMetadata: SiteSiteMetadataFilterInput, jsxRuntime: StringQueryOperatorInput, trailingSlash: StringQueryOperatorInput, polyfill: BooleanQueryOperatorInput, pathPrefix: StringQueryOperatorInput, graphqlTypegen: BooleanQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Site
   allSite(filter: SiteFilterInput, sort: SiteSortInput, skip: Int, limit: Int): SiteConnection!
   siteFunction(functionRoute: StringQueryOperatorInput, pluginName: StringQueryOperatorInput, originalAbsoluteFilePath: StringQueryOperatorInput, originalRelativeFilePath: StringQueryOperatorInput, relativeCompiledFilePath: StringQueryOperatorInput, absoluteCompiledFilePath: StringQueryOperatorInput, matchPath: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): SiteFunction
   allSiteFunction(filter: SiteFunctionFilterInput, sort: SiteFunctionSortInput, skip: Int, limit: Int): SiteFunctionConnection!
@@ -1077,10 +1075,10 @@ input MarkdownRemarkFrontmatterFilterInput {
   contentpath: StringQueryOperatorInput
   description: StringQueryOperatorInput
   date: DateQueryOperatorInput
-  thumbnail: FileFilterInput
-  alt: StringQueryOperatorInput
   author: StringQueryOperatorInput
   type: StringQueryOperatorInput
+  thumbnail: FileFilterInput
+  alt: StringQueryOperatorInput
   date_s: StringQueryOperatorInput
   date_e: StringQueryOperatorInput
   date_m: BooleanQueryOperatorInput
@@ -1470,6 +1468,8 @@ enum FileFieldsEnum {
   childrenMarkdownRemark___frontmatter___contentpath
   childrenMarkdownRemark___frontmatter___description
   childrenMarkdownRemark___frontmatter___date
+  childrenMarkdownRemark___frontmatter___author
+  childrenMarkdownRemark___frontmatter___type
   childrenMarkdownRemark___frontmatter___thumbnail___sourceInstanceName
   childrenMarkdownRemark___frontmatter___thumbnail___absolutePath
   childrenMarkdownRemark___frontmatter___thumbnail___relativePath
@@ -1514,8 +1514,6 @@ enum FileFieldsEnum {
   childrenMarkdownRemark___frontmatter___thumbnail___id
   childrenMarkdownRemark___frontmatter___thumbnail___children
   childrenMarkdownRemark___frontmatter___alt
-  childrenMarkdownRemark___frontmatter___author
-  childrenMarkdownRemark___frontmatter___type
   childrenMarkdownRemark___frontmatter___date_s
   childrenMarkdownRemark___frontmatter___date_e
   childrenMarkdownRemark___frontmatter___date_m
@@ -1583,6 +1581,8 @@ enum FileFieldsEnum {
   childMarkdownRemark___frontmatter___contentpath
   childMarkdownRemark___frontmatter___description
   childMarkdownRemark___frontmatter___date
+  childMarkdownRemark___frontmatter___author
+  childMarkdownRemark___frontmatter___type
   childMarkdownRemark___frontmatter___thumbnail___sourceInstanceName
   childMarkdownRemark___frontmatter___thumbnail___absolutePath
   childMarkdownRemark___frontmatter___thumbnail___relativePath
@@ -1627,8 +1627,6 @@ enum FileFieldsEnum {
   childMarkdownRemark___frontmatter___thumbnail___id
   childMarkdownRemark___frontmatter___thumbnail___children
   childMarkdownRemark___frontmatter___alt
-  childMarkdownRemark___frontmatter___author
-  childMarkdownRemark___frontmatter___type
   childMarkdownRemark___frontmatter___date_s
   childMarkdownRemark___frontmatter___date_e
   childMarkdownRemark___frontmatter___date_m
@@ -2932,8 +2930,6 @@ enum SiteFieldsEnum {
   siteMetadata___siteUrl
   siteMetadata___image
   siteMetadata___keywords
-  port
-  host
   jsxRuntime
   trailingSlash
   polyfill
@@ -3051,8 +3047,6 @@ type SiteGroupConnection {
 input SiteFilterInput {
   buildTime: DateQueryOperatorInput
   siteMetadata: SiteSiteMetadataFilterInput
-  port: IntQueryOperatorInput
-  host: StringQueryOperatorInput
   jsxRuntime: StringQueryOperatorInput
   trailingSlash: StringQueryOperatorInput
   polyfill: BooleanQueryOperatorInput
@@ -3915,6 +3909,8 @@ enum MarkdownRemarkFieldsEnum {
   frontmatter___contentpath
   frontmatter___description
   frontmatter___date
+  frontmatter___author
+  frontmatter___type
   frontmatter___thumbnail___sourceInstanceName
   frontmatter___thumbnail___absolutePath
   frontmatter___thumbnail___relativePath
@@ -4048,8 +4044,6 @@ enum MarkdownRemarkFieldsEnum {
   frontmatter___thumbnail___internal___type
   frontmatter___thumbnail___internal___contentFilePath
   frontmatter___alt
-  frontmatter___author
-  frontmatter___type
   frontmatter___date_s
   frontmatter___date_e
   frontmatter___date_m
@@ -4570,9 +4564,9 @@ enum ExecutivesJsonFieldsEnum {
   image___childrenMarkdownRemark___frontmatter___contentpath
   image___childrenMarkdownRemark___frontmatter___description
   image___childrenMarkdownRemark___frontmatter___date
-  image___childrenMarkdownRemark___frontmatter___alt
   image___childrenMarkdownRemark___frontmatter___author
   image___childrenMarkdownRemark___frontmatter___type
+  image___childrenMarkdownRemark___frontmatter___alt
   image___childrenMarkdownRemark___frontmatter___date_s
   image___childrenMarkdownRemark___frontmatter___date_e
   image___childrenMarkdownRemark___frontmatter___date_m
@@ -4614,9 +4608,9 @@ enum ExecutivesJsonFieldsEnum {
   image___childMarkdownRemark___frontmatter___contentpath
   image___childMarkdownRemark___frontmatter___description
   image___childMarkdownRemark___frontmatter___date
-  image___childMarkdownRemark___frontmatter___alt
   image___childMarkdownRemark___frontmatter___author
   image___childMarkdownRemark___frontmatter___type
+  image___childMarkdownRemark___frontmatter___alt
   image___childMarkdownRemark___frontmatter___date_s
   image___childMarkdownRemark___frontmatter___date_e
   image___childMarkdownRemark___frontmatter___date_m
