@@ -9,7 +9,7 @@ description: "This year’s CPE General Assembly with the theme REBOOT is a
 date: 2023-01-02T09:32:28.560Z
 thumbnail: 316602563_5801172273303062_3044435899382207648_n.png
 alt: icpep-genass-2022
-author: Precious Hope T. Jumuad, Associate Secretary
+author: Precious Hope T. Jumuad, Associate Secretary, ICpEP.SE - USTP
 type: Event
 ---
 ![no-alt](316602563_5801172273303062_3044435899382207648_n.png "no-title")
