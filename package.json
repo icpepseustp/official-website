@@ -3,14 +3,9 @@
   "version": "0.2.4",
   "private": true,
   "description": "ICpEP.SE USTP Official Website",
-  "author": "",
-  "keywords": [
-    "icpepse",
-    "ustp"
-  ],
   "scripts": {
-    "develop": "gatsby develop",
-    "start": "gatsby develop",
+    "dev": "gatsby develop",
+    "start": "yarn dev",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
@@ -19,13 +14,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "stylecheck": "yarn format:checkonly && yarn lint",
-    "stylefix": "yarn format && yarn lint:fix",
-    "release": "standard-version -s --releaseCommitMessageFormat \"chore(release): v{{currentTag}} [skip ci]\""
-  },
-  "standard-version": {
-    "skip": {
-      "tag": true
-    }
+    "stylefix": "yarn format && yarn lint:fix"
   },
   "dependencies": {
     "@fontsource/libre-baskerville": "4.5.2",
