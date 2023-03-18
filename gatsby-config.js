@@ -1,3 +1,10 @@
+function resolveSourceFS(name, path) {
+  return {
+    resolve: "gatsby-source-filesystem",
+    options: { name, path },
+  }
+}
+
 /** @type {import("gatsby").GatsbyConfig} */
 module.exports = {
   jsxRuntime: "automatic",
@@ -11,22 +18,36 @@ module.exports = {
     keywords: ["ustp", "icpep"],
   },
   plugins: [
-    "gatsby-plugin-image",
-    "gatsby-plugin-react-helmet",
-    "gatsby-plugin-sitemap",
+    resolveSourceFS("content", "./content/"),
+    resolveSourceFS("images", "./src/images/"),
+    resolveSourceFS("pages", "./src/pages/"),
+    resolveSourceFS("uploads", "./static/"),
+    resolveSourceFS("data", "./src/data/"),
+
     {
       resolve: "gatsby-plugin-manifest",
       options: {
         icon: "src/images/icon.png",
       },
     },
-    //! Temporarily disabled. See https://github.com/gatsbyjs/gatsby/issues/34706
-    // "gatsby-plugin-mdx",
+
+    "gatsby-plugin-sitemap",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     "gatsby-transformer-json",
+    "gatsby-plugin-image",
+    "gatsby-plugin-postcss",
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-slug",
+    "gatsby-plugin-extract-schema",
+    "gatsby-plugin-netlify-cms",
+    "gatsby-plugin-netlify",
+
+    //! Temporarily disabled. See https://github.com/gatsbyjs/gatsby/issues/34706
+    // "gatsby-plugin-mdx",
+
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
           {
@@ -46,74 +67,35 @@ module.exports = {
           },
           "gatsby-remark-relative-images",
           {
-            resolve: `gatsby-remark-images`,
+            resolve: "gatsby-remark-images",
             options: { maxWidth: 1024 },
           },
           {
-            resolve: `gatsby-remark-responsive-iframe`,
+            resolve: "gatsby-remark-responsive-iframe",
             options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
+              wrapperStyle: "margin-bottom: 1.0725rem",
             },
           },
-          `gatsby-remark-prismjs`,
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`,
+          "gatsby-remark-prismjs",
+          "gatsby-remark-copy-linked-files",
+          "gatsby-remark-smartypants",
         ],
       },
     },
+
     {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "content",
-        path: "./content",
-      },
-      __key: "content",
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "images",
-        path: "./src/images/",
-      },
-      __key: "images",
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "pages",
-        path: "./src/pages/",
-      },
-      __key: "pages",
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "uploads",
-        path: "./static/",
-      },
-      __key: "uploads",
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "data",
-        path: "./src/data/",
-      },
-      __key: "data",
-    },
-    "gatsby-plugin-netlify-cms",
-    "gatsby-plugin-postcss",
-    "gatsby-plugin-extract-schema",
-    "gatsby-plugin-slug",
-    "gatsby-plugin-netlify",
-    {
-      resolve: `gatsby-plugin-google-gtag`,
+      resolve: "gatsby-plugin-google-gtag",
       options: {
         trackingIds: [
           "G-7N2FE5ZEH4", // Google Analytics / GA
         ],
+        gtagConfig: {
+          anonymize_ip: true,
+        },
         pluginConfig: {
+          respectDNT: true,
           head: true,
+          // TODO: make sure previews/dev deploys are not hit
         },
       },
     },
