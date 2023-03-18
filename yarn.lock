@@ -1847,30 +1847,30 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@fontsource/libre-baskerville@4.5.2":
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/@fontsource/libre-baskerville/-/libre-baskerville-4.5.2.tgz#cac00e49c68e538e3d050400d38f71952a8fe8c7"
-  integrity sha512-yFBfEvdzQnJPiqog0Oro2S5pY3UwvtusxewDsOAaFfBmj1O1yTVKeKP3zJHqQ9jvfR/MpkdwRR1qHj/wQdqieQ==
+"@fontsource/libre-baskerville@4.5.10":
+  version "4.5.10"
+  resolved "https://registry.yarnpkg.com/@fontsource/libre-baskerville/-/libre-baskerville-4.5.10.tgz#31a22c5dd38bb70d024ce8c10ab236d68f16a42e"
+  integrity sha512-7dp2TxBSVlINiYe7LEuV/VojQij5oBSRIeS+/mOlCRXRyEKiEvK1y7sH8GlORqGxXYDKCDWtQaiCu1XPNchIKg==
 
-"@fontsource/montserrat@4.5.5":
-  version "4.5.5"
-  resolved "https://registry.yarnpkg.com/@fontsource/montserrat/-/montserrat-4.5.5.tgz#3408b8a20285a81b0743087bae5ed7aaa32c490c"
-  integrity sha512-JEFI803levuRx3D0Lry4WoM/Azrc3xpHlogi2022Y8ykaAenXvrjMym2BVU1W5QsuRIL86vrSUaxchO7Vk4CIw==
+"@fontsource/montserrat@4.5.14":
+  version "4.5.14"
+  resolved "https://registry.yarnpkg.com/@fontsource/montserrat/-/montserrat-4.5.14.tgz#5f4bfc5e7f234a986d94d9e7e7193f852e6971e3"
+  integrity sha512-fTvrteVzuFUePhr4QYBGoK8G/YHLJ3IhF1HhKg0AxcFvZajJT7rM7ULdmKLSd2PkX44R3aaFZq1zDbmjbGGI+w==
 
-"@fontsource/press-start-2p@4.5.1":
-  version "4.5.1"
-  resolved "https://registry.yarnpkg.com/@fontsource/press-start-2p/-/press-start-2p-4.5.1.tgz#5e6b9380dbb0ae26116310c57f73a511f1da76bb"
-  integrity sha512-VUhCH3hUv/zXdEEaTUk51h+7OoU0e7usSWyM49/NSKsnA01Jz9MF4y/aoUo4NMjsPUJ5eAISBFhb1RdoIZCsGA==
+"@fontsource/press-start-2p@4.5.11":
+  version "4.5.11"
+  resolved "https://registry.yarnpkg.com/@fontsource/press-start-2p/-/press-start-2p-4.5.11.tgz#c347ffc85221bac9b242cbbc54194b65d76c4f24"
+  integrity sha512-wICB8YPvoBi9Ok7s+CxAOljiQ6wqQN/UhrDrB63q9nudYDSOWmvrjFQaXSlj0AN16nAkDjZiaCz6dcKtR0kleg==
 
-"@fontsource/raleway@4.5.3":
-  version "4.5.3"
-  resolved "https://registry.yarnpkg.com/@fontsource/raleway/-/raleway-4.5.3.tgz#0a4477e037dbd9a4a26c1c9db3aa2bf93722b499"
-  integrity sha512-wJ8Rm8k5MuSnfERuL5Q1bd8Z80o3uWpC1vUmZAxcLXAY9IxnfGqZjZJ1Jd2lY1u5NaEo+zXCvHEViAIv6b1jEg==
+"@fontsource/raleway@4.5.12":
+  version "4.5.12"
+  resolved "https://registry.yarnpkg.com/@fontsource/raleway/-/raleway-4.5.12.tgz#25a7bc448a8440a46205e7259e1f8cb03fa59e18"
+  integrity sha512-uKs13d6NFWU4vf5LSDHK/cbaAw+UXkzz03fKjyvkKq8Nop+CeB6o8STEDkZD9/uOo3v3sgm59Wyw8uGWvxoCiA==
 
-"@fontsource/recursive@4.5.2":
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/@fontsource/recursive/-/recursive-4.5.2.tgz#689a836a4656c4d93a6d14161adc3762e33c824f"
-  integrity sha512-rqfeqXUyejFEbdw57dxpqtG175daamGClKHFrRgQt8oYdSuhjSBqoCGbbrAvot88JB22eNnX+sQrFsx1J+2YeA==
+"@fontsource/recursive@4.5.13":
+  version "4.5.13"
+  resolved "https://registry.yarnpkg.com/@fontsource/recursive/-/recursive-4.5.13.tgz#4d3a61638ac5604ca049fd285d35fbe99fcccf04"
+  integrity sha512-d40oYxlkac4rrDo/4GkdvkUopyc7WzAlX0vAuUzKVqh7X1qZlSteckvQWdPnjEFMG599JiwKXJK7qXLvgvwdYg==
 
 "@gatsbyjs/parcel-namer-relative-to-cwd@^1.10.0":
   version "1.10.0"

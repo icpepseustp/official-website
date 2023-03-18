@@ -17,11 +17,11 @@
     "stylefix": "yarn format && yarn lint:fix"
   },
   "dependencies": {
-    "@fontsource/libre-baskerville": "4.5.2",
-    "@fontsource/montserrat": "4.5.5",
-    "@fontsource/press-start-2p": "4.5.1",
-    "@fontsource/raleway": "4.5.3",
-    "@fontsource/recursive": "4.5.2",
+    "@fontsource/libre-baskerville": "4.5.10",
+    "@fontsource/montserrat": "4.5.14",
+    "@fontsource/press-start-2p": "4.5.11",
+    "@fontsource/raleway": "4.5.12",
+    "@fontsource/recursive": "4.5.13",
     "@material-ui/core": "4.12.4",
     "@material-ui/icons": "4.11.3",
     "@mdx-js/mdx": "2.0.0",
