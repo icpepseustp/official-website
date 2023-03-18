@@ -19,7 +19,7 @@ function BlogPage({ data: { markdownRemark: post, blog: _blog } }) {
           <div className="mb-8 p-2 pb-4">
             <section className="grid shrink items-center gap-y-2 px-4 md:grid-cols-3 md:gap-x-3 lg:my-4 lg:grid-cols-4 lg:gap-x-4 lg:px-6">
               {_blog.nodes.slice(0, 4).map((blog) => (
-                <BlogItems type="more" data={blog} />
+                <BlogItems key={blog.id} type="more" data={blog} />
               ))}
             </section>
           </div>

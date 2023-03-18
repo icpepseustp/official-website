@@ -86,7 +86,9 @@ function BlogPage({ data }) {
           {data.blog.nodes.length > 0 ? (
             data.blog.nodes
               .slice(0, 2)
-              .map((blog) => <BlogItems type="latest" data={blog} />)
+              .map((blog) => (
+                <BlogItems key={blog.fields.slug} type="latest" data={blog} />
+              ))
           ) : (
             <div className="flex h-60 max-h-full items-center">
               <p>No latest posts.</p>
@@ -102,7 +104,7 @@ function BlogPage({ data }) {
           </h2>
           <section className="grid shrink items-center gap-y-4 px-8 md:grid-cols-3 md:gap-x-3 lg:my-8 lg:grid-cols-4 lg:gap-x-4 lg:px-6">
             {data.blog.nodes.slice(2, 6).map((blog) => (
-              <BlogItems type="more" data={blog} />
+              <BlogItems key={blog.fields.slug} type="more" data={blog} />
             ))}
           </section>
         </div>
