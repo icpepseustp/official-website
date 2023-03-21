@@ -6,155 +6,522 @@ backend:
     create: "content: add new `{{collection}}` entry"
     update: "content: update `{{collection}}` entry"
     delete: "content: remove `{{collection}}` entry"
+    uploadMedia: "content(media): add `{{path}}`"
+    deleteMedia: "content(media): delete `{{path}}`"
 
-media_folder: "static/img"
-public_folder: "/uploads"
+media_folder: static/media
+public_folder: /media
 
 site_url: https://www.icpepse-ustp.org/
 publish_mode: editorial_workflow
 
 slug:
-  encoding: "ascii"
+  encoding: ascii
   clean_accents: true
   sanitize_replacement: "-"
 
 collections:
-  - name: "blog"
+  - name: blog
     label: "Blog"
-    folder: "content/blogs"
+    label_singular: "Blog Post"
+    folder: content/blog
     create: true
-    slug: "{{slug}}"
-    path: "{{slug}}/index"
+    path: "{{year}}/{{month}}/{{title}}/index"
+    preview_path: "blog/{{year}}/{{month}}/{{title}}"
+    view_groups:
+      - label: "Post Type"
+        field: type
+        pattern: "News|Event|Announcement|Article|Message"
+    view_filters:
+      - label: "Featured in Homepage"
+        field: isFeatured.home
+        pattern: true
+      - label: "Featured in Blog"
+        field: isFeatured.blog
+        pattern: true
+    sortable_fields: ["title", "date", "commit_date"]
     fields:
+      - { name: collection, widget: hidden, default: "blog" }
+      - { name: title, label: "Title", widget: string }
+
       - {
-          label: "ContentPath",
-          name: "contentpath",
-          widget: "hidden",
-          default: "blog",
+          name: summary,
+          label: "Summary",
+          widget: string,
+          pattern:
+            [".{25,175}", "Must have at least 25 and at most 175 characters"],
         }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
+
+      - name: isFeatured
+        label: "Featured"
+        widget: object
+        hint: "A maximum of 2/1 can be featured in Home/Blog respectively. If it exceeds, only the latest 2/1 will be shown."
+        fields:
+          - {
+              name: home,
+              label: "Home",
+              widget: boolean,
+              required: false,
+              default: false,
+            }
+
+          - {
+              name: blog,
+              label: "Blog",
+              widget: boolean,
+              required: false,
+              default: false,
+            }
+
       - {
-          label: "Thumbnail Image",
-          name: "thumbnail",
-          widget: "image",
-          required: false,
+          name: date,
+          label: "Publish Date",
+          widget: datetime,
+          picker_utc: false,
         }
+
+      - name: cover
+        label: "Cover Image"
+        widget: object
+        hint: "Will be used SEO purposes such as link previews."
+        fields:
+          - {
+              name: image,
+              label: "Source",
+              widget: image,
+              allow_multiple: false,
+            }
+
+          - {
+              name: alt,
+              label: "Caption",
+              widget: string,
+              hint: "When the image fails to load, this will be shown instead.",
+            }
+
       - {
-          label: "Thumbnail Alt Tag",
-          name: "alt",
-          widget: "string",
-          required: false,
-        }
-      - { label: "Author", name: "author", widget: "string", required: false }
-      - {
+          name: type,
           label: "Blog Type",
-          name: "type",
-          widget: "select",
+          widget: select,
           options: ["News", "Event", "Announcement", "Article", "Message"],
         }
-      - { label: "Body", name: "body", widget: "markdown" }
 
-  - name: "events"
+      - {
+          name: authors,
+          label: "Author/s",
+          widget: relation,
+          collection: "members",
+          default: [],
+          multiple: true,
+          value_field: "{{name.first}} {{name.last}}",
+          search_fields: ["name.first", "name.last", "isVolunteer"],
+          display_fields:
+            [
+              "name.first",
+              "name.last",
+              "{{isVolunteer | ternary('| VOLUNTEER','')}}",
+            ],
+          hint: "Type **true** to search for volunteers.",
+        }
+
+      - {
+          name: body,
+          label: "Body",
+          widget: markdown,
+          pattern: [".{500,}", "Must have at least 500 characters"],
+          hint: "For external videos (e.g. from YouTube), paste the link in the format: \\`video: <URL>\\`. The CMS will take care of the rest. **Note** that due to certain limitations, external videos cannot be shown in the preview.",
+        }
+
+      - {
+          name: tags,
+          label: "Tags",
+          widget: list,
+          min: 1,
+          max: 7,
+          required: false,
+          hint: "Will be used for categorizing and finding related posts. Separate each with a comma.",
+        }
+
+  - name: events
     label: "Events"
-    folder: "content/events"
+    label_singular: "Event"
+    folder: content/events
     create: true
-    slug: "{{slug}}"
-    path: "{{slug}}"
+    path: "{{year}}/{{month}}/{{title}}"
+    preview_path: "blog/"
+    view_filters:
+      - label: "With Timeline"
+        field: timeline
+        pattern: true
+    sortable_fields:
+      ["title", "date", "coverage.start", "coverage.end", "commit_date"]
     fields:
+      - { name: collection, widget: hidden, default: "events" }
+      - { name: title, label: "Event Name", widget: string }
+      - { name: summary, label: "Summary", widget: string }
+      - { name: date, label: "Announcement Date", widget: datetime }
+
+      - name: coverage
+        label: "Date Coverage"
+        widget: object
+        fields:
+          - {
+              name: start,
+              label: "Start",
+              widget: datetime,
+              date_format: MM-DD-YYYY,
+              time_format: false,
+            }
+
+          - {
+              name: end,
+              label: "End",
+              widget: datetime,
+              date_format: MM-DD-YYYY,
+              hint: "Unless a *timeline* is specified, the end time will not be shown and will only be used internally by the system.",
+            }
+
+      - name: timeline
+        label: "Timeline"
+        widget: list
+        summary: "{{fields.description}}"
+        collapsed: true
+        required: false
+        default: []
+        fields:
+          - {
+              name: description,
+              label: "Description",
+              widget: string,
+              required: false,
+              hint: "e.g. start time, lunch breaks, or specific activities that occur on a particular day",
+            }
+          - {
+              name: datetime,
+              label: "Date and Time",
+              widget: datetime,
+              required: false,
+              default: "",
+              hint: "The start date and time of a schedule. The end time will be automatically derived.",
+            }
+
       - {
-          label: "ContentPath",
-          name: "contentpath",
-          widget: "hidden",
-          default: "event",
+          name: link,
+          label: "Link with blog post",
+          widget: relation,
+          collection: "blog",
+          required: false,
+          value_field: "title",
+          search_fields: ["title", "type", "authors", "tags"],
+          display_fields: ["title"],
         }
-      - { label: "Event Name", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "string" }
-      - { label: "Created Date", name: "date", widget: "datetime" }
+
+  - name: executives
+    label: "Executives"
+    label_singular: "Executive"
+    folder: settings/executives
+    create: false
+    identifier_field: role
+    show_preview_links: false
+    editor:
+      preview: false
+    path: "{{role}}"
+    summary: "{{role}} | {{member}}"
+    sortable_fields: ["commit_date"]
+    fields:
+      - { name: collection, widget: hidden, default: "executives" }
+
       - {
-          label: "Event Start Date",
-          name: "date-s",
-          widget: "date",
-          date_format: "MMM-DD-YYYY",
+          name: member,
+          label: "Member",
+          widget: relation,
+          collection: "members",
+          value_field: "{{name.first}} {{name.last}}",
+          search_fields: ["name.first", "name.last"],
         }
+
       - {
-          label: "Multi-day Event",
-          name: "date-m",
-          widget: "boolean",
+          name: role,
+          label: "Role",
+          widget: select,
+          options:
+            [
+              "President",
+              "VP Internal",
+              "VP External",
+              "General Secretary",
+              "Associate Secretary",
+              "Treasurer",
+              "Associate Treasurer",
+              "Auditor",
+              "PIO",
+              "PIO External",
+            ],
+        }
+
+  - name: committees
+    label: "Committees"
+    label_singular: "Committee"
+    folder: settings/committees
+    create: false
+    identifier_field: committee
+    show_preview_links: false
+    editor:
+      preview: false
+    summary: "Committee on {{committee}}"
+    sortable_fields: ["commit_date"]
+    fields:
+      - { name: collection, widget: hidden, default: "committees" }
+
+      - {
+          name: committee,
+          label: "Committee",
+          widget: select,
+          options:
+            [
+              "Design",
+              "Academic Affairs",
+              "Extracurricular Activities",
+              "Sports",
+              "Documentation",
+              "ICpEERS.VE Lead",
+            ],
+        }
+
+      - {
+          name: members,
+          label: "Members",
+          widget: relation,
+          collection: "members",
+          multiple: true,
+          min: 1,
+          max: 3,
+          value_field: "{{name.first}} {{name.last}}",
+          search_fields: ["name.first", "name.last"],
+        }
+
+  - name: websters
+    label: "Websters"
+    label_singular: "Webster"
+    folder: settings/admin
+    create: false
+    identifier_field: team
+    show_preview_links: false
+    editor:
+      preview: false
+    summary: "The {{team}}"
+    sortable_fields: ["commit_date"]
+    fields:
+      - { name: collection, widget: hidden, default: "websters" }
+
+      - {
+          name: team,
+          label: "Team",
+          widget: select,
+          options:
+            ["Project Manager", "Developers", "Content Managers", "Designers"],
+        }
+
+      - {
+          name: members,
+          label: "Members",
+          widget: relation,
+          collection: "members",
+          multiple: true,
+          min: 1,
+          max: 4,
+          value_field: "{{name.first}} {{name.last}}",
+          search_fields: ["name.first", "name.last"],
+        }
+
+  - name: members
+    label: "Staff and Members"
+    label_singular: "Staff/Member"
+    folder: settings/members
+    create: true
+    identifier_field: name.last
+    path: "{{slug}}/index"
+    show_preview_links: false
+    editor:
+      preview: false
+    summary: "{{name.first}} {{name.last}}"
+    view_filters:
+      - label: "Volunteers"
+        field: isVolunteer
+        pattern: true
+    sortable_fields: ["name.first", "name.last", "commit_date"]
+    fields:
+      - { name: collection, widget: hidden, default: "members" }
+
+      - {
+          name: isVolunteer,
+          label: "Volunteer",
+          widget: boolean,
+          hint: "Check this if the person is a *temporary* member and is not part of the executives, committees, or website staff (e.g. one-time author of a post).",
           default: false,
-        }
-      - {
-          label: "Event End Date",
-          name: "date-e",
-          widget: "date",
-          date_format: "MMM-DD-YYYY",
           required: false,
         }
-      - {
-          label: "No Specified Time",
-          name: "time-n",
-          widget: "boolean",
-          default: false,
-        }
-      - {
-          label: "Start time",
-          name: "time-s",
-          widget: "datetime",
-          format: "hh:mma",
-          picker_utc: false,
-        }
-      - {
-          label: "End time",
-          name: "time-e",
-          widget: "datetime",
-          format: "hh:mma",
-          picker_utc: false,
-        }
 
-  - name: "featured-blog"
-    label: "Featured Blog"
-    folder: "content/featured"
-    create: true
-    slug: "{{slug}}"
-    path: "{{slug}}/index"
-    fields:
-      - {
-          label: "ContentPath",
-          name: "contentpath",
-          widget: "hidden",
-          default: "blog",
-        }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Thumbnail Image", name: "thumbnail", widget: "image" }
-      - { label: "Thumbnail Alt Tag", name: "alt", widget: "string" }
-      - { label: "Author", name: "author", widget: "string", required: false }
-      - {
-          label: "Blog Type",
-          name: "type",
-          widget: "select",
-          options: ["News", "Event", "Announcement", "Article", "Message"],
-        }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - name: name
+        label: "Name"
+        widget: object
+        fields:
+          - { name: first, label: "First Name", widget: string }
+          - {
+              name: middle,
+              label: "Middle Name",
+              widget: string,
+              required: false,
+            }
+          - { name: last, label: "Last Name", widget: string }
 
-  - name: "homepage-featured"
-    label: "Homepage Featured"
-    folder: "content/featured"
-    create: true
-    slug: "{{slug}}"
-    path: "{{slug}}/index"
-    fields:
-      - {
-          label: "ContentPath",
-          name: "contentpath",
-          widget: "hidden",
-          default: "featured",
-        }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Thumbnail Image", name: "thumbnail", widget: "image" }
-      - { label: "Thumbnail Alt Tag", name: "alt", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - name: avatar
+        label: "Avatar"
+        widget: object
+        required: false
+        fields:
+          - {
+              name: image,
+              label: "Source",
+              widget: image,
+              allow_multiple: false,
+              required: false,
+            }
+
+          - { name: alt, label: "Caption", widget: string, required: false }
+
+      # TBD
+      - name: links
+        label: "Social Media"
+        widget: object
+        collapsed: true
+        required: false
+        fields:
+          - {
+              name: facebook,
+              label: "Facebook",
+              widget: string,
+              required: false,
+            }
+
+          - {
+              name: instagram,
+              label: "Instagram",
+              widget: string,
+              required: false,
+            }
+
+          - { name: twitter, label: "Twitter", widget: string, required: false }
+
+  - name: settings
+    label: "Settings"
+    files:
+      - name: landing
+        label: "Landing Page"
+        file: settings/landing.yml
+        show_preview_links: false
+        editor:
+          preview: false
+        fields:
+          - name: hero
+            label: "Hero Section"
+            widget: object
+            fields:
+              - name: banner
+                label: "Banner"
+                widget: object
+                summary: "{{alt}}"
+                # TBD: final video host?
+                hint: "For videos, please upload it to YouTube first, paste the link in the URL, and leave the SOURCE widget blank."
+                fields:
+                  - { name: url, label: "URL", widget: string, required: false }
+
+                  - {
+                      name: src,
+                      label: "Source",
+                      widget: image,
+                      media_folder: /media/home,
+                      allow_multiple: false,
+                      required: false,
+                    }
+
+                  - { name: alt, label: "Caption", widget: string }
+
+              - name: lead
+                label: "Lead"
+                widget: object
+                summary: "{{text}}"
+                fields:
+                  - { name: text, label: "Introduction", widget: string }
+
+                  - name: cover
+                    label: "Cover Image"
+                    widget: object
+                    fields:
+                      - {
+                          name: src,
+                          label: "Source",
+                          widget: image,
+                          allow_multiple: false,
+                        }
+
+                      - {
+                          name: alt,
+                          label: "Caption",
+                          widget: string,
+                          hint: "If, for any reason, the image fails to load, this will be shown instead.",
+                        }
+
+      - name: platforms
+        label: "Social Platforms"
+        file: settings/platforms.yml
+        show_preview_links: false
+        editor:
+          preview: false
+        fields:
+          - name: platforms
+            label: "Platforms"
+            label_singular: "Platform"
+            widget: list
+            # allow_add: false
+            summary: "{{name}}"
+            fields:
+              - { name: label, label: "Label", widget: string }
+              - { name: name, label: "Name", widget: string }
+              - { name: url, label: "URL", widget: string }
+
+      - name: contacts
+        label: "Contact Information"
+        file: settings/contacts.yml
+        show_preview_links: false
+        editor:
+          preview: false
+        fields:
+          - name: contacts
+            label: "Contact Info"
+            widget: list
+            # allow_add: false
+            summary: "{{type}} | {{platform}}"
+            fields:
+              - {
+                  name: type,
+                  label: "Type",
+                  widget: select,
+                  # TBD
+                  options: ["Email", "Phone", "Landline"],
+                }
+              - {
+                  name: platform,
+                  label: "Platform",
+                  widget: select,
+                  # TBD
+                  options: ["SMS", "Calls", "Gmail"],
+                }
+              - { name: label, label: "Label", widget: string }
+              - {
+                  name: value,
+                  label: "Value",
+                  widget: string,
+                  required: false,
+                  hint: "The link/address used when the *label* is clicked. Omit to disable linking.",
+                }
