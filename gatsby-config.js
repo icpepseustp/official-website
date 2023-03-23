@@ -19,22 +19,21 @@ module.exports = {
   },
   plugins: [
     resolveSourceFS("content", "./content/"),
-    resolveSourceFS("images", "./src/images/"),
+    resolveSourceFS("settings", "./settings/"),
     resolveSourceFS("pages", "./src/pages/"),
-    resolveSourceFS("uploads", "./static/"),
-    resolveSourceFS("data", "./src/data/"),
+    resolveSourceFS("media", "./static/media/"),
 
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        icon: "src/images/icon.png",
+        icon: "static/media/icon.png",
       },
     },
 
     "gatsby-plugin-sitemap",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
-    "gatsby-transformer-json",
+    "gatsby-transformer-yaml",
     "gatsby-plugin-image",
     "gatsby-plugin-postcss",
     "gatsby-plugin-react-helmet",

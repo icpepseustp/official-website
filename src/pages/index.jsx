@@ -6,8 +6,8 @@ import { useState } from "react"
 import { BsArrowRight } from "react-icons/bs"
 import { FaRegNewspaper, FaRegStar } from "react-icons/fa"
 import Seo from "../components/Seo"
-import Spinner from "../components/Spinner"
-import hero from "../images/home/bg.gif"
+import Loader from "../components/Loader"
+import hero from "../../static/media/home/bg.gif"
 import Social from "../components/Social"
 
 function IndexPage({ data }) {
@@ -19,7 +19,7 @@ function IndexPage({ data }) {
 
       {!heroLoaded && (
         <div className="p-16 text-center md:p-32 lg:p-40 xl:p-64">
-          <Spinner />
+          <Loader />
         </div>
       )}
 
@@ -67,7 +67,7 @@ function IndexPage({ data }) {
 
           <div className="flex flex-1 p-4">
             <StaticImage
-              src="../images/home/cpe-exec-officers-2019.jpg"
+              src="../../static/media/home/cpe-exec-officers-2019.jpg"
               alt="Group photo of ICpEP.SE officers"
             />
           </div>
@@ -89,21 +89,21 @@ function IndexPage({ data }) {
                   key={post.frontmatter.title}
                   className="feature-article"
                 >
-                  {post.frontmatter.thumbnail && (
+                  {post.frontmatter.cover.image && (
                     <GatsbyImage
-                      key={post.frontmatter.thumbnail}
+                      key={post.frontmatter.cover.image}
                       className="md:h-36 lg:h-52"
                       image={getImage(
-                        post.frontmatter.thumbnail.childImageSharp
+                        post.frontmatter.cover.image.childImageSharp
                       )}
-                      alt={post.frontmatter.alt}
+                      alt={post.frontmatter.cover.alt}
                     />
                   )}
                   <h4 className="my-4 font-libre text-base font-bold leading-tight">
                     {post.frontmatter.title}
                   </h4>
                   <p className="font-montserrat leading-tight">
-                    {post.frontmatter.description}
+                    {post.frontmatter.summary}
                   </p>
 
                   <Link
@@ -130,26 +130,30 @@ function IndexPage({ data }) {
   )
 }
 
-export const pageQuery = graphql`
-  query {
+export const query = graphql`
+  query IndexPage {
     featured: allMarkdownRemark(
       filter: {
-        fileAbsolutePath: { regex: "/(featured)/" }
-        frontmatter: { contentpath: { eq: "featured" } }
+        frontmatter: {
+          collection: { eq: "blog" }
+          isFeatured: { home: { eq: true }, blog: { eq: false } }
+        }
       }
       sort: { order: DESC, fields: frontmatter___date }
       limit: 2
     ) {
       nodes {
         frontmatter {
-          description
-          thumbnail {
-            childImageSharp {
-              gatsbyImageData(placeholder: BLURRED, height: 520, width: 820)
+          summary
+          cover {
+            image {
+              childImageSharp {
+                gatsbyImageData(placeholder: BLURRED, height: 520, width: 820)
+              }
             }
+            alt
           }
           title
-          alt
         }
         fields {
           slug

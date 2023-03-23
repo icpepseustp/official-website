@@ -1,7 +1,7 @@
 const path = require("path")
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
-  const result = await graphql(`
+  const { data, errors } = await graphql(`
     query {
       allMarkdownRemark {
         nodes {
@@ -14,16 +14,16 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     }
   `)
 
-  if (result.errors) {
-    reporter.panic("Failed", result.errors)
+  if (errors) {
+    reporter.panic("Failed", errors)
   }
 
-  const posts = result.data.allMarkdownRemark.nodes
+  const posts = data.allMarkdownRemark.nodes
 
   posts.map((post) => {
     actions.createPage({
       path: post.fields.slug,
-      component: path.resolve("./src/templates/blog-post.jsx"),
+      component: path.resolve("./src/templates/BlogPost.jsx"),
       context: {
         slug: post.fields.slug,
         id: post.id,

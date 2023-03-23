@@ -1,0 +1,11 @@
+hero:
+  banner:
+    src: /media/home/bg.gif
+    alt: "Enchante: The Untold Lore Unfolds"
+  lead:
+    text: The Institute of Computer Engineers of the Philippines Student Edition
+      (ICpEP.SE) is the official student body of the Department of Computer
+      Engineering in USTP-CDO.
+    cover:
+      src: /media/home/cpe-exec-officers-2019.jpg
+      alt: CPE Executives Officers of 2019

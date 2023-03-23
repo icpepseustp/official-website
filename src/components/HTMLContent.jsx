@@ -3,6 +3,8 @@ import "../styles/blog-style.css"
 import ScrollToTop from "./ScrollTop"
 
 function HtmlContent({ post }) {
+  const { frontmatter, html } = post
+
   return (
     <div className="global-wrapper">
       <main>
@@ -12,23 +14,21 @@ function HtmlContent({ post }) {
           itemType="http://schema.org/Article"
         >
           <div className="title-header">
-            <h1 itemProp="headline">{post.frontmatter.title}</h1>
-            <p className="date-header">{post.frontmatter.date}</p>
+            <h1 itemProp="headline">{frontmatter.title}</h1>
+            <p className="date-header">{frontmatter.date}</p>
           </div>
           <ScrollToTop showBelow={250} />
           <section
             // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{ __html: post.html }}
+            dangerouslySetInnerHTML={{ __html: html }}
             itemProp="articleBody"
           />
           <div>
             <p>
               Author:{" "}
-              {post.frontmatter.author
-                ? post.frontmatter.author
-                : "ICpEP.SE - USTP"}
+              {frontmatter.author ? frontmatter.author : "ICpEP.SE - USTP"}
               <br />
-              Date Published: {post.frontmatter.date}
+              Date Published: {frontmatter.date}
             </p>
           </div>
         </article>

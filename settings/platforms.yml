@@ -1,0 +1,13 @@
+platforms:
+  - name: Facebook
+    url: https://www.facebook.com/icpep.se.ustp
+    label: "icpep.se.ustp"
+  - name: Discord
+    url: https://discord.gg/Dc9dJ7hfDD
+    label: "icpepse-discord"
+  - name: Twitter
+    url: https://twitter.com/ustp_icpepse
+    label: "@ustp_icpepse"
+  - name: Instagram
+    url: https://www.instagram.com/ustp_icpep_se
+    label: "@ustp_icpep_se"

@@ -1,4 +1,0 @@
----
-fullname: Danry
-role: Administrator
----

@@ -13,15 +13,18 @@ function Social() {
     <StaticQuery
       query={graphql`
         query {
-          allPlatformsJson {
+          allSettingsYaml {
             nodes {
-              text
-              url
+              platforms {
+                name
+                url
+                label
+              }
             }
           }
         }
       `}
-      render={(data) => (
+      render={({ allSettingsYaml: { nodes } }) => (
         <section className="border-t-2 border-black px-4 py-10 font-montserrat text-sm md:py-16 md:px-8 md:text-base lg:text-lg xl:px-12 xl:py-24 xl:text-2xl">
           <header className="mb-4 xl:mb-8">
             <h3>Get Connected!</h3>
@@ -29,17 +32,20 @@ function Social() {
           </header>
 
           <div className="flex gap-x-6 xl:gap-x-12">
-            {data.allPlatformsJson.nodes.map(({ url, text }) => (
-              <a
-                key={text}
-                href={url}
-                className="flex items-center gap-x-1.5 xl:gap-x-4"
-              >
-                {icons[text]}
+            {nodes
+              .filter(({ platforms }) => Boolean(platforms))[0]
+              .platforms.slice(0, -1)
+              .map(({ url, name }) => (
+                <a
+                  key={name}
+                  href={url}
+                  className="flex items-center gap-x-1.5 xl:gap-x-4"
+                >
+                  {icons[name]}
 
-                <small className="font-bold">{text}</small>
-              </a>
-            ))}
+                  <small className="font-bold">{name}</small>
+                </a>
+              ))}
           </div>
         </section>
       )}

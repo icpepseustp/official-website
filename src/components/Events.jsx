@@ -83,19 +83,19 @@ function UpcomingEvents() {
       query={graphql`
         query {
           upcoming: allMarkdownRemark(
-            filter: { frontmatter: { contentpath: { eq: "event" } } }
+            filter: { frontmatter: { collection: { eq: "event" } } }
             sort: { order: ASC, fields: frontmatter___date }
           ) {
             nodes {
               frontmatter {
-                date_s
-                date_e
-                date_m
+                # date_s
+                # date_e
+                # date_m
                 title
-                description
-                time_n
-                time_s
-                time_e
+                summary
+                # time_n
+                # time_s
+                # time_e
               }
             }
           }
@@ -186,7 +186,7 @@ function UpcomingEvents() {
           ) : (
             <div className="flex h-[250px] max-w-full items-center justify-center lg:h-[380px] lg:w-[390px]">
               <div className="-mt-12 flex flex-col items-center gap-4">
-                <MdOutlineEventBusy color="#DCDCDC" className="h-16 w-16 " />
+                <MdOutlineEventBusy color="#DCDCDC" className="h-16 w-16" />
                 <p className="text-[#8f8f8f]">No events for now.</p>
               </div>
             </div>
