@@ -7,13 +7,18 @@ import Seo from "../components/Seo"
 
 function BlogPostPage({ data }) {
   const {
-    post: { title },
+    post: { title, summary, cover, tags },
     related,
   } = data
 
   return (
     <main className="container max-w-6xl divide-y-2 divide-black">
-      <Seo title={title} />
+      <Seo
+        title={title}
+        featuredImage={cover.image}
+        description={summary}
+        keywords={tags}
+      />
 
       <HTMLContent post={data.post} />
 
@@ -58,6 +63,7 @@ export const query = graphql`
         fullName
         role
       }
+      tags
       html
       ...BlogPostData
     }

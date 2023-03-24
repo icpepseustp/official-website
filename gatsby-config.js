@@ -11,11 +11,11 @@ module.exports = {
   trailingSlash: "never",
   siteMetadata: {
     siteUrl: "https://www.icpepse-ustp.org",
-    title: "ICpEP.SE USTP Official Website",
+    title: "ICpEP.SE USTP-CDO Official Website",
     description:
       "The Institute of Computer Engineers of the Philippines Student Edition (ICpEP.SE) is the official student body of the Department of Computer Engineering in USTP-CDO.",
     image: "./src/images/icpepse-logo.png",
-    keywords: ["ustp", "icpep"],
+    keywords: ["ustp", "icpep", "cdo"],
   },
   plugins: [
     resolveSourceFS("content", "./content/"),
