@@ -1,0 +1,13 @@
+type Webster {
+  id: ID!
+  collection: String!
+  team: String!
+  members: [Member!]! @member
+}
+
+enum WebsterTeamEnum {
+  Developers
+  Content___Managers
+  Designers
+  Project___Manager
+}

@@ -1,17 +1,9 @@
-/* eslint-disable react/prop-types */
 import { graphql } from "gatsby"
 import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image"
+import { arrayOf, object, shape } from "prop-types"
 import { Fragment } from "react"
 
 import Seo from "../components/Seo"
-
-function resolveFirst(name) {
-  return name?.split(" ").slice(0, -1).join(" ")
-}
-
-function resolveLast(name) {
-  return name?.split(" ").slice(-1).join(" ")
-}
 
 function AboutPage({ data }) {
   const { execs, committees, websters } = data
@@ -56,21 +48,24 @@ function AboutPage({ data }) {
         </div>
 
         <div className="grid justify-items-center gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
-          {execs.edges.map(({ node: { id, frontmatter } }) => (
+          {execs.map(({ id, member, role }) => (
             <div key={id} className="flex flex-col items-center justify-center">
-              {/* <GatsbyImage
+              <GatsbyImage
                 className="h-32 w-32 justify-center rounded-full md:h-40 md:w-40 lg:h-40 lg:w-40"
-                image={getImage(node.image.childImageSharp)}
-                alt={node.image.base}
-              /> */}
+                image={getImage(member.avatar.image)}
+                alt={member.avatar.alt}
+              />
+
               <p className="mt-3 font-montserrat text-xs font-bold uppercase md:text-sm lg:text-base">
-                {resolveLast(frontmatter.member)}
+                {member.name.last}
               </p>
+
               <p className="font-montserrat text-xs md:text-sm lg:text-base">
-                {resolveFirst(frontmatter.member)}
+                {member.name.first}
               </p>
+
               <p className="font-montserrat text-xs font-medium italic md:text-sm lg:text-base">
-                {frontmatter.role}
+                {role}
               </p>
             </div>
           ))}
@@ -83,28 +78,28 @@ function AboutPage({ data }) {
         </div>
 
         <div className="hidden justify-items-center gap-8 md:grid md:grid-cols-1 lg:grid lg:grid-cols-2">
-          {committees.edges.map(({ node: { frontmatter } }, index) => (
+          {committees.map(({ id, committee, members }, index) => (
             <div
-              key={frontmatter.committee}
+              key={id}
               className="flex shrink flex-col items-center justify-center"
             >
               {index < 4 && (
                 <div className="grid grid-cols-3 gap-4 justify-self-center">
-                  {frontmatter.members.map((member) => (
+                  {members.map((member) => (
                     <div
-                      key={member}
+                      key={member.id}
                       className="flex flex-col items-center justify-center"
                     >
-                      {/* <GatsbyImage
+                      <GatsbyImage
                         className="h-32 w-32 justify-center rounded-full"
-                        image={getImage(members.image.childImageSharp)}
-                        alt={members.image.base}
-                      /> */}
+                        image={getImage(member.avatar.image)}
+                        alt={member.avatar.alt}
+                      />
                       <p className="mt-3 font-montserrat font-bold uppercase md:text-xs lg:text-sm">
-                        {resolveLast(member)}
+                        {member.name.last}
                       </p>
                       <p className="font-montserrat md:text-sm lg:text-base">
-                        {resolveFirst(member)}
+                        {member.name.first}
                       </p>
                     </div>
                   ))}
@@ -113,21 +108,23 @@ function AboutPage({ data }) {
 
               {index === 4 && (
                 <div className="grid grid-cols-2 gap-4 justify-self-center">
-                  {frontmatter.members.map((member) => (
+                  {members.map((member) => (
                     <div
-                      key={member}
+                      key={member.id}
                       className="flex flex-col items-center justify-center"
                     >
-                      {/* <GatsbyImage
+                      <GatsbyImage
                         className="h-32 w-32 justify-center rounded-full"
-                        image={getImage(member.image.childImageSharp)}
-                        alt={member.image.base}
-                      /> */}
+                        image={getImage(member.avatar.image)}
+                        alt={member.avatar.alt}
+                      />
+
                       <p className="mt-3 font-montserrat font-bold uppercase md:text-xs lg:text-sm">
-                        {resolveLast(member)}
+                        {member.name.last}
                       </p>
+
                       <p className="font-montserrat md:text-sm lg:text-base">
-                        {resolveFirst(member)}
+                        {member.name.first}
                       </p>
                     </div>
                   ))}
@@ -136,21 +133,23 @@ function AboutPage({ data }) {
 
               {index === 5 && (
                 <div className="grid grid-cols-1 gap-4 justify-self-center">
-                  {frontmatter.members.map((member) => (
+                  {members.map((member) => (
                     <div
-                      key={member}
+                      key={member.id}
                       className="flex flex-col items-center justify-center"
                     >
-                      {/* <GatsbyImage
+                      <GatsbyImage
                         className="h-32 w-32 justify-center rounded-full"
-                        image={getImage(members.image.childImageSharp)}
-                        alt={members.image.base}
-                      /> */}
+                        image={getImage(member.avatar.image)}
+                        alt={member.avatar.alt}
+                      />
+
                       <p className="mt-3 font-montserrat font-bold uppercase md:text-xs lg:text-sm">
-                        {resolveLast(member)}
+                        {member.name.last}
                       </p>
+
                       <p className="font-montserrat md:text-sm lg:text-base">
-                        {resolveFirst(member)}
+                        {member.name.first}
                       </p>
                     </div>
                   ))}
@@ -158,37 +157,37 @@ function AboutPage({ data }) {
               )}
 
               <p className="mt-3 mb-4 font-montserrat font-medium italic md:text-xs lg:text-sm">
-                {frontmatter.committee}
+                {!committee.includes("Lead") && "Committee on"} {committee}
               </p>
             </div>
           ))}
         </div>
 
         <div className="mt-4 grid grid-cols-1 justify-items-center md:hidden lg:hidden">
-          {committees.edges.map(({ node: { frontmatter } }, mIndex) => (
+          {committees.map(({ id, committee, members }, mIndex) => (
             <div
-              key={frontmatter.id}
+              key={id}
               className="flex shrink flex-col items-center justify-center"
             >
               {mIndex < 5 && (
                 <div className="grid grid-cols-2 gap-4">
-                  {frontmatter.members.map(
+                  {members.map(
                     (member, index) =>
                       index < 2 && (
                         <div
-                          key={member}
+                          key={member.id}
                           className="flex flex-col items-center justify-center"
                         >
-                          {/* <GatsbyImage
+                          <GatsbyImage
                             className="h-24 w-24 justify-center rounded-full"
-                            image={getImage(members.image.childImageSharp)}
-                            alt={members.image.base}
-                          /> */}
+                            image={getImage(member.avatar.image)}
+                            alt={member.avatar.alt}
+                          />
                           <p className="mt-3 font-montserrat text-xs font-bold uppercase">
-                            {resolveLast(member)}
+                            {member.name.last}
                           </p>
                           <p className="font-montserrat text-xs">
-                            {resolveFirst(member)}
+                            {member.name.first}
                           </p>
                         </div>
                       )
@@ -198,39 +197,37 @@ function AboutPage({ data }) {
 
               {mIndex < 4 && (
                 <div className="flex flex-col items-center justify-center">
-                  {/* <GatsbyImage
+                  <GatsbyImage
                     className="h-24 w-24 justify-center rounded-full"
-                    image={getImage(
-                      frontmatter.members[2].image.childImageSharp
-                    )}
-                    alt={frontmatter.members[2].image.base}
-                  /> */}
+                    image={getImage(members[2].avatar.image)}
+                    alt={members[2].avatar.alt}
+                  />
                   <p className="mt-3 font-montserrat text-xs font-bold uppercase">
-                    {resolveLast(frontmatter.members[2])}
+                    {members[2].name.last}
                   </p>
                   <p className="font-montserrat text-xs">
-                    {resolveFirst(frontmatter.members[2])}
+                    {members[2].name.first}
                   </p>
                 </div>
               )}
 
               {mIndex === 5 && (
                 <div className="grid grid-cols-1">
-                  {frontmatter.members.map((member) => (
+                  {members.map((member) => (
                     <div
-                      key={member}
+                      key={member.id}
                       className="flex flex-col items-center justify-center"
                     >
-                      {/* <GatsbyImage
+                      <GatsbyImage
                         className="h-24 w-24 justify-center rounded-full"
-                        image={getImage(members.image.childImageSharp)}
-                        alt={members.image.base}
-                      /> */}
+                        image={getImage(member.avatar.image)}
+                        alt={member.avatar.alt}
+                      />
                       <p className="mt-3 font-montserrat text-xs font-bold uppercase">
-                        {resolveLast(member)}
+                        {member.name.last}
                       </p>
                       <p className="font-montserrat text-xs">
-                        {resolveFirst(member)}
+                        {member.name.first}
                       </p>
                     </div>
                   ))}
@@ -238,7 +235,8 @@ function AboutPage({ data }) {
               )}
 
               <p className="mt-3 mb-8 font-montserrat text-xs font-medium italic">
-                {frontmatter.role}
+                {!committee.includes("Lead") && "Committee on "}
+                {committee}
               </p>
             </div>
           ))}
@@ -251,30 +249,30 @@ function AboutPage({ data }) {
         </div>
 
         <div className="hidden grid-cols-1 justify-items-center md:grid lg:grid">
-          {websters.edges.map(
-            ({ node: { frontmatter } }, mIndex) =>
+          {websters.map(
+            ({ id, team, members }, mIndex) =>
               mIndex <= 1 && (
                 <div
-                  key={frontmatter.id}
+                  key={id}
                   className="flex flex-col items-center justify-center"
                 >
                   {mIndex === 0 && (
                     <div className="mt-4 grid grid-cols-1 justify-items-center">
-                      {frontmatter.members.map((member) => (
+                      {members.map((member) => (
                         <div
-                          key={member}
+                          key={member.id}
                           className="flex flex-col items-center justify-center"
                         >
-                          {/* <GatsbyImage
+                          <GatsbyImage
                             className="h-32 w-32 justify-center rounded-full"
-                            image={getImage(member.image.childImageSharp)}
-                            alt={member.image.base}
-                          /> */}
+                            image={getImage(member.avatar.image)}
+                            alt={member.avatar.alt}
+                          />
                           <p className="mt-3 font-montserrat font-bold uppercase md:text-xs lg:text-sm">
-                            {resolveLast(member)}
+                            {member.name.last}
                           </p>
                           <p className="font-montserrat md:text-xs lg:text-sm">
-                            {resolveFirst(member)}
+                            {member.name.first}
                           </p>
                         </div>
                       ))}
@@ -283,21 +281,21 @@ function AboutPage({ data }) {
 
                   {mIndex === 1 && (
                     <div className="mt-4 grid justify-items-center gap-10 md:grid-cols-2 lg:grid-cols-4">
-                      {frontmatter.members.map((member) => (
+                      {members.map((member) => (
                         <div
-                          key={member}
+                          key={member.id}
                           className="flex flex-col items-center justify-center"
                         >
-                          {/* <GatsbyImage
+                          <GatsbyImage
                             className="h-32 w-32 justify-center rounded-full"
-                            image={getImage(member.image.childImageSharp)}
-                            alt={member.image.base}
-                          /> */}
+                            image={getImage(member.avatar.image)}
+                            alt={member.avatar.alt}
+                          />
                           <p className="mt-3 font-montserrat font-bold uppercase md:text-xs lg:text-sm">
-                            {resolveLast(member)}
+                            {member.name.last}
                           </p>
                           <p className="font-montserrat md:text-xs lg:text-sm">
-                            {resolveFirst(member)}
+                            {member.name.first}
                           </p>
                         </div>
                       ))}
@@ -305,7 +303,7 @@ function AboutPage({ data }) {
                   )}
 
                   <p className="mt-3 mb-8 font-montserrat font-medium italic md:text-xs lg:text-sm">
-                    {frontmatter.team}
+                    {!/manager/i.test(team) && "The"} {team}
                   </p>
                 </div>
               )
@@ -314,24 +312,25 @@ function AboutPage({ data }) {
 
         <div className="mb-10 hidden flex-col items-center md:flex lg:flex">
           <div className="md:grid-flow-cols-1 grid gap-0 lg:grid-cols-2">
-            {websters.edges.map(({ node: { frontmatter } }, mIndex) => (
-              <div key={frontmatter.id} className="px-4">
+            {websters.map(({ id, team, members }, mIndex) => (
+              <div key={id} className="px-4">
                 {mIndex >= 2 && (
                   <div className="flex flex-col">
                     <div className="mt-4 grid grid-cols-3 justify-items-center gap-10 ">
-                      {frontmatter.members.map((member) => (
-                        <div key={member} className="px-0">
+                      {members.map((member) => (
+                        <div key={member.id} className="px-0">
                           <div className="flex flex-col items-center justify-center">
-                            {/* <GatsbyImage
+                            <GatsbyImage
                               className="h-32 w-32 justify-center rounded-full"
-                              image={getImage(members.image.childImageSharp)}
-                              alt={members.image.base}
-                            /> */}
+                              image={getImage(member.avatar.image)}
+                              alt={member.avatar.alt}
+                            />
+
                             <p className="mt-3 font-montserrat font-bold uppercase md:text-xs lg:text-sm">
-                              {resolveLast(member)}
+                              {member.name.last}
                             </p>
                             <p className="font-montserrat md:text-xs lg:text-sm">
-                              {resolveLast(member)}
+                              {member.name.first}
                             </p>
                           </div>
                         </div>
@@ -339,7 +338,7 @@ function AboutPage({ data }) {
                     </div>
 
                     <p className="mt-3 mb-8 text-center font-montserrat font-medium italic md:text-xs lg:text-sm">
-                      {frontmatter.team}
+                      {!/manager/i.test(team) && "The"} {team}
                     </p>
                   </div>
                 )}
@@ -349,26 +348,27 @@ function AboutPage({ data }) {
         </div>
 
         <div className="mt-4 grid grid-cols-1 justify-items-center md:hidden lg:hidden">
-          {websters.edges.map(({ node: { frontmatter } }, mIndex) => (
-            <Fragment key={frontmatter.id}>
+          {websters.map(({ id, team, members }, mIndex) => (
+            <Fragment key={id}>
               <div className="flex flex-col items-center justify-center">
                 {mIndex === 0 && (
                   <div className="mt-4 grid grid-cols-1 justify-items-center">
-                    {frontmatter.members.map((member) => (
+                    {members.map((member) => (
                       <div
                         key={member}
                         className="flex flex-col items-center justify-center"
                       >
-                        {/* <GatsbyImage
+                        <GatsbyImage
                           className="h-24 w-24 justify-center rounded-full"
-                          image={getImage(member.image.childImageSharp)}
-                          alt={member.image.base}
-                        /> */}
+                          image={getImage(member.avatar.image)}
+                          alt={member.avatar.alt}
+                        />
+
                         <p className="mt-3 font-montserrat text-xs font-bold uppercase">
-                          {resolveLast(member)}
+                          {member.name.last}
                         </p>
                         <p className="font-montserrat text-xs">
-                          {resolveFirst(member)}
+                          {member.name.first}
                         </p>
                       </div>
                     ))}
@@ -379,18 +379,16 @@ function AboutPage({ data }) {
                   <>
                     <div className="mt-4 grid grid-cols-1 justify-items-center">
                       <div className="flex flex-col items-center justify-center">
-                        {/* <GatsbyImage
+                        <GatsbyImage
                           className="h-24 w-24 justify-center rounded-full"
-                          image={getImage(
-                            frontmatter.members[0].image.childImageSharp
-                          )}
-                          alt={frontmatter.members[0].image.base}
-                        /> */}
+                          image={getImage(members[0].avatar.image)}
+                          alt={members[0].avatar.alt}
+                        />
                         <p className="mt-3 font-montserrat text-xs font-bold uppercase">
-                          {resolveLast(frontmatter.members[0])}
+                          {members[0].name.last}
                         </p>
                         <p className="font-montserrat text-xs">
-                          {resolveFirst(frontmatter.members[0])}
+                          {members[0].name.first}
                         </p>
                       </div>
                     </div>
@@ -398,21 +396,19 @@ function AboutPage({ data }) {
                     <div className="mt-4 grid grid-cols-2 justify-items-center gap-8">
                       {[1, 2].map((index) => (
                         <div
-                          key={frontmatter.members[index]}
+                          key={members[index].id}
                           className="flex flex-col items-center justify-center"
                         >
-                          {/* <GatsbyImage
+                          <GatsbyImage
                             className="h-24 w-24 justify-center rounded-full"
-                            image={getImage(
-                              node.members[index].image.childImageSharp
-                            )}
-                            alt={node.members[index].image.base}
-                          /> */}
+                            image={getImage(members[index].avatar.image)}
+                            alt={members[index].avatar.alt}
+                          />
                           <p className="mt-3 font-montserrat text-xs font-bold uppercase">
-                            {resolveLast(frontmatter.members[index])}
+                            {members[index].name.last}
                           </p>
                           <p className="font-montserrat text-xs">
-                            {resolveFirst(frontmatter.members[index])}
+                            {members[index].name.first}
                           </p>
                         </div>
                       ))}
@@ -420,18 +416,16 @@ function AboutPage({ data }) {
 
                     <div className="mt-4 grid grid-cols-1 justify-items-center">
                       <div className="flex flex-col items-center justify-center">
-                        {/* <GatsbyImage
+                        <GatsbyImage
                           className="h-24 w-24 justify-center rounded-full"
-                          image={getImage(
-                            node.members[3].image.childImageSharp
-                          )}
-                          alt={node.members[0].image.base}
-                        /> */}
+                          image={getImage(members[3].avatar.image)}
+                          alt={members[3].avatar.alt}
+                        />
                         <p className="mt-3 font-montserrat text-xs font-bold uppercase">
-                          {resolveLast(frontmatter.members[3])}
+                          {members[3].name.last}
                         </p>
                         <p className="font-montserrat text-xs">
-                          {resolveFirst(frontmatter.members[3])}
+                          {members[3].name.first}
                         </p>
                       </div>
                     </div>
@@ -442,18 +436,16 @@ function AboutPage({ data }) {
                   <div className="mt-4 grid grid-cols-1 justify-items-center">
                     <div className="mt-4 grid grid-cols-1 justify-items-center">
                       <div className="flex flex-col items-center justify-center">
-                        {/* <GatsbyImage
+                        <GatsbyImage
                           className="h-24 w-24 justify-center rounded-full"
-                          image={getImage(
-                            node.members[0].image.childImageSharp
-                          )}
-                          alt={node.members[0].image.base}
-                        /> */}
+                          image={getImage(members[0].avatar.image)}
+                          alt={members[0].avatar.alt}
+                        />
                         <p className="mt-3 font-montserrat text-xs font-bold uppercase">
-                          {resolveLast(frontmatter.members[0])}
+                          {members[0].name.last}
                         </p>
                         <p className="font-montserrat text-xs">
-                          {resolveFirst(frontmatter.members[0])}
+                          {members[0].name.first}
                         </p>
                       </div>
                     </div>
@@ -461,21 +453,19 @@ function AboutPage({ data }) {
                     <div className="mt-4 grid grid-cols-2 justify-items-center gap-8">
                       {[1, 2].map((index) => (
                         <div
-                          key={resolveLast(frontmatter.members[index])}
+                          key={members[index].id}
                           className="flex flex-col items-center justify-center"
                         >
-                          {/* <GatsbyImage
+                          <GatsbyImage
                             className="h-24 w-24 justify-center rounded-full"
-                            image={getImage(
-                              node.members[index].image.childImageSharp
-                            )}
-                            alt={node.members[index].image.base}
-                          /> */}
+                            image={getImage(members[index].avatar.image)}
+                            alt={members[index].avatar.alt}
+                          />
                           <p className="mt-3 font-montserrat text-xs font-bold uppercase">
-                            {resolveLast(frontmatter.members[index])}
+                            {members[index].name.last}
                           </p>
                           <p className="font-montserrat text-xs">
-                            {resolveFirst(frontmatter.members[index])}
+                            {members[index].name.first}
                           </p>
                         </div>
                       ))}
@@ -485,7 +475,7 @@ function AboutPage({ data }) {
               </div>
 
               <p className="mt-3 mb-8 text-center font-montserrat text-xs font-medium italic">
-                {frontmatter.team}
+                {!/manager/i.test(team) && "The"} {team}
               </p>
             </Fragment>
           ))}
@@ -495,49 +485,60 @@ function AboutPage({ data }) {
   )
 }
 
+AboutPage.propTypes = {
+  data: shape({
+    execs: arrayOf(object).isRequired,
+    committees: arrayOf(object).isRequired,
+    websters: arrayOf(object).isRequired,
+  }).isRequired,
+}
+
 export const query = graphql`
   query AboutPage {
-    execs: allMarkdownRemark(
-      filter: { frontmatter: { collection: { eq: "executives" } } }
-      sort: { fields: id, order: DESC }
-    ) {
-      edges {
-        node {
-          id
-          frontmatter {
-            member
-            role
-          }
-        }
+    execs: allExecs {
+      id
+      member {
+        ...MemberData
+      }
+      role
+    }
+
+    committees: allCommittees {
+      id
+      committee
+      members {
+        ...MemberData
       }
     }
 
-    committees: allMarkdownRemark(
-      filter: { frontmatter: { collection: { eq: "committees" } } }
-    ) {
-      edges {
-        node {
-          id
-          frontmatter {
-            members
-            committee
-          }
-        }
+    websters: allWebsters {
+      id
+      team
+      members {
+        ...MemberData
       }
     }
+  }
 
-    websters: allMarkdownRemark(
-      filter: { frontmatter: { collection: { eq: "websters" } } }
-    ) {
-      edges {
-        node {
-          id
-          frontmatter {
-            team
-            members
-          }
+  fragment MemberData on Member {
+    id
+    name {
+      first
+      last
+    }
+    avatar {
+      image {
+        childImageSharp {
+          gatsbyImageData(
+            aspectRatio: 1
+            blurredOptions: { width: 100 }
+            placeholder: BLURRED
+            transformOptions: { cropFocus: CENTER }
+            width: 500
+          )
         }
       }
+      alt
     }
   }
 `

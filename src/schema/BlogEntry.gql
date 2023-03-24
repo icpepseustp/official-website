@@ -1,0 +1,52 @@
+type FeaturedBlogEntry {
+  home: Boolean!
+  blog: Boolean!
+}
+
+type BlogEntry implements Entry {
+  id: ID!
+  collection: String!
+  title: String!
+  date: Date! @dateformat
+  summary: String!
+  isFeatured: FeaturedBlogEntry!
+  type: String!
+  cover: Image!
+  authors: [Member!]! @member
+  tags: [String]
+  slug: String! @proxy(from: "fields.slug")
+
+  html: String! @remark
+  wordCount: MarkdownWordCount! @remark
+  timeToRead: Int! @remark
+  excerpt(
+    pruneLength: Int = 140
+    truncate: Boolean = false
+    format: MarkdownExcerptFormats = PLAIN
+  ): String! @remark
+}
+
+enum BlogEntrySortFieldsEnum {
+  ID
+  TITLE
+  DATE
+  TYPE
+}
+
+input BlogEntrySort {
+  fields: [BlogEntrySortFieldsEnum]
+  order: [SortOrderEnum]
+}
+
+input FeaturedBlogEntryFilter {
+  home: Boolean
+  blog: Boolean
+}
+
+enum BlogEntryTypeEnum {
+  News
+  Event
+  Article
+  Announcement
+  Message
+}

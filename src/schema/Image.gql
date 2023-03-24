@@ -1,0 +1,4 @@
+type Image {
+  image: File @fileByRelativePath
+  alt: String
+}

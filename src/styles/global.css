@@ -9,13 +9,11 @@
 }
 
 @layer components {
-  .feature-article {
+  .featured-article {
     @apply relative p-4 md:py-0 md:px-8;
   }
-  /* .feature-article:nth-child(even) {
-    @apply before:absolute before:border before:border-black before:md:h-4/6 before:md:w-full;
-  } */
-  .feature-article:nth-child(even)::before {
+
+  .featured-article:nth-child(even)::before {
     @apply absolute -top-6 left-1/4 h-full w-1/2 border-t border-black content-[''] md:top-1/4 md:-left-px md:h-1/2 md:w-full md:border-t-0 md:border-l;
   }
 }

@@ -1,0 +1,38 @@
+type CoverageDate {
+  start: Date! @dateformat
+  end: Date! @dateformat
+}
+
+type Timeline {
+  description: String!
+  datetime: Date! @dateformat
+}
+
+type EventEntry implements Entry {
+  id: ID!
+  collection: String!
+  title: String!
+  date: Date! @dateformat
+  summary: String!
+  coverage: CoverageDate!
+  timeline: [Timeline]!
+  link: BlogEntry @blog
+}
+
+enum EventEntrySortFieldsEnum {
+  ID
+  TITLE
+  DATE
+  COVERAGE___START
+  COVERAGE___END
+}
+
+input EventEntrySort {
+  fields: [EventEntrySortFieldsEnum]
+  order: [SortOrderEnum]
+}
+
+input EventEntryDateFilter {
+  start: DateQueryOperatorInput
+  end: DateQueryOperatorInput
+}

@@ -1,0 +1,7 @@
+interface Entry {
+  id: ID!
+  collection: String!
+  title: String!
+  date: Date! @dateformat
+  summary: String!
+}

@@ -1,25 +1,32 @@
-/* eslint-disable react/prop-types */
 import { graphql } from "gatsby"
+import { arrayOf, object, shape } from "prop-types"
 
-import HtmlContent from "../components/HTMLContent"
+import BlogItem from "../components/BlogItem"
+import HTMLContent from "../components/HTMLContent"
 import Seo from "../components/Seo"
-import BlogItems from "../components/BlogItems"
 
-function BlogPage({ data: { markdownRemark: post, blog: _blog } }) {
+function BlogPostPage({ data }) {
+  const {
+    post: { title },
+    related,
+  } = data
+
   return (
     <main className="container max-w-6xl divide-y-2 divide-black">
-      <Seo title={post.frontmatter.title} />
+      <Seo title={title} />
 
-      <HtmlContent post={post} />
+      <HTMLContent post={data.post} />
+
       <section className="my-12 mb-8 p-6">
         <h2 className="mb-3 text-lg font-bold lg:mb-5 lg:text-2xl">
           More Posts
         </h2>
-        {_blog.nodes.length > 0 ? (
+
+        {related.length > 0 ? (
           <div className="mb-8 p-2 pb-4">
             <section className="grid shrink items-center gap-y-2 px-4 md:grid-cols-3 md:gap-x-3 lg:my-4 lg:grid-cols-4 lg:gap-x-4 lg:px-6">
-              {_blog.nodes.slice(0, 4).map((blog) => (
-                <BlogItems key={blog.id} type="more" data={blog} />
+              {related.slice(0, 4).map((post) => (
+                <BlogItem key={post.id} type="more" data={post} />
               ))}
             </section>
           </div>
@@ -35,56 +42,51 @@ function BlogPage({ data: { markdownRemark: post, blog: _blog } }) {
   )
 }
 
-export default BlogPage
+BlogPostPage.propTypes = {
+  data: shape({
+    post: object.isRequired,
+    related: arrayOf(object).isRequired,
+  }).isRequired,
+}
 
-export const pageQuery = graphql`
-  query BlogPostById($id: String!) {
-    markdownRemark(id: { eq: $id }) {
-      id
+export const query = graphql`
+  query BlogPost($id: String!) {
+    post: blogEntry(id: $id) {
+      date(formatString: "MMMM DD, YYYY")
+      authors {
+        id
+        fullName
+        role
+      }
       html
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        summary
-        authors
-        cover {
-          image {
-            childImageSharp {
-              gatsbyImageData(placeholder: BLURRED, height: 520, width: 820)
-            }
-            base
-          }
-        }
-      }
+      ...BlogPostData
     }
-    blog: allMarkdownRemark(
-      filter: {
-        fileAbsolutePath: { regex: "/(blogs)/" }
-        frontmatter: { collection: { regex: "/blog/" } }
-        id: { ne: $id }
-      }
-      sort: { order: DESC, fields: frontmatter___date }
+
+    related: allBlogEntries(
+      id: { ne: $id }
+      sort: { order: DESC, fields: DATE }
       limit: 6
     ) {
-      nodes {
-        frontmatter {
-          date(formatString: "DD MMM YYYY")
-          cover {
-            image {
-              childImageSharp {
-                gatsbyImageData(placeholder: BLURRED, height: 520, width: 820)
-              }
-              base
-            }
-          }
-          title
-          type
-          summary
-        }
-        fields {
-          slug
+      date(formatString: "DD MMM YYYY")
+      type
+      slug
+      ...BlogPostData
+    }
+  }
+
+  fragment BlogPostData on BlogEntry {
+    id
+    title
+    summary
+    cover {
+      image {
+        childImageSharp {
+          gatsbyImageData(placeholder: BLURRED, height: 520, width: 820)
         }
       }
+      alt
     }
   }
 `
+
+export default BlogPostPage

@@ -1,6 +1,6 @@
-import "../styles/spinner.css"
+import "../styles/loader.css"
 
-function Spinner() {
+function Loader() {
   return (
     <div className="loader-grid">
       <div />
@@ -16,4 +16,4 @@ function Spinner() {
   )
 }
 
-export default Spinner
+export default Loader

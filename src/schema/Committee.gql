@@ -1,0 +1,14 @@
+type Committee {
+  id: ID!
+  collection: String!
+  committee: String!
+  members: [Member!]! @member
+}
+
+enum CommitteeEnum {
+  Design
+  Academic___Affairs
+  Extracurricular___Activities
+  Sports
+  Documentation
+}
