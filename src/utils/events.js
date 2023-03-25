@@ -10,6 +10,41 @@ import {
   isWithinInterval,
 } from "date-fns"
 
+/**
+ * @typedef Coverage
+ * @property {string} start
+ * @property {string} end
+ */
+
+/**
+ * @typedef DateCoverage
+ * @property {Date} start
+ * @property {Date} end
+ */
+
+/**
+ * @typedef Schedule
+ * @property {string} datetime
+ * @property {string} description
+ */
+
+/**
+ * @typedef EventStatus
+ * @property {string[]} uiData
+ * @property {boolean} active
+ * @property {boolean} ended
+ * @property {boolean} sameDay
+ * @property {string} schedule
+ */
+
+/**
+ * Resolves the current schedule from a
+ * timeline of schedules.
+ *
+ * @param {Schedule[]} timeline
+ * @param {DateCoverage} coverage
+ * @return {string}
+ */
 // 💀 fingers crossed this works
 function getCurrentSchedule(timeline, { start, end }) {
   const diff = differenceInDays(start, new Date())
@@ -46,7 +81,7 @@ function getCurrentSchedule(timeline, { start, end }) {
 
         return acc
       },
-      { start, end }
+      { start, end, description: "" }
     )
 
   let pre = "" // 😃
@@ -76,10 +111,24 @@ function getCurrentSchedule(timeline, { start, end }) {
   }`
 }
 
+/**
+ * Checks if an event has already concluded.
+ *
+ * @param {{ coverage: Coverage }} Event
+ * @return {boolean}
+ */
 export function hasEventEnded({ coverage }) {
   return isAfter(Date.now(), new Date(coverage.end))
 }
 
+/**
+ * Processes the coverage and timeline data and
+ * turns it into event data that can be rendered.
+ *
+ * @param {Coverage} coverage
+ * @param {Schedule[]} timeline
+ * @return {EventStatus}
+ */
 export function resolveEventStatus(coverage, timeline) {
   const now = new Date()
   const start = new Date(coverage.start)
@@ -99,11 +148,7 @@ export function resolveEventStatus(coverage, timeline) {
     ? [format(start, "dd"), format(end, "MMM")]
     : [formatRange("dd"), sameMonth ? format(end, "MMM") : formatRange("MMM")]
 
-  return {
-    uiData,
-    active,
-    ended,
-    sameDay,
-    schedule: getCurrentSchedule(timeline, { start, end }),
-  }
+  const schedule = getCurrentSchedule(timeline, { start, end })
+
+  return { uiData, active, ended, sameDay, schedule }
 }

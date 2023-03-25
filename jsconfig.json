@@ -1,0 +1,4 @@
+{
+  "compilerOptions": { "checkJs": true, "jsx": "react-jsx" },
+  "include": ["src/**/*", "./gatsby-*.js", "./*.config.js"]
+}
