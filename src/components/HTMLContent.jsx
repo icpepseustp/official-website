@@ -29,7 +29,7 @@ function HTMLContent({ post }) {
             <p className="date-header">{date}</p>
           </div>
 
-          <ScrollToTop showBelow={250} />
+          <ScrollToTop showBelow={300} />
 
           <section
             // eslint-disable-next-line react/no-danger
@@ -41,8 +41,6 @@ function HTMLContent({ post }) {
             <p>
               Written by:{" "}
               {authors.length > 0 ? resolveAuthors(authors) : "ICpEP.SE - USTP"}
-              <br />
-              Date Published: {date}
             </p>
           </div>
         </article>
