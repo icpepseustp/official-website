@@ -5,6 +5,7 @@
   "description": "ICpEP.SE USTP Official Website",
   "scripts": {
     "dev": "gatsby develop",
+    "dev:clean": "yarn clean && yarn develop",
     "start": "yarn dev",
     "build": "gatsby build",
     "serve": "gatsby serve",

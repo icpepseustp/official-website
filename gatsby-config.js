@@ -39,8 +39,6 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-slug",
     "gatsby-plugin-extract-schema",
-    "gatsby-plugin-netlify-cms",
-    "gatsby-plugin-netlify",
 
     //! Temporarily disabled. See https://github.com/gatsbyjs/gatsby/issues/34706
     // "gatsby-plugin-mdx",
@@ -98,5 +96,13 @@ module.exports = {
         },
       },
     },
+
+    {
+      resolve: "gatsby-plugin-netlify-cms",
+      options: {
+        modulePath: "./src/cms.js",
+      },
+    },
+    "gatsby-plugin-netlify",
   ],
 }
