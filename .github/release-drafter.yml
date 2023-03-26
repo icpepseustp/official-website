@@ -1,6 +1,10 @@
 name-template: "v$RESOLVED_VERSION"
 tag-template: "v$RESOLVED_VERSION"
 categories:
+  - title: "📜 Content"
+    labels:
+      - "content"
+      - "netlify-cms/pending_publish"
   - title: "🚀 Features and Enhancements"
     labels:
       - "feature"
