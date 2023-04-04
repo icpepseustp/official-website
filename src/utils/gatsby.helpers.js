@@ -128,7 +128,7 @@ function createResolvableRemark({ collection, type }, hook = {}) {
     filter: filterFn = () => true,
   } = hook
 
-  return (args, opts = {}) => {
+  return ({ args }, opts = {}) => {
     const { array = true } = opts
 
     const resolvable = {
@@ -226,6 +226,11 @@ function createResolvableSettingsField(name, opts = {}) {
   return { [name]: Object.setPrototypeOf(resolvable, null) }
 }
 
+/**
+ * @param {Record<string, number>} orderMap
+ * @param {string} key
+ * @return {(a: any, b: any) => number}
+ */
 function sortByMap(orderMap, key) {
   return (a, b) => orderMap[a[key]] - orderMap[b[key]]
 }

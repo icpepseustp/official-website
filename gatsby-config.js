@@ -5,16 +5,23 @@ function resolveSourceFS(name, path) {
   }
 }
 
+function getSiteUrl() {
+  const { CONTEXT, URL } = process.env
+  if (CONTEXT && CONTEXT !== "production") {
+    return process.env.DEPLOY_PRIME_URL
+  }
+  return URL || "http://localhost:8000"
+}
+
 /** @type {import("gatsby").GatsbyConfig} */
 module.exports = {
   jsxRuntime: "automatic",
   trailingSlash: "never",
   siteMetadata: {
-    siteUrl: "https://www.icpepse-ustp.org",
+    siteUrl: getSiteUrl(),
     title: "ICpEP.SE USTP-CDO Official Website",
     description:
       "The Institute of Computer Engineers of the Philippines Student Edition (ICpEP.SE) is the official student body of the Department of Computer Engineering in USTP-CDO.",
-    image: "./src/images/icpepse-logo.png",
     keywords: ["ustp", "icpep", "cdo"],
   },
   plugins: [

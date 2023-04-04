@@ -101,17 +101,17 @@ exports.createSchemaCustomization = ({ actions }) => {
 
 exports.createResolvers = ({ createResolvers }) => {
   // TODO need to do something about this mess
-  const resolvableBlogEntry = createResolvableRemark({
+  const BlogEntry = createResolvableRemark({
     collection: "blog",
     type: "BlogEntry",
   })
 
-  const resolvableEventEntry = createResolvableRemark({
+  const EventEntry = createResolvableRemark({
     collection: "events",
     type: "EventEntry",
   })
 
-  const resolvableMember = createResolvableRemark({
+  const Member = createResolvableRemark({
     collection: "members",
     type: "Member",
   })
@@ -130,7 +130,7 @@ exports.createResolvers = ({ createResolvers }) => {
     "PIO External": 9,
   }
 
-  const resolvableExec = createResolvableRemark(
+  const Executive = createResolvableRemark(
     { collection: "executives", type: "Executive" },
     { sort: sortByMap(execOrder, "role") }
   )
@@ -144,7 +144,7 @@ exports.createResolvers = ({ createResolvers }) => {
     "ICpEERS.VE Lead": 5,
   }
 
-  const resolvableCommittee = createResolvableRemark(
+  const Committee = createResolvableRemark(
     { collection: "committees", type: "Committee" },
     { sort: sortByMap(committeeOrder, "committee") }
   )
@@ -156,69 +156,78 @@ exports.createResolvers = ({ createResolvers }) => {
     "Designers": 3,
   }
 
-  const resolvableWebster = createResolvableRemark(
+  const Webster = createResolvableRemark(
     { collection: "websters", type: "Webster" },
     { sort: sortByMap(theOrderOfTheWeb, "team") }
   )
 
   const resolvers = {
     Query: {
-      allBlogEntries: resolvableBlogEntry({
-        limit: "Int",
-        skip: "Int",
-        sort: "BlogEntrySort",
-        id: "StringQueryOperatorInput",
-        isFeatured: "FeaturedBlogEntryFilter",
-        type: "BlogEntryTypeEnum",
-        tags: "StringQueryOperatorInput",
+      allBlogEntries: BlogEntry({
+        args: {
+          limit: "Int",
+          skip: "Int",
+          sort: "BlogEntrySort",
+          id: "StringQueryOperatorInput",
+          isFeatured: "FeaturedBlogEntryFilter",
+          type: "BlogEntryTypeEnum",
+          tags: "StringQueryOperatorInput",
+        },
       }),
 
-      blogEntry: resolvableBlogEntry({ id: "String!" }, { array: false }),
+      blogEntry: BlogEntry({ args: { id: "String!" } }, { array: false }),
 
-      allEventEntries: resolvableEventEntry({
-        limit: "Int",
-        skip: "Int",
-        sort: "EventEntrySort",
-        // TODO figure out the best way to filter nested dates
-        // coverage: "EventEntryDateFilter",
+      // TODO filter for concluded events
+      allEventEntries: EventEntry({
+        args: {
+          limit: "Int",
+          skip: "Int",
+          sort: "EventEntrySort",
+          // TODO figure out the best way to filter nested dates
+          // coverage: "EventEntryDateFilter",
+        },
       }),
 
-      eventEntry: resolvableEventEntry({ id: "String!" }, { array: false }),
+      eventEntry: EventEntry({ args: { id: "String!" } }, { array: false }),
 
-      allMembers: resolvableMember({
-        limit: "Int",
-        skip: "Int",
-        sort: "MemberSort",
-        isVolunteer: "Boolean",
+      allMembers: Member({
+        args: {
+          limit: "Int",
+          skip: "Int",
+          sort: "MemberSort",
+          isVolunteer: "Boolean",
+        },
       }),
 
-      member: resolvableMember(
-        { id: "String", name: "MemberNameFilter" },
+      member: Member(
+        { args: { id: "String", name: "MemberNameFilter" } },
         { array: false }
       ),
 
-      allExecs: resolvableExec({
-        limit: "Int",
-        skip: "Int",
-        //? sort: "MemberSort",
+      allExecs: Executive({
+        args: {
+          limit: "Int",
+          skip: "Int",
+          //? sort: "MemberSort",
+        },
       }),
 
-      exec: resolvableExec(
-        { id: "String", role: "RoleEnum" },
+      exec: Executive(
+        { args: { id: "String", role: "RoleEnum" } },
         { array: false }
       ),
 
-      allCommittees: resolvableCommittee({ limit: "Int", skip: "Int" }),
+      allCommittees: Committee({ args: { limit: "Int", skip: "Int" } }),
 
-      committee: resolvableCommittee(
-        { id: "String", committee: "CommitteeEnum" },
+      committee: Committee(
+        { args: { id: "String", committee: "CommitteeEnum" } },
         { array: false }
       ),
 
-      allWebsters: resolvableWebster({ limit: "Int", skip: "Int" }),
+      allWebsters: Webster({ args: { limit: "Int", skip: "Int" } }),
 
-      webster: resolvableWebster(
-        { id: "String", team: "WebsterTeamEnum" },
+      webster: Webster(
+        { args: { id: "String", team: "WebsterTeamEnum" } },
         { array: false }
       ),
 

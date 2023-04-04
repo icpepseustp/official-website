@@ -33,7 +33,7 @@ function EventPreview({ entry, isLoadingAsset }) {
     event = resolveEventStatus(coverage, timeline)
   } catch (e) {
     console.error(e)
-    error = e
+    error = e.name === "RangeError" ? new Error("Invalid date coverage") : e
     event = {
       sameDay: true,
       uiData: [format(coverage.start, "dd"), format(coverage.end, "MMM")],
