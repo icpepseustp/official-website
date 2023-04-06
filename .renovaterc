@@ -1,0 +1,85 @@
+{
+  "extends": [
+    "config:base",
+    ":semanticCommits",
+    ":pinSkipCi"
+  ],
+  "baseBranches": [
+    "qa"
+  ],
+  "schedule": [
+    "after 10am every sunday"
+  ],
+  "timezone": "Asia/Manila",
+  "labels": [
+    "dependencies"
+  ],
+  "prConcurrentLimit": 3,
+  "major": {
+    "dependencyDashboardApproval": true
+  },
+  "commitMessageAction": "Bump",
+  "commitMessageTopic": "`{{depName}}`",
+  "packageRules": [
+    {
+      "matchDepTypes": [
+        "devDependencies"
+      ],
+      "prPriority": -1
+    },
+    {
+      "groupName": "gatsby monorepo",
+      "extends": [
+        "monorepo:gatsby"
+      ],
+      "addLabels": [
+        "gatsby"
+      ],
+      "stabilityDays": 14
+    },
+    {
+      "groupName": "codestyle",
+      "matchPackagePatterns": [
+        "prettier",
+        "eslint"
+      ],
+      "commitMessageSuffix": "[skip ci]"
+    },
+    {
+      "groupName": "tailwindcss",
+      "matchPackageNames": [
+        "tailwindcss",
+        "postcss",
+        "autoprefixer"
+      ],
+      "addLabels": [
+        "tailwindcss"
+      ],
+      "stabilityDays": 7
+    },
+    {
+      "groupName": "fontsource",
+      "matchPackagePrefixes": [
+        "@fontsource/"
+      ],
+      "addLabels": [
+        "fonts"
+      ],
+      "schedule": [
+        "after 10am on the first day of the month"
+      ],
+      "stabilityDays": 7
+    },
+    {
+      "groupName": "types",
+      "matchPackageNames": [
+        "typescript"
+      ],
+      "addLabels": [
+        "typescript"
+      ],
+      "commitMessageSuffix": "[skip ci]"
+    }
+  ],
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json"
+}
