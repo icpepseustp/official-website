@@ -32,9 +32,6 @@
       "extends": [
         "monorepo:gatsby"
       ],
-      "matchPackagePrefixes": [
-        "gatsby"
-      ],
       "addLabels": [
         "gatsby"
       ],
