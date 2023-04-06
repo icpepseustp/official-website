@@ -9,7 +9,7 @@ const routes = [
 
 function Navbar() {
   return (
-    <main className="container max-w-6xl">
+    <header className="container max-w-6xl">
       <nav className="border-2 border-black">
         <ul className="flex divide-x-2 divide-black">
           {routes.map(({ text, path }) => (
@@ -36,7 +36,7 @@ function Navbar() {
             ))}
         </h5>
       </div>
-    </main>
+    </header>
   )
 }
 

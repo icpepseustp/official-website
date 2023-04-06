@@ -1,34 +1,9 @@
-/* eslint-disable react/prop-types */
-import { useState, useEffect } from "react"
-import ExpandLessIcon from "@material-ui/icons/ExpandLess"
-import { makeStyles } from "@material-ui/core/styles"
-import IconButton from "@material-ui/core/IconButton"
-
-const useStyles = makeStyles((theme) => ({
-  toTop: {
-    zIndex: 2,
-    position: "fixed",
-    bottom: "2.5vh",
-    backgroundColor: "#DCDCDC",
-    color: "black",
-    "&:hover, &.Mui-focusVisible": {
-      transition: "0.3s",
-      color: "#0f70d7",
-      backgroundColor: "#DCDCDC",
-    },
-    [theme.breakpoints.up("xs")]: {
-      right: "5%",
-      backgroundColor: "rgb(220,220,220,0.7)",
-    },
-    [theme.breakpoints.up("lg")]: {
-      right: "6.5%",
-    },
-  },
-}))
+import { Transition } from "@headlessui/react"
+import { number } from "prop-types"
+import { useEffect, useState } from "react"
+import { RxCaretUp } from "react-icons/rx"
 
 function ScrollToTop({ showBelow }) {
-  const classes = useStyles()
-
   const [show, setShow] = useState(!showBelow)
 
   useEffect(() => {
@@ -36,28 +11,42 @@ function ScrollToTop({ showBelow }) {
 
     const handleScroll = () => {
       if (window.pageYOffset > showBelow) {
-        if (!show) setShow(true)
-      } else if (show) setShow(false)
+        setShow(true)
+      } else setShow(false)
     }
 
-    window.addEventListener(`scroll`, handleScroll)
-    return () => window.removeEventListener(`scroll`, handleScroll)
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
   })
 
-  const handleClick = () => window.scrollTo({ top: 0, behavior: `smooth` })
-
-  if (!show) return null
+  const handleClick = () => window.scrollTo({ top: 0, behavior: "smooth" })
 
   return (
-    <IconButton
-      onClick={handleClick}
-      className={classes.toTop}
-      aria-label="to top"
-      title="Back to top"
+    <Transition
+      show={show}
+      enter="transition-[bottom]"
+      enterFrom="-bottom-20"
+      enterTo="bottom-6"
+      leave="transition-[bottom]"
+      leaveFrom="bottom-6"
+      leaveTo="-bottom-20"
+      className="fixed right-8 z-10 md:right-12 xl:right-24"
     >
-      <ExpandLessIcon />
-    </IconButton>
+      <button
+        type="button"
+        className="rounded-full bg-transparent p-3 text-secondary transition-colors hover:bg-secondary/75 hover:text-white"
+        title="Back to top"
+        aria-label="to top"
+        onClick={handleClick}
+      >
+        <RxCaretUp size={25} />
+      </button>
+    </Transition>
   )
+}
+
+ScrollToTop.propTypes = {
+  showBelow: number,
 }
 
 export default ScrollToTop

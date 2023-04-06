@@ -1,0 +1,9 @@
+contacts:
+  - type: Email
+    platform: Gmail
+    label: icpepse@ustp.edu.ph
+    value: icpepse@ustp.edu.ph
+  - type: Phone
+    platform: SMS
+    label: (+63) 976-287-5041
+    value: "+639762875041"

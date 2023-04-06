@@ -1,0 +1,19 @@
+type Executive {
+  id: ID!
+  collection: String!
+  member: Member! @member
+  role: String!
+}
+
+enum RoleEnum {
+  President
+  VP___Internal
+  VP___External
+  General___Secretary
+  Associate___Secretary
+  Treasurer
+  Associate___Treasurer
+  Auditor
+  PIO
+  PIO___External
+}

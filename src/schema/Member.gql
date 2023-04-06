@@ -1,0 +1,29 @@
+type MemberName {
+  first: String!
+  last: String!
+}
+
+type Member {
+  id: ID!
+  collection: String!
+  name: MemberName!
+  avatar: Image
+  isVolunteer: Boolean!
+}
+
+enum MemberSortFieldsEnum {
+  ID
+  NAME___FIRST
+  NAME___LAST
+}
+
+input MemberNameFilter {
+  first: String
+  middle: String
+  last: String
+}
+
+input MemberSort {
+  fields: [MemberSortFieldsEnum]
+  order: [SortOrderEnum]
+}

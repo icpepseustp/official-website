@@ -1,0 +1,37 @@
+type StaticMedia {
+  # Since we allow any arbitrary media (e.g. GIFs, SVGs),
+  # when unsupported formats are used, the `publicUrl`
+  # should be used instead of `childImageSharp`
+  src: File @fileByStaticPath
+  url: String
+  alt: String!
+}
+
+type Lead {
+  text: String!
+  cover: StaticMedia!
+}
+
+type Hero {
+  banner: StaticMedia!
+  lead: Lead!
+}
+
+type Contact {
+  type: String!
+  platform: String!
+  label: String!
+  value: String
+}
+
+type Platform {
+  name: String!
+  url: String!
+  label: String!
+}
+
+type Settings {
+  contacts: [Contact]!
+  platforms: [Platform]!
+  hero: Hero!
+}

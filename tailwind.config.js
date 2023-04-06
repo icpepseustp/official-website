@@ -1,6 +1,4 @@
-/* eslint-disable global-require */
-/** @type {import("@types/tailwindcss/tailwind-config").TailwindConfig} */
-
+/** @type {import("tailwindcss").Config} */
 module.exports = {
   content: ["./src/**/*.{jsx,tsx}"],
   theme: {

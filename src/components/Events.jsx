@@ -1,200 +1,107 @@
-import { StaticQuery, graphql } from "gatsby"
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import classNames from "classnames"
+import { graphql, navigate, useStaticQuery } from "gatsby"
 import { MdOutlineEventBusy } from "react-icons/md"
-import { format, isEqual, isBefore, isAfter, isWithinInterval } from "date-fns"
 
-function UpcomingEvents() {
-  const formatDate = (dateM, dateS, dateE) => {
-    try {
-      const d1 = format(new Date(dateS), "dd")
-      const d2 = format(new Date(dateE), "dd")
-      const m1 = format(new Date(dateS), "LLL")
-      const m2 = format(new Date(dateE), "LLL")
+import { hasEventEnded, resolveEventStatus } from "../utils/events"
 
-      const fdate = []
-
-      if (dateM) {
-        fdate.push(`${d1}-${d2}`)
-        if (m1 === m2) {
-          fdate.push(`${m1}`)
-        } else {
-          fdate.push(`${m1}-${m2}`)
+function Events() {
+  const { upcoming } = useStaticQuery(graphql`
+    query Events {
+      upcoming: allEventEntries(
+        limit: 10
+        sort: { fields: DATE, order: DESC }
+      ) {
+        id
+        date
+        title
+        summary
+        coverage {
+          end
+          start
         }
-      } else {
-        fdate.push(`${d1}`)
-        fdate.push(`${m1}`)
-      }
-
-      return fdate
-    } catch {
-      return ["01-01", "JAN"]
-    }
-  }
-
-  const checkDate = (dateM, dateS, dateE) => {
-    try {
-      const currentDate = new Date(format(new Date(), "MMM-dd-yyyy"))
-      const d1 = new Date(format(new Date(dateS), "MMM-dd-yyyy"))
-      const d2 = new Date(format(new Date(dateE), "MMM-dd-yyyy"))
-
-      let state = 0
-
-      if (dateM) {
-        if (isBefore(d1, currentDate)) {
-          state = 0
-        } else if (
-          isWithinInterval(new Date(currentDate), {
-            start: d1,
-            end: d2,
-          })
-        ) {
-          state = 1
-        } else {
-          state = 2
+        timeline {
+          datetime
+          description
         }
-      } else if (isBefore(d1, currentDate)) {
-        state = 0
-      } else if (isEqual(d1, currentDate)) {
-        state = 1
-      } else if (isAfter(d1, currentDate)) {
-        state = 2
-      }
-      return state
-    } catch {
-      return 0
-    }
-  }
-
-  const validEvent = (data) => {
-    const events = data.upcoming.nodes
-    // eslint-disable-next-line no-plusplus
-    for (let i = 0; i < events.length; i++) {
-      const event = events[i].frontmatter
-
-      if (checkDate(event.date_m, event.date_s, event.date_e) > 0) {
-        return true
+        link {
+          slug
+        }
       }
     }
+  `)
 
-    return false
+  if (upcoming.every(hasEventEnded)) {
+    return (
+      <div className="flex h-[250px] max-w-full items-center justify-center lg:h-[380px] lg:w-[390px]">
+        <div className="-mt-12 flex flex-col items-center gap-4">
+          <MdOutlineEventBusy className="h-16 w-16 text-[#dcdcdc]" />
+          <p className="text-[#8f8f8f]">No events for now.</p>
+        </div>
+      </div>
+    )
   }
 
   return (
-    <StaticQuery
-      query={graphql`
-        query {
-          upcoming: allMarkdownRemark(
-            filter: { frontmatter: { contentpath: { eq: "event" } } }
-            sort: { order: ASC, fields: frontmatter___date }
-          ) {
-            nodes {
-              frontmatter {
-                date_s
-                date_e
-                date_m
-                title
-                description
-                time_n
-                time_s
-                time_e
-              }
-            }
-          }
-        }
-      `}
-      render={(data) => (
-        <div>
-          {data.upcoming.nodes.length > 0 && validEvent(data) ? (
-            <div className="flex h-[280px] max-w-full flex-col gap-y-3 overflow-y-auto lg:h-[380px] lg:w-[410px] lg:gap-y-6">
-              {data.upcoming.nodes.map(({ frontmatter: event }) => (
-                <div key={event.title} className="mt-2">
-                  {checkDate(event.date_m, event.date_s, event.date_e) > 0 && (
-                    <div className="relative -z-20 ml-3 flex max-w-full shrink border-2 border-black bg-[#efe9e1] py-2 pl-8 pr-2 font-normal lg:ml-6">
-                      <div className="absolute -left-3 -top-2 flex h-[90px] w-[95px] items-center justify-center border-2 border-black bg-primary">
-                        {formatDate(event.date_m, event.date_s, event.date_e)[1]
-                          .length > 3 ? (
-                          <strong className="py-2 px-[2px] text-center font-PS2P text-xs uppercase">
-                            <div className="-mb-[2px]">
-                              {
-                                formatDate(
-                                  event.date_m,
-                                  event.date_s,
-                                  event.date_e
-                                )[0]
-                              }
-                            </div>
-                            <div>
-                              {
-                                formatDate(
-                                  event.date_m,
-                                  event.date_s,
-                                  event.date_e
-                                )[1]
-                              }
-                            </div>
-                          </strong>
-                        ) : (
-                          <strong className="py-5 px-1 text-center font-PS2P text-sm uppercase lg:text-base">
-                            <div className="-mb-0.5 lg:-mb-2">
-                              {
-                                formatDate(
-                                  event.date_m,
-                                  event.date_s,
-                                  event.date_e
-                                )[0]
-                              }
-                            </div>
-                            <div>
-                              {
-                                formatDate(
-                                  event.date_m,
-                                  event.date_s,
-                                  event.date_e
-                                )[1]
-                              }
-                            </div>
-                          </strong>
-                        )}
-                      </div>
+    <div className="flex h-[280px] min-w-fit flex-col gap-y-3 overflow-y-auto lg:h-[380px] lg:w-[410px] lg:gap-y-6">
+      {upcoming.map(({ id, summary, title, coverage, timeline, link }) => {
+        const event = resolveEventStatus(coverage, timeline)
 
-                      <article className="ml-[65px] items-center text-xs md:ml-[70px] lg:ml-[75px] lg:text-base">
-                        <h3 className="overflow-hidden text-ellipsis font-libre text-sm font-bold md:text-base lg:mb-1.5 lg:text-lg">
-                          {event.title}
-                        </h3>
+        if (event.ended) return null
 
-                        <p className="text-sm leading-5">{event.description}</p>
-                        {!event.time_n ? (
-                          <time
-                            dateTime="PT5H"
-                            className="text-sm font-semibold"
-                          >{`${event.time_s} - ${event.time_e}`}</time>
-                        ) : (
-                          <div className="h-[6px]">&nbsp;</div>
-                        )}
-                      </article>
-
-                      {checkDate(event.date_m, event.date_s, event.date_e) ===
-                      1 ? (
-                        <div className="absolute bottom-1 right-1 h-5 w-5 bg-secondary" />
-                      ) : (
-                        <div className="absolute bottom-1 right-1 h-5 w-5 bg-primary" />
-                      )}
-                    </div>
+        return (
+          <div
+            key={id}
+            className={classNames("mt-2", { "cursor-pointer": link })}
+            onClick={link ? () => navigate(link.slug) : undefined}
+          >
+            <div className="relative -z-20 ml-3 flex max-w-full shrink border-2 border-black bg-[#efe9e1] py-2 pl-8 pr-2 font-normal lg:ml-6">
+              <div className="absolute -left-3 -top-2 flex h-[90px] w-[95px] items-center justify-center border-2 border-black bg-primary">
+                <strong
+                  className={classNames(
+                    "text-center font-PS2P uppercase",
+                    event.sameDay
+                      ? "py-5 px-1 text-sm lg:text-base"
+                      : "py-2 px-[2px] text-xs"
                   )}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="flex h-[250px] max-w-full items-center justify-center lg:h-[380px] lg:w-[390px]">
-              <div className="-mt-12 flex flex-col items-center gap-4">
-                <MdOutlineEventBusy color="#DCDCDC" className="h-16 w-16 " />
-                <p className="text-[#8f8f8f]">No events for now.</p>
+                >
+                  {event.uiData.map((date) => (
+                    <div key={date} className="-mb-[2px]">
+                      {date}
+                    </div>
+                  ))}
+                </strong>
               </div>
+
+              <article className="ml-[65px] items-center text-xs md:ml-[70px] lg:ml-[75px] lg:text-base">
+                <h3 className="overflow-hidden text-ellipsis font-libre text-sm font-bold md:text-base lg:mb-1.5 lg:text-lg">
+                  {title}
+                </h3>
+
+                <p className="text-sm leading-5">{summary}</p>
+
+                {event.schedule ? (
+                  <time dateTime="PT5H" className="text-sm font-semibold">
+                    {event.schedule}
+                  </time>
+                ) : (
+                  <div className="h-[6px]">&nbsp;</div>
+                )}
+              </article>
+
+              <div
+                className={classNames(
+                  "absolute bottom-1 right-1 h-5 w-5",
+                  `${event.active ? "bg-secondary" : "bg-primary"}`
+                )}
+              />
             </div>
-          )}
-        </div>
-      )}
-    />
+          </div>
+        )
+      })}
+    </div>
   )
 }
 
-export default UpcomingEvents
+export default Events

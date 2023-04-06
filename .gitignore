@@ -23,3 +23,6 @@ public/
 
 # Local Netlify folder
 .netlify
+
+# GraphQL Auto-Schema
+schema.graphql

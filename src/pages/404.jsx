@@ -1,12 +1,16 @@
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import { graphql, Link } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { object } from "prop-types"
 import { BsArrowLeft } from "react-icons/bs"
 import Seo from "../components/Seo"
 
-function NotFoundPage() {
+function NotFoundPage({ data }) {
+  const { joebot } = data
+
   return (
     <main className="container flex h-[650px] max-w-6xl flex-col items-center lg:h-[700px]">
-      <Seo title="Page not found" />
+      <Seo title="Page Not Found" />
+
       <section className="flex shrink flex-col items-center px-4 py-12 lg:items-start lg:pl-12">
         <h1 className="mt-12  shrink cursor-default font-PS2P text-4xl font-normal drop-shadow-2xl md:text-6xl lg:text-7xl">
           WHOOPSY!
@@ -34,10 +38,10 @@ function NotFoundPage() {
             </div>
           </div>
           <div className="absolute z-[-2] -mr-28 md:absolute md:-mr-24 lg:relative lg:mr-0">
-            <StaticImage
-              className="h-[300px] w-[350px] opacity-50 md:h-[320px] md:w-[370px] lg:h-[400px] lg:w-[450px] lg:opacity-100"
-              src="../images/404/joebot-404.png"
+            <GatsbyImage
+              image={getImage(joebot)}
               alt="joe-bot_ErroR"
+              className="h-[300px] w-[350px] opacity-50 md:h-[320px] md:w-[370px] lg:h-[400px] lg:w-[450px] lg:opacity-100"
             />
           </div>
         </div>
@@ -45,5 +49,23 @@ function NotFoundPage() {
     </main>
   )
 }
+
+NotFoundPage.propTypes = {
+  data: object.isRequired,
+}
+
+export const query = graphql`
+  query NotFoundPage {
+    joebot: file(
+      absolutePath: { regex: "/static/media/i" }
+      name: { eq: "joebot-404" }
+    ) {
+      name
+      childImageSharp {
+        gatsbyImageData
+      }
+    }
+  }
+`
 
 export default NotFoundPage

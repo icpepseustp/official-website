@@ -1,17 +1,23 @@
-/* eslint-disable react/prop-types */
 import classNames from "classnames"
 import { graphql, Link } from "gatsby"
-import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { arrayOf, object, shape } from "prop-types"
 import { useState } from "react"
 import { BsArrowRight } from "react-icons/bs"
 import { FaRegNewspaper, FaRegStar } from "react-icons/fa"
+
+import HeroBanner from "../components/HeroBanner"
+import Loader from "../components/Loader"
 import Seo from "../components/Seo"
-import Spinner from "../components/Spinner"
-import hero from "../images/home/bg.gif"
 import Social from "../components/Social"
 
 function IndexPage({ data }) {
   const [heroLoaded, setHeroLoaded] = useState(false)
+
+  const {
+    featured,
+    settings: { hero },
+  } = data
 
   return (
     <main className="container max-w-6xl">
@@ -19,13 +25,12 @@ function IndexPage({ data }) {
 
       {!heroLoaded && (
         <div className="p-16 text-center md:p-32 lg:p-40 xl:p-64">
-          <Spinner />
+          <Loader />
         </div>
       )}
 
-      <img
-        src={hero}
-        alt="Enchante: The Untold Lore Unfolds"
+      <HeroBanner
+        data={hero.banner}
         className={classNames("w-full", { hidden: !heroLoaded })}
         onLoad={() => setHeroLoaded(true)}
       />
@@ -49,14 +54,11 @@ function IndexPage({ data }) {
               </span>
 
               <p className="mt-8 mb-10 font-libre text-base font-bold leading-tight lg:text-2xl">
-                The Institute of Computer Engineers of the Philippines Student
-                Edition (ICpEP.SE) is the official student body of the
-                Department of Computer Engineering in USTP-CDO.
+                {hero.lead.text}
               </p>
 
               <Link
                 to="about"
-                title="Coming Soon!"
                 className="float-right flex cursor-pointer items-center gap-x-3 font-montserrat font-semibold lg:text-lg xl:text-xl"
               >
                 <small>Read More</small>
@@ -66,9 +68,9 @@ function IndexPage({ data }) {
           </div>
 
           <div className="flex flex-1 p-4">
-            <StaticImage
-              src="../images/home/cpe-exec-officers-2019.jpg"
-              alt="Group photo of ICpEP.SE officers"
+            <GatsbyImage
+              image={getImage(hero.lead.cover.src)}
+              alt={hero.lead.cover.alt}
             />
           </div>
         </article>
@@ -82,34 +84,27 @@ function IndexPage({ data }) {
             <h2 className="text-lg font-light lg:text-2xl">Featured</h2>
           </span>
 
-          {data.featured.nodes.length > 0 ? (
+          {featured.length > 0 ? (
             <div className="my-8 grid grid-cols-1 place-items-center gap-y-12 md:my-4 md:grid-cols-2">
-              {data.featured.nodes.map((post) => (
-                <article
-                  key={post.frontmatter.title}
-                  className="feature-article"
-                >
-                  {post.frontmatter.thumbnail && (
+              {featured.map(({ id, title, summary, cover, slug }) => (
+                <article key={id} className="featured-article">
+                  {cover.image && (
                     <GatsbyImage
-                      key={post.frontmatter.thumbnail}
+                      image={getImage(cover.image)}
+                      alt={cover.alt}
                       className="md:h-36 lg:h-52"
-                      image={getImage(
-                        post.frontmatter.thumbnail.childImageSharp
-                      )}
-                      alt={post.frontmatter.alt}
                     />
                   )}
+
                   <h4 className="my-4 font-libre text-base font-bold leading-tight">
-                    {post.frontmatter.title}
+                    {title}
                   </h4>
-                  <p className="font-montserrat leading-tight">
-                    {post.frontmatter.description}
-                  </p>
+                  <p className="font-montserrat leading-tight">{summary}</p>
 
                   <Link
                     title="Read more"
                     className="float-right mt-6 flex cursor-pointer items-center gap-x-3 font-montserrat font-semibold lg:text-lg xl:text-xl"
-                    to={post.fields.slug}
+                    to={slug}
                   >
                     <small>Read More</small>
                     <BsArrowRight />
@@ -130,31 +125,58 @@ function IndexPage({ data }) {
   )
 }
 
-export const pageQuery = graphql`
-  query {
-    featured: allMarkdownRemark(
-      filter: {
-        fileAbsolutePath: { regex: "/(featured)/" }
-        frontmatter: { contentpath: { eq: "featured" } }
-      }
-      sort: { order: DESC, fields: frontmatter___date }
+IndexPage.propTypes = {
+  data: shape({
+    featured: arrayOf(object).isRequired,
+    settings: object.isRequired,
+  }).isRequired,
+}
+
+export const query = graphql`
+  query IndexPage {
+    featured: allBlogEntries(
+      isFeatured: { home: true, blog: false }
+      sort: { fields: DATE, order: DESC }
       limit: 2
     ) {
-      nodes {
-        frontmatter {
-          description
-          thumbnail {
-            childImageSharp {
-              gatsbyImageData(placeholder: BLURRED, height: 520, width: 820)
-            }
+      id
+      title
+      summary
+      cover {
+        image {
+          childImageSharp {
+            gatsbyImageData(placeholder: BLURRED, height: 520, width: 820)
           }
-          title
+        }
+        alt
+      }
+      slug
+      html
+    }
+
+    settings: allSettings {
+      hero {
+        banner {
+          url
+          src {
+            childImageSharp {
+              gatsbyImageData
+            }
+            publicURL
+          }
           alt
         }
-        fields {
-          slug
+        lead {
+          text
+          cover {
+            src {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+            alt
+          }
         }
-        html
       }
     }
   }
