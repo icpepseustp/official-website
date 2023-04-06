@@ -29,6 +29,9 @@
     },
     {
       "groupName": "gatsby monorepo",
+      "matchPackagePrefixes": [
+        "gatsby-"
+      ],
       "extends": [
         "monorepo:gatsby"
       ],
