@@ -1,5 +1,4 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:base",
     ":semanticCommits",
@@ -15,7 +14,12 @@
   "labels": [
     "dependencies"
   ],
-  "branchConcurrentLimit": 3,
+  "prConcurrentLimit": 3,
+  "major": {
+    "dependencyDashboardApproval": true
+  },
+  "commitMessageAction": "Bump",
+  "commitMessageTopic": "`{{depName}}`",
   "packageRules": [
     {
       "matchDepTypes": [
@@ -31,7 +35,7 @@
       "addLabels": [
         "gatsby"
       ],
-      "stabilityDays": 7
+      "stabilityDays": 14
     },
     {
       "groupName": "codestyle",
@@ -79,5 +83,6 @@
       ],
       "commitMessageSuffix": "[skip ci]"
     }
-  ]
+  ],
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json"
 }
