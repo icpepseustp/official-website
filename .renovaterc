@@ -29,11 +29,11 @@
     },
     {
       "groupName": "gatsby monorepo",
-      "matchPackagePrefixes": [
-        "gatsby-"
-      ],
       "extends": [
         "monorepo:gatsby"
+      ],
+      "matchPackagePrefixes": [
+        "gatsby"
       ],
       "addLabels": [
         "gatsby"
@@ -77,9 +77,6 @@
       "groupName": "types",
       "matchPackageNames": [
         "typescript"
-      ],
-      "matchPackagePrefixes": [
-        "@types/"
       ],
       "addLabels": [
         "typescript"
