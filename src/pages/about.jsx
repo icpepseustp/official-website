@@ -156,7 +156,7 @@ function AboutPage({ data }) {
                 </div>
               )}
 
-              <p className="mt-3 mb-4 font-montserrat font-medium italic md:text-xs lg:text-sm">
+              <p className="mb-4 mt-3 font-montserrat font-medium italic md:text-xs lg:text-sm">
                 {!committee.includes("Lead") && "Committee on"} {committee}
               </p>
             </div>
@@ -234,7 +234,7 @@ function AboutPage({ data }) {
                 </div>
               )}
 
-              <p className="mt-3 mb-8 font-montserrat text-xs font-medium italic">
+              <p className="mb-8 mt-3 font-montserrat text-xs font-medium italic">
                 {!committee.includes("Lead") && "Committee on "}
                 {committee}
               </p>
@@ -302,7 +302,7 @@ function AboutPage({ data }) {
                     </div>
                   )}
 
-                  <p className="mt-3 mb-8 font-montserrat font-medium italic md:text-xs lg:text-sm">
+                  <p className="mb-8 mt-3 font-montserrat font-medium italic md:text-xs lg:text-sm">
                     {!/manager/i.test(team) && "The"} {team}
                   </p>
                 </div>
@@ -337,7 +337,7 @@ function AboutPage({ data }) {
                       ))}
                     </div>
 
-                    <p className="mt-3 mb-8 text-center font-montserrat font-medium italic md:text-xs lg:text-sm">
+                    <p className="mb-8 mt-3 text-center font-montserrat font-medium italic md:text-xs lg:text-sm">
                       {!/manager/i.test(team) && "The"} {team}
                     </p>
                   </div>
@@ -474,7 +474,7 @@ function AboutPage({ data }) {
                 )}
               </div>
 
-              <p className="mt-3 mb-8 text-center font-montserrat text-xs font-medium italic">
+              <p className="mb-8 mt-3 text-center font-montserrat text-xs font-medium italic">
                 {!/manager/i.test(team) && "The"} {team}
               </p>
             </Fragment>

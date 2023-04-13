@@ -36,7 +36,7 @@ function IndexPage({ data }) {
       />
 
       <section className="relative">
-        <div className="absolute right-4 -bottom-12 flex h-16 w-16 items-center justify-center rounded-full bg-secondary p-12 xl:right-8 xl:-bottom-24 xl:h-44 xl:w-44">
+        <div className="absolute -bottom-12 right-4 flex h-16 w-16 items-center justify-center rounded-full bg-secondary p-12 xl:-bottom-24 xl:right-8 xl:h-44 xl:w-44">
           <p className="rotate-[20deg] text-center font-montserrat text-xs font-bold text-white xl:text-2xl">
             Welcome, <br /> ka-CpE!
           </p>
@@ -53,7 +53,7 @@ function IndexPage({ data }) {
                 <h2 className="text-lg font-light lg:text-2xl">Who We Are</h2>
               </span>
 
-              <p className="mt-8 mb-10 font-libre text-base font-bold leading-tight lg:text-2xl">
+              <p className="mb-10 mt-8 font-libre text-base font-bold leading-tight lg:text-2xl">
                 {hero.lead.text}
               </p>
 

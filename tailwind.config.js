@@ -3,9 +3,7 @@ module.exports = {
   content: ["./src/**/*.{jsx,tsx}"],
   theme: {
     extend: {
-      container: {
-        center: true,
-      },
+      container: { center: true },
       colors: {
         primary: "#fec882",
         secondary: "#0e6fd7",

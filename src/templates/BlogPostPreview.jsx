@@ -103,7 +103,7 @@ function BlogPostPreview({ entry, widgetFor, getAsset, isLoadingAsset }) {
                     <h2 className="text-lg font-light lg:text-2xl">Featured</h2>
                   </span>
 
-                  <article className="relative my-8 max-w-lg p-4 md:my-4 md:py-0 md:px-8">
+                  <article className="relative my-8 max-w-lg p-4 md:my-4 md:px-8 md:py-0">
                     <img
                       src={getAsset(cover.image)}
                       alt={cover.alt}
