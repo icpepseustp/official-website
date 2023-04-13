@@ -46,9 +46,7 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-slug",
     "gatsby-plugin-extract-schema",
-
-    //! Temporarily disabled. See https://github.com/gatsbyjs/gatsby/issues/34706
-    // "gatsby-plugin-mdx",
+    "gatsby-plugin-mdx",
 
     {
       resolve: "gatsby-transformer-remark",
