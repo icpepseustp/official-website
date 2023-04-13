@@ -135,7 +135,7 @@ IndexPage.propTypes = {
 export const query = graphql`
   query IndexPage {
     featured: allBlogEntries(
-      isFeatured: { home: true, blog: false }
+      isFeatured: { home: true }
       sort: { fields: DATE, order: DESC }
       limit: 2
     ) {
