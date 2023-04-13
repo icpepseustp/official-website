@@ -131,7 +131,7 @@ BlogPage.propTypes = {
 export const query = graphql`
   query BlogPage {
     featured: allBlogEntries(
-      isFeatured: { home: false, blog: true }
+      isFeatured: { blog: true }
       sort: { fields: DATE, order: DESC }
       limit: 1
     ) {
