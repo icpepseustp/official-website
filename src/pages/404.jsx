@@ -19,7 +19,7 @@ function NotFoundPage({ data }) {
         <div className="relative -mt-1 flex max-w-full shrink flex-col items-center justify-items-center lg:-mt-20 lg:flex-row">
           <div>
             <div className="flex w-[500px] flex-col items-center px-12 lg:items-start">
-              <p className="font-monsterrat mt-32 mb-2 cursor-default text-[16px] font-semibold md:text-[20px] lg:mt-24 lg:text-[24px]">
+              <p className="font-monsterrat mb-2 mt-32 cursor-default text-[16px] font-semibold md:text-[20px] lg:mt-24 lg:text-[24px]">
                 Joe couldn&apos;t find that page.
               </p>
               <h2 className="font-monsterrat cursor-default text-2xl font-extrabold md:text-3xl lg:text-5xl">

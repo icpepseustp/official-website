@@ -65,8 +65,8 @@ function EventPreview({ entry, isLoadingAsset }) {
                 className={classNames(
                   "text-center font-PS2P uppercase",
                   event.sameDay
-                    ? "py-5 px-1 text-sm lg:text-base"
-                    : "py-2 px-[2px] text-xs"
+                    ? "px-1 py-5 text-sm lg:text-base"
+                    : "px-[2px] py-2 text-xs"
                 )}
               >
                 {event.uiData.map((date) => (
