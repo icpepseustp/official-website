@@ -1,5 +1,11 @@
 name-template: "v$RESOLVED_VERSION"
 tag-template: "v$RESOLVED_VERSION"
+change-template: "- $TITLE (#$NUMBER) - cc @$AUTHOR"
+template: |
+  ## What"s changed? 😳
+
+  $CHANGES
+
 categories:
   - title: "📜 Content"
     labels:
@@ -9,20 +15,52 @@ categories:
     labels:
       - "feature"
       - "enhancement"
+      - "perf"
   - title: "🐛 Bug Fixes"
     labels:
       - "fix"
       - "bugfix"
-      - "bug"
       - "hotfix"
   - title: "💖 General Changes"
-    label: "patch"
+    labels:
+      - "patch"
+      - "docs"
+      - "test"
   - title: "🧰 Maintenance"
     labels:
       - "chore"
       - "dependencies"
-change-template: "- $TITLE (#$NUMBER) - cc @$AUTHOR"
-change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
+      - "maintenance"
+
+autolabeler:
+  - label: "bugfix"
+    branch:
+      - '/fix\/.+/'
+    title:
+      - '/\bfix\b(?![(]deps[)])/i'
+  - label: "enhancement"
+    branch:
+      - '/feat\/.+/'
+    title:
+      - "/feat/i"
+  - label: "chore"
+    branch:
+      - '/chore\/.+/'
+      - '/style\/.+/'
+      - '/refactor\/.+/'
+    title:
+      - "/chore/i"
+      - "/style/i"
+      - "/refactor/i"
+  - label: "docs"
+    branch:
+      - '/docs\/.+/'
+    title:
+      - "/docs/i"
+  - label: "skip-changelog"
+    title:
+      - "/merge/i"
+
 version-resolver:
   major:
     labels:
@@ -36,9 +74,12 @@ version-resolver:
     labels:
       - "patch"
   default: patch
+
 exclude-labels:
   - "skip-changelog"
-template: |
-  ## What's changed? 😳
 
-  $CHANGES
+change-title-escapes: '\<*_&' # Add # and @ to disable mentions, and ` to disable code blocks.
+
+replacers:
+  - search: '/(\w+(?:\(\w+\))?!?: )/g'
+    replace: ""
