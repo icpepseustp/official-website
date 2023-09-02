@@ -132,7 +132,7 @@ exports.createResolvers = ({ createResolvers }) => {
 
   const Executive = createResolvableRemark(
     { collection: "executives", type: "Executive" },
-    { sort: sortByMap(execOrder, "role") }
+    { sort: sortByMap(execOrder, "role") },
   )
 
   const committeeOrder = {
@@ -146,7 +146,7 @@ exports.createResolvers = ({ createResolvers }) => {
 
   const Committee = createResolvableRemark(
     { collection: "committees", type: "Committee" },
-    { sort: sortByMap(committeeOrder, "committee") }
+    { sort: sortByMap(committeeOrder, "committee") },
   )
 
   const theOrderOfTheWeb = {
@@ -158,7 +158,7 @@ exports.createResolvers = ({ createResolvers }) => {
 
   const Webster = createResolvableRemark(
     { collection: "websters", type: "Webster" },
-    { sort: sortByMap(theOrderOfTheWeb, "team") }
+    { sort: sortByMap(theOrderOfTheWeb, "team") },
   )
 
   const resolvers = {
@@ -201,7 +201,7 @@ exports.createResolvers = ({ createResolvers }) => {
 
       member: Member(
         { args: { id: "String", name: "MemberNameFilter" } },
-        { array: false }
+        { array: false },
       ),
 
       allExecs: Executive({
@@ -214,21 +214,21 @@ exports.createResolvers = ({ createResolvers }) => {
 
       exec: Executive(
         { args: { id: "String", role: "RoleEnum" } },
-        { array: false }
+        { array: false },
       ),
 
       allCommittees: Committee({ args: { limit: "Int", skip: "Int" } }),
 
       committee: Committee(
         { args: { id: "String", committee: "CommitteeEnum" } },
-        { array: false }
+        { array: false },
       ),
 
       allWebsters: Webster({ args: { limit: "Int", skip: "Int" } }),
 
       webster: Webster(
         { args: { id: "String", team: "WebsterTeamEnum" } },
-        { array: false }
+        { array: false },
       ),
 
       allSettings: {
@@ -291,8 +291,8 @@ exports.createResolvers = ({ createResolvers }) => {
                   if (!override && role) return
                   role = resolveRole(frontmatter[key])
                 })
-              }
-            )
+              },
+            ),
           )
 
           return role

@@ -66,7 +66,7 @@ function EventPreview({ entry, isLoadingAsset }) {
                   "text-center font-PS2P uppercase",
                   event.sameDay
                     ? "px-1 py-5 text-sm lg:text-base"
-                    : "px-[2px] py-2 text-xs"
+                    : "px-[2px] py-2 text-xs",
                 )}
               >
                 {event.uiData.map((date) => (
@@ -99,7 +99,7 @@ function EventPreview({ entry, isLoadingAsset }) {
             <div
               className={classNames(
                 "absolute bottom-1 right-1 h-5 w-5",
-                `${event.active ? "bg-secondary" : "bg-primary"}`
+                `${event.active ? "bg-secondary" : "bg-primary"}`,
               )}
             />
           </div>

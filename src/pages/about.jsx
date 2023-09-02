@@ -190,7 +190,7 @@ function AboutPage({ data }) {
                             {member.name.first}
                           </p>
                         </div>
-                      )
+                      ),
                   )}
                 </div>
               )}
@@ -306,7 +306,7 @@ function AboutPage({ data }) {
                     {!/manager/i.test(team) && "The"} {team}
                   </p>
                 </div>
-              )
+              ),
           )}
         </div>
 

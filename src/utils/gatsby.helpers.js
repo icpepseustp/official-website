@@ -28,7 +28,7 @@ function resolveRemarkSortFieldName(field) {
 function resolveRemarkSortQueryArgs({ fields = ["title"], order = ["ASC"] }) {
   return {
     fields: fields.map((field) =>
-      field === "ID" ? "id" : resolveRemarkSortFieldName(field)
+      field === "ID" ? "id" : resolveRemarkSortFieldName(field),
     ),
     order,
   }
@@ -61,8 +61,8 @@ function _resolveArgs(args, comparator) {
                           : v
                         : v,
                   },
-            ]
-      )
+            ],
+      ),
   )
 
   return Object.setPrototypeOf(resolved, null)
@@ -115,7 +115,7 @@ function resolveRemarkNode(node) {
 
 function checkArgs(args) {
   return Object.values(args).some((v) =>
-    typeof v === "object" ? checkArgs(v) : Boolean(v)
+    typeof v === "object" ? checkArgs(v) : Boolean(v),
   )
 }
 
@@ -138,7 +138,7 @@ function createResolvableRemark({ collection, type }, hook = {}) {
         if (!array) {
           if (!checkArgs(__args)) {
             throw new Error(
-              `No arguments were provided for query of type "${type}".`
+              `No arguments were provided for query of type "${type}".`,
             )
           }
 
@@ -177,7 +177,7 @@ const compare = {
 
     if (!matches)
       throw new Error(
-        `Invalid flags supplied to RegExp constructor: "${filterVal}"`
+        `Invalid flags supplied to RegExp constructor: "${filterVal}"`,
       )
 
     return new RegExp(matches[1], matches[2]).test(value)
@@ -208,9 +208,9 @@ function createResolvableSettingsField(name, opts = {}) {
               const value = e[key]
               return Object.entries(comparators).every(
                 ([comparator, filterVal]) =>
-                  compare[comparator](value, filterVal)
+                  compare[comparator](value, filterVal),
               )
-            })
+            }),
         )
         .slice(skip, limit)
 
