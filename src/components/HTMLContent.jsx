@@ -4,7 +4,7 @@ import ScrollToTop from "./ScrollTop"
 
 function resolveAuthors(authors) {
   const _ = authors.map(
-    ({ fullName, role }) => `${fullName}${role ? `, ${role}` : ""}`
+    ({ fullName, role }) => `${fullName}${role ? `, ${role}` : ""}`,
   )
 
   if (_.length === 1) return _[0]

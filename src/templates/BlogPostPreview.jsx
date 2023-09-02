@@ -93,7 +93,7 @@ function BlogPostPreview({ entry, widgetFor, getAsset, isLoadingAsset }) {
             <div
               className={classNames(
                 "mx-auto flex max-w-fit flex-col p-8 lg:px-10",
-                { "border-y-2 border-black bg-white": isFeatured.home }
+                { "border-y-2 border-black bg-white": isFeatured.home },
               )}
             >
               {isFeatured.home ? (

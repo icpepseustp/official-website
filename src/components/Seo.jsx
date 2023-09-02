@@ -136,7 +136,7 @@ function Seo({ lang = "en-US", title, ...rest }) {
             name: "twitter:card",
             content: "summary",
           },
-        ]
+        ],
   )
 
   if (canonical) {

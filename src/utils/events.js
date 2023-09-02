@@ -56,7 +56,7 @@ function getCurrentSchedule(timeline, { start, end }) {
     .sort((a, b) =>
       new Date() > a.datetime
         ? a.datetime.getTime() - b.datetime.getTime()
-        : b.datetime.getTime() - a.datetime.getTime()
+        : b.datetime.getTime() - a.datetime.getTime(),
     )
     // 🤔
     .reduce(
@@ -65,7 +65,7 @@ function getCurrentSchedule(timeline, { start, end }) {
 
         if (!isWithinInterval(scheduled, { start, end })) {
           throw new Error(
-            `Invalid schedule: "${curr.description}" is outside of event coverage.`
+            `Invalid schedule: "${curr.description}" is outside of event coverage.`,
           )
         }
 
@@ -81,7 +81,7 @@ function getCurrentSchedule(timeline, { start, end }) {
 
         return acc
       },
-      { start, end, description: "" }
+      { start, end, description: "" },
     )
 
   let pre = "" // 😃
@@ -96,7 +96,7 @@ function getCurrentSchedule(timeline, { start, end }) {
       isEqual(start, resolved.start) || isEqual(end, resolved.end)
         ? resolved.end
         : addMinutes(resolved.end, -1),
-      timeFormat
+      timeFormat,
     ),
   }
 
